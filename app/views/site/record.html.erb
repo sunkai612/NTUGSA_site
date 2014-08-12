@@ -1,0 +1,7 @@
+<h1>This is record</h1>
+<% @record.each do |r| %>
+  <%= link_to(r.title, showRecord_path(r)) %>
+  <%= "/" %>
+  <%= r.content %>
+  <br/>
+<% end %>

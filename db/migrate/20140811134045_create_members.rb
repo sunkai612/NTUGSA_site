@@ -6,6 +6,7 @@ class CreateMembers < ActiveRecord::Migration
       t.string :photo
       t.text :intro
       t.integer :order
+
       t.timestamps
     end
   end

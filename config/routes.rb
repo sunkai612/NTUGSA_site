@@ -1,7 +1,21 @@
 Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+  
+  resources :organizations do
+    resources :members
+  end
 
+  root 'site#home'
+
+  get '/site/home'
+  get '/site/about'
+  get '/site/event'
+  get '/site/:id/event', to: 'site#showEvent', as: 'showEvent'
+  get '/site/record'
+  get '/site/:id/record', to: 'site#showRecord', as: 'showRecord'
+
+  
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 

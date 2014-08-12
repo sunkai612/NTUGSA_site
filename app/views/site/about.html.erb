@@ -1,0 +1,29 @@
+<h1>This is about</h1>
+<% @intro.each do |i| %>
+  <%= i.title %>
+  <%= "/" %>
+  <%= i.content %>
+  <br/>
+<% end %>
+
+<% @organization.each do |o| %>
+  <%= o.title %>
+  <%= "/" %>
+  <%= o.content %>
+  <br/>
+  <% showMembers(o).each do |m|%>
+    <%= m.name %>
+    <%= "/" %>
+    <%= m.intro %>
+    <%= "/" %>
+    <%= m.organization_id %>
+    <br/>
+  <%end%>
+<% end %>
+
+<% @statute.each do |s| %>
+  <%= s.title %>
+  <%= "/" %>
+  <%= s.content %>
+  <br/>
+<% end %>

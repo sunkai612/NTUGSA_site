@@ -1,0 +1,7 @@
+<h1>This is event</h1>
+<% @event.each do |e| %>
+  <%= link_to(e.title, showEvent_path(e)) %>
+  <%= "/" %>
+  <%= e.content %>
+  <br/>
+<% end %>
