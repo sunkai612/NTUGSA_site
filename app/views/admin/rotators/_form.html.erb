@@ -1,0 +1,27 @@
+<hr>
+<%= form_for [:admin, @rotator] do |f| %>
+  <% if @rotator.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@rotator.errors.count, "error") %> prohibited this rotator from being saved:</h2>
+
+      <ul>
+      <% @rotator.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-controller">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="form-controller">
+    <%= f.label :order %><br>
+    <%= f.text_area :order %>
+  </div>
+  <hr>
+  <div class="actions">
+    <%= f.submit "Submit", :disable_with => 'Submitting...', :class => "btn btn-primary"%> 
+  </div>
+<% end %>

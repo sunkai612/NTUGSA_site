@@ -36,5 +36,6 @@ create_records = for i in 1..10 do
 end
 puts "records' data created"
 
-create_administrator = Administrator.create!([uid: "root", pwd: "0000", name:"管理者"])
+create_administrator = Administrator.create!([email: 'root@gmail.com', password: '11111111', password_confirmation: '11111111', name: 'root'])
 puts "administrator's data created"
+
