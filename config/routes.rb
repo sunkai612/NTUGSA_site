@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :administrators
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   
-  resources :organizations do
-    resources :members
-  end
-
   root 'site#home'
 
   get '/site/home'
@@ -15,7 +12,16 @@ Rails.application.routes.draw do
   get '/site/record'
   get '/site/:id/record', to: 'site#showRecord', as: 'showRecord'
 
-  
+  namespace :admin do
+    resources :rotators
+    resources :intros
+    resources :organizations do
+      resources :members
+    end
+    resources :statutes
+    resources :events
+    resources :records
+  end
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
