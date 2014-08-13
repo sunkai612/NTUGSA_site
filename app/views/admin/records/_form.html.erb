@@ -1,0 +1,27 @@
+<hr>
+<%= form_for [:admin, @record] do |f| %>
+  <% if @record.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@record.errors.count, "error") %> prohibited this record from being saved:</h2>
+
+      <ul>
+      <% @record.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-controller">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="form-controller">
+    <%= f.label :content %><br>
+    <%= f.text_area :content %>
+  </div>
+  <hr>
+  <div class="actions">
+    <%= f.submit "Submit", :disable_with => 'Submitting...', :class => "btn btn-primary"%> 
+  </div>
+<% end %>
