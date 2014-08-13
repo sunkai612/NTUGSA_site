@@ -1,0 +1,34 @@
+  <%= link_to("New member", new_admin_organization_member_path(@organization) , :class => "btn btn-warning pull-right")%>
+  <h2> <%= @organization.title %> </h2>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>member</th>
+        <th>intro</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @member.each do |m| %> 
+        <tr>
+          <td> <%= simple_format(m.name) %> </td>
+          <td> <%= simple_format(m.intro) %> </td>
+          <td>
+               <%= link_to("Edit", 
+                           edit_admin_organization_member_path(m.organization, m), 
+                           :class => "btn btn-default btn-xs")%>
+
+               <%= link_to("Delete", 
+                           admin_organization_member_path(m.organization, m), 
+                           :class => "btn btn-default btn-xs ",
+                           :method => :delete,
+                           data: { confirm: "Are you sure?" } )%>
+             
+           </td>
+        </tr>
+      <% end %> 
+    </tbody>
+  </table>
+
+<%= link_to 'Back', admin_organizations_path %>

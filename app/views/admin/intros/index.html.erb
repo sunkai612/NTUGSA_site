@@ -1,7 +1,25 @@
-<h1>This is intro</h1>
-<% @intro.each do |i| %>
-  <%= i.title %>
-  <%= "/" %>
-  <%= i.content %>
-  <br/>
-<% end %>
+  <table>
+    
+    <thead> 
+      <tr>
+        <td> # </td>
+        <td> Title </td>
+        <td> Content </td>
+      </tr>
+    </thead>
+    
+    <tbody>
+            <% @intro.each do |i| %> 
+    <tr>
+      <td> # </td>  
+      <td>  <%= link_to(truncate(i.title, :length => 15), admin_intro_path(i)) %> </td>
+      <td>  <%= i.content %> </td>
+      <td>
+         <% if current_administrator %>  
+            <%= link_to("Edit", edit_admin_intro_path(i), :class => "btn btn-sm btn-default")%>
+        <% end %>
+      </td> 
+    </tr>
+            <% end %> 
+    </tbody>
+  </table>
