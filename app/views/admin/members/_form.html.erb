@@ -1,0 +1,28 @@
+<%= form_for([:admin, @organization, @member]) do |f| %>
+  <% if @organization.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@organization.errors.count, "error") %> prohibited this group from being saved:</h2>
+
+      <ul>
+      <% @organization.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="form-controller">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="form-controller">
+    <%= f.label :intro %><br>
+    <%= f.text_area :intro %>
+  </div>
+
+  <hr>
+  <div class="form-actions">
+    <%= f.submit "Submit", :disable_with => 'Submiting...', :class => "btn btn-primary"%> 
+  </div>
+<% end %>
+</div>
