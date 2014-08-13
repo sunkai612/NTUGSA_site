@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/site/:id/event', to: 'site#showEvent', as: 'showEvent'
   get '/site/record'
   get '/site/:id/record', to: 'site#showRecord', as: 'showRecord'
+#  get 'application/admin'
 
   namespace :admin do
     resources :rotators
