@@ -1,4 +1,5 @@
 class Admin::BoardsController < ApplicationController
+  before_action :authenticate_administrator!
   def index
   	@boards = Board.all
   end
