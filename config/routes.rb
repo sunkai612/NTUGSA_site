@@ -34,6 +34,10 @@ Rails.application.routes.draw do
     resources :statutes
     resources :events
     resources :records
+    resources :boards
+    resources :posts
+    resources :comments
+    resources :users
   end
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

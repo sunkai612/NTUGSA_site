@@ -1,0 +1,7 @@
+<% @posts.each do | post | %>
+		<%= post.type_name %></br>
+		<%= post.title %></br>
+		<%= post.content %></br>
+		<%= post.comments.size %></br>
+		<%= link_to("Delete Post", admin_post_path(post), method: :delete) %></br>
+<% end %>

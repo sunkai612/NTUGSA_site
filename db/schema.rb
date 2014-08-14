@@ -11,9 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20140814080406) do
-
 
   create_table "administrators", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -30,7 +28,6 @@ ActiveRecord::Schema.define(version: 20140814080406) do
     t.datetime "updated_at"
     t.string   "name"
   end
-
 
   add_index "administrators", ["email"], name: "index_administrators_on_email", unique: true
   add_index "administrators", ["reset_password_token"], name: "index_administrators_on_reset_password_token", unique: true
@@ -52,7 +49,6 @@ ActiveRecord::Schema.define(version: 20140814080406) do
     t.integer  "post_id"
     t.string   "commenter"
   end
-
 
   create_table "events", force: true do |t|
     t.string   "title"

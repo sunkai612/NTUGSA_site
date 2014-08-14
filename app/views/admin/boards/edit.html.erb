@@ -1,0 +1,13 @@
+<%= form_for @board, url: admin_board_path(@board) do | board | %>
+	<p>
+		<%= board.label :name %>
+		<%= board.text_field :name %>
+	</p>
+	<p>
+		<%= board.label :description %>
+		<%= board.text_field :description %>
+	</p>
+	<p>
+		<%= board.submit "Submit" %>
+	</p>
+<% end %>

@@ -1,0 +1,6 @@
+<% @boards.each do | board | %>
+		<%= board.name %></br>
+		<%= board.description %></br>
+		<%= board.posts.size %></br>
+		<%= link_to("Edit Board", edit_admin_board_path(board)) %></br>
+<% end %>

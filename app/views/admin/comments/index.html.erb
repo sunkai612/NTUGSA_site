@@ -1,0 +1,5 @@
+<% @comments.each do | comment | %>
+		<%= comment.commenter %></br>
+		<%= comment.content %></br>
+		<%= link_to("Delete Comment", admin_comment_path(comment), method: :delete) %></br>
+<% end %>
