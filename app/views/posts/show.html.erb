@@ -1,0 +1,36 @@
+<h1>Posts#show</h1>
+<p>Find me in app/views/posts/show.html.erb</p>
+
+<h1>
+	<%= @post.type_name %>
+	<%= @post.title %> </br>
+</h1>
+<p><%= @post.content %></p>
+</br>
+
+
+<% @comments.each do | comment | %>
+	<tr>
+		<td> <%= comment.commenter %> </td>
+		</br>
+		<td> <%= comment.content %> </td>
+		</br>
+		<p>111111</p>
+	</tr>
+<% end %>
+
+<h1>Add Comment</h1>
+
+<%= form_for @comment, url: board_post_comments_path(@board, @post) do | comment | %>
+	<p>
+		<%= comment.label :commenter %>
+		<%= comment.text_field :commenter %>
+	</p>
+	<p>
+		<%= comment.label :content %>
+		<%= comment.text_field :content %>
+	</p>
+	<p>
+		<%= comment.submit "Submit" %>
+	</p>
+<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140811150129) do
+ActiveRecord::Schema.define(version: 20140814080406) do
 
   create_table "administrators", force: true do |t|
     t.string   "uid"
@@ -19,6 +19,24 @@ ActiveRecord::Schema.define(version: 20140811150129) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "boards", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "posts_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "comments", force: true do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "board_id"
+    t.integer  "post_id"
+    t.string   "commenter"
   end
 
   create_table "events", force: true do |t|
@@ -54,6 +72,17 @@ ActiveRecord::Schema.define(version: 20140811150129) do
     t.datetime "updated_at"
   end
 
+  create_table "posts", force: true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "comments_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "board_id"
+    t.string   "type_name"
+  end
+
   create_table "records", force: true do |t|
     t.string   "title"
     t.string   "image"
@@ -76,6 +105,15 @@ ActiveRecord::Schema.define(version: 20140811150129) do
   create_table "statutes", force: true do |t|
     t.string   "title"
     t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "name"
+    t.integer  "boards_count"
+    t.integer  "posts_count"
+    t.integer  "comments_count"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
