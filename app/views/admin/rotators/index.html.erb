@@ -6,6 +6,7 @@
         <td> # </td>
         <td> Title </td>
         <td> Order </td>
+        <td> Avatar </td>
       </tr>
     </thead>
     
@@ -15,6 +16,7 @@
       <td> # </td>  
       <td>  <%= link_to(truncate(r.title, :length => 15), admin_rotator_path(r)) %> </td>
       <td>  <%= r.order %> </td>
+      <td>  <%= image_tag r.avatar.url(:thumb) %>  </td>
       <td>
          <% if current_administrator %>  
             <%= link_to("Edit", 

@@ -56,6 +56,6 @@ class Admin::RotatorsController < ApplicationController
   private
   
   def rotator_params
-      params.require(:rotator).permit(:title, :order)
+      params.require(:rotator).permit(:title, :order, :avatar)
   end
 end

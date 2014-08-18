@@ -20,6 +20,10 @@
     <%= f.label :order %><br>
     <%= f.text_area :order %>
   </div>
+  <div class="form-controller">
+    <%= f.label :avatar %><br>
+    <%= f.file_field :avatar %>
+  </div>
   <hr>
   <div class="actions">
     <%= f.submit "Submit", :disable_with => 'Submitting...', :class => "btn btn-primary"%> 
