@@ -6,8 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-create_rotators = for i in 1..10 do
-  Rotator.create! ([title: "封面#{i}", order: "#{i}"])
+create_rotators = for i in 1..5 do
+  Rotator.create! ([title: "封面#{i}", imageOrder: "#{i}"])
 end
 puts "rotator's data created"
 
