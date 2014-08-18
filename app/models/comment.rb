@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
 
-	belongs_to :posts, counter_cache: :comments_count
+	belongs_to :post, counter_cache: :comments_count
 
 end
