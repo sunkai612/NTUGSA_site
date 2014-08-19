@@ -2,96 +2,98 @@
   <title>台大研究生協會-首頁</title>
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 </head>
-<div class="row">
-  <div class="col-md-1"></div>
-  <div class="col-md-10">
-    <div class="container-fluid carousel-adjustment">
-      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-        </ol>
+<body>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="container-fluid carousel-adjustment">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+          </ol>
 
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-          <div class="item active">
-            <img src="images/carousel_pic_1.png" alt="研究生協會招募說明會">
-            <div class="carousel-caption">
-              <h3>First Pic</h3>
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+            <div class="item active">
+              <img src="images/carousel_pic_1.png" alt="研究生協會招募說明會">
+              <div class="carousel-caption">
+                <h3>First Pic</h3>
+              </div>
+            </div>
+            <div class="item">
+              <img src="images/carousel_pic_2.png" alt="研究生協會招募說明會">
+              <div class="carousel-caption">
+                <h3>Second Pic</h3>
+              </div>
+            </div>
+            <div class="item">
+              <img src="images/carousel_pic_3.png" alt="研究生協會招募說明會">
+              <div class="carousel-caption">
+                <h3>Third Pic</h3>
+              </div>
             </div>
           </div>
-          <div class="item">
-            <img src="images/carousel_pic_2.png" alt="研究生協會招募說明會">
-            <div class="carousel-caption">
-              <h3>Second Pic</h3>
-            </div>
-          </div>
-          <div class="item">
-            <img src="images/carousel_pic_3.png" alt="研究生協會招募說明會">
-            <div class="carousel-caption">
-              <h3>Third Pic</h3>
-            </div>
-          </div>
+
+          <!-- Controls -->
+          <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+          </a>
+          <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </a>
         </div>
-
-        <!-- Controls -->
-        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-          <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>
-        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-          <span class="glyphicon glyphicon-chevron-right"></span>
-        </a>
       </div>
     </div>
+    <div class="col-md-1"></div>
   </div>
-  <div class="col-md-1"></div>
-</div>
-</br>
-<div class="row">
-  <div class="col-md-1"></div>
-  <div class="col-md-6">
-    <!-- Nav tabs -->
-    <ul class="nav nav-tabs" role="tablist">
-      <li class="active"><a href="#newest" role="tab" data-toggle="tab">最新文章</a></li>
-      <li><a href="#hotest" role="tab" data-toggle="tab">熱門文章</a></li>
-    </ul>
+  </br>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-6">
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="active"><a href="#newest" role="tab" data-toggle="tab">最新文章</a></li>
+        <li><a href="#hotest" role="tab" data-toggle="tab">熱門文章</a></li>
+      </ul>
 
-    <!-- Tab panes -->
-    <div class="tab-content">
-      <div class="tab-pane active" id="newest">
-        <ul>
-          </br>
-          <% @post_newest.each do | post | %>
-            <li>
-            <%= link_to(post.title, board_post_path(1, post)) %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-      <div class="tab-pane" id="hotest">
-        <ul>
-          </br>
-          <% @post_mostCommented.each do | post | %>
-            <li>
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div class="tab-pane active" id="newest">
+          <ul>
+            </br>
+            <% @post_newest.each do | post | %>
+              <li>
               <%= link_to(post.title, board_post_path(1, post)) %>
-            </li>
-          <% end %>
-        </ul>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="tab-pane" id="hotest">
+          <ul>
+            </br>
+            <% @post_mostCommented.each do | post | %>
+              <li>
+                <%= link_to(post.title, board_post_path(1, post)) %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="col-md-4">
-    <div class="jumbotron" style="background-image: url('images/join_small.png'); height: 240">
-      <a href="/site/about">
-        </br></br></br></br></br></br></br></br></br>
-        <span style="background-color: white; width: 60; font-size: 40;">XXX</span>
-      </a>
+    <div class="col-md-4">
+      <div class="jumbotron" style="background-image: url('images/join_small.png'); height: 240">
+        <a href="/site/about">
+          </br></br></br></br></br></br></br></br></br>
+          <span style="background-color: white; width: 60; font-size: 40;">XXX</span>
+        </a>
+      </div>
+      <!-- <a href="/site/about">
+        <img src="images/join_small.png" style="border-radius: 15px">
+      </a> -->
     </div>
-    <!-- <a href="/site/about">
-      <img src="images/join_small.png" style="border-radius: 15px">
-    </a> -->
+    <div class="col-md-1"></div>
   </div>
-  <div class="col-md-1"></div>
-</div>
+</body>

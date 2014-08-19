@@ -1,7 +1,29 @@
-<h1>This is record</h1>
-<% @record.each do |r| %>
-  <%= link_to(r.title, showRecord_path(r)) %>
-  <%= "/" %>
-  <%= r.content %>
-  <br/>
-<% end %>
+<head>
+	<style>
+		.item {
+			width: 260px;
+			margin: 10px;
+			float: left;
+		}
+	</style>
+</head>
+
+<h1 style="text-align: center;">This is record</h1>
+<div class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-10">
+		<div class="container">
+			<% @record.each do | record | %>
+				<a href="<%= showRecord_path( record ) %>">
+				  <div class="item thumbnail">
+
+						  <img src="../images/join_small.png" alt="join us">
+						  <h3 style="text-align:center;"><%= record.title %></h3>
+						  <p><%= record.content %></p>
+					</div>
+			  </a>
+			<% end %>
+		</div>
+	</div>
+	<div class="col-md-1"></div>
+</div>
