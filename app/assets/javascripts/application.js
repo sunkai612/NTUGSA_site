@@ -18,4 +18,5 @@
 //= require bootstrap/collapse
 //= require bootstrap/carousel
 //= require bootstrap/tab
+//= require bootstrap/affix
 //= require_tree .
