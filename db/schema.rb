@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140818120816) do
+ActiveRecord::Schema.define(version: 20140818141349) do
 
   create_table "administrators", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -87,11 +87,11 @@ ActiveRecord::Schema.define(version: 20140818120816) do
     t.string   "title"
     t.text     "content"
     t.integer  "user_id"
-    t.integer  "comments_count"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "board_id"
     t.string   "type_name"
+    t.integer  "comments_count", default: 0
   end
 
   create_table "records", force: true do |t|

@@ -1,29 +1,81 @@
-<h1>This is about</h1>
-<% @intro.each do |i| %>
-  <%= i.title %>
-  <%= "/" %>
-  <%= i.content %>
-  <br/>
-<% end %>
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-2">
+    <div class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" role="complementary">
+      <ul class="nav bs-docs-sidenav">
+        <% @intro.each do | intro | %>
+          <li>
+            <a href="#intro_num_<%= intro.id %>"><%= intro.title %></a>
+          </li>
+        <% end %>
+        <% @organization.each do | organization | %>
+          <li>
+            <a href="#organization_num_<%= organization.id %>"><%= organization.title %></a>
+            <!-- <ul class="nav">
+              <% showMembers(organization).each do | member | %>
+                <li>
+                  <a href="#member_num_<%= member.id %>"><%= member.name %></a>
+                </li>
+              <% end %>
+            </ul> -->
+          </li>
+        <% end %>
+        <li>
+          <a href="#statute">協會章程</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <% @intro.each do | intro | %>
+      <h1 style="text-align: center;" id="intro_num_<%= intro.id %>" >
+        <%= intro.title %>
+      </h1>
+      </br>
+      <p>
+        <%= simple_format(intro.content) %>
+      </p>
+      <hr>
+    <% end %>
 
-<% @organization.each do |o| %>
-  <%= o.title %>
-  <%= "/" %>
-  <%= o.content %>
-  <br/>
-  <% showMembers(o).each do |m|%>
-    <%= m.name %>
-    <%= "/" %>
-    <%= m.intro %>
-    <%= "/" %>
-    <%= m.organization_id %>
-    <br/>
-  <%end%>
-<% end %>
+    <% @organization.each do | organization | %>
+      <h1 style="text-align: center;" id="organization_num_<%= organization.id %>">
+        <%= organization.title %>
+      </h1>
+      </br>
+      <p>
+      <%= simple_format(organization.content) %>
+      </p>
+      <hr>
+      <% showMembers(organization).each do | member |%>
+        <div class="row">
+          <div class="col-md-2">
+            <h3 style="text-align: center;" id="member_num_<%= member.id %>">
+            <%= member.name %>
+            </h3>
+          </div>
+          <div class="col-md-6">
+            <p>
+            <%= simple_format(member.intro) %>
+            </p>
+          </div>
+          
+        </div>
+      <%end%>
+      <hr>
+    <% end %>
 
-<% @statute.each do |s| %>
-  <%= s.title %>
-  <%= "/" %>
-  <%= s.content %>
-  <br/>
-<% end %>
+    <h1 style="text-align: center;" id="statute">協會章程</h1>
+    <% @statute.each do | statute | %>
+      <div class="row">
+        <div class="col-md-2">
+          <%= statute.title %>
+        </div>
+        <div class="col-md-6">
+          <%= simple_format(statute.content) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-1"></div>
+</div>

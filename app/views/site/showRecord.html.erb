@@ -1,3 +1,11 @@
-<h1>This is showRecord</h1>
-<%= @record.title %>
-<%= @record.content %>
+<div class="row">
+	<div class="col-md-2"></div>
+	<div class="col-md-8">
+		<h1 style="text-align: center;"><%= @record.title %></h1>
+		<img src="../../images/carousel_pic_1.png" style="width:100%;">
+		<h4>
+			<%= @record.content %>
+		</h4>
+	</div>
+	<div class="col-md-2"></div>
+</div>
