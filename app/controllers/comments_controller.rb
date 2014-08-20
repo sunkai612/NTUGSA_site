@@ -7,13 +7,16 @@ class CommentsController < ApplicationController
 
   	if @comment.save
   		redirect_to board_post_path(@board, @post)
+      flash[:notice] = "新增評論成功"
   	else
-  		render "posts/show"
+  		# render "posts/show"
+      redirect_to board_post_path(@board, @post)
+      flash[:alert] = "新增評論失敗，評論者與內容必須輸入文字"
   	end
   end
 
-  def update
-  end
+  # def update
+  # end
 
   private
 

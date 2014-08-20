@@ -1,16 +1,16 @@
 class UsersController < ApplicationController
-  def new
-  end
+  # def new
+  # end
 
-  def create
-  end
+  # def create
+  # end
 
-  def show
-  end
+  # def show
+  # end
 
-  def update
-  end
+  # def update
+  # end
 
-  def destroy
-  end
+  # def destroy
+  # end
 end

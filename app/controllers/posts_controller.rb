@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  def index
-  end
+  # def index
+  # end
 
   def new
     @board = Board.find(params[:board_id])
@@ -25,8 +25,8 @@ class PostsController < ApplicationController
     @comment = Comment.new
   end
 
-  def update
-  end
+  # def update
+  # end
 
   private
 
