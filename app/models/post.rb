@@ -5,6 +5,6 @@ class Post < ActiveRecord::Base
 	validates :content, :presence => true
 
 	belongs_to :board, counter_cache: :posts_count
-	has_many :comments
+	has_many :comments, :dependent => :destroy
 
 end

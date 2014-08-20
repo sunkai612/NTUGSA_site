@@ -1,22 +1,32 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
-
-<h1>New Post</h1>
-
-<%= form_for @post, url: board_posts_path do | post | %>
-	<p>
-		<%= post.label :title %>
-		<%= post.text_field :title %>
-	</p>
-	<p>
-		<%= post.label :type_name %>
-		<%= post.text_field :type_name %>
-	</p>
-	<p>
-		<%= post.label :content %>
-		<%= post.text_field :content %>
-	</p>
-	<p>
-		<%= post.submit "Submit" %>
-	</p>
-<% end %>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-2 col-sd-2 col-md-2 col-lg-2"></div>
+		<div class="col-xs-8 col-sd-8 col-md-8 col-lg-8">
+			<div class="row">
+				<div class="col-xs-12 col-sd-12 col-md-12 col-lg-12">
+					<!-- 新增文章 -->
+					<h1 style="text-align:center;">發表文章</h1>
+					</br>
+					<%= form_for @post, url: board_posts_path do | post | %>
+						<form role="form">
+						  <div class="form-group">
+								<label for="post_type_name">文章分類：（發問、校園、心情、情報、權益、老闆、黑特、其他）</label>
+								<%= post.text_field :type_name, class: "form-control", placeholder: "請輸入文章類別" %>	
+							</div>
+						  <div class="form-group">
+						  	<label for="post_type_name">文章標題：</label>
+								<%= post.text_field :title, class: "form-control", placeholder: "請輸入文章標題" %>
+						  </div>
+						  <div class="form-group">
+						  	<label for="post_content">內容：</label>
+								<%= post.text_area :content, class: "form-control", placeholder: "請輸入內容", style: "height: 340px;" %>
+						  </div>
+						  <button type="submit" class="btn btn-default" name="commit" style="float:right;">送出</button>
+						</form>
+					<% end %>
+				</div>
+			</div><!-- 三欄式主欄 -->
+		</div>
+		<div class="col-xs-2 col-sd-2 col-md-2 col-lg-2"></div>
+	</div>
+</div>
