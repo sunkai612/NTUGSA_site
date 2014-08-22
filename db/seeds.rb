@@ -46,7 +46,7 @@ puts "first board created"
 
 
 create_post = for i in 1..10 do
-	Post.create!([title: "第#{i}篇文章", type_name: "testing", content: "testing", board_id: "1", author: "testboy"])
+	Post.create!([title: "第#{i}篇文章", type_name: "te", content: "testingtestingtestingtesting", board_id: "1", author: "testboy"])
 	for j in 1..10 do
 		Comment.create!([commenter: "這是第#{j}個評論", content: "這是第#{j}個評論", board_id: "1", post_id: "#{i}"])
 	end
