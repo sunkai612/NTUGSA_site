@@ -40,4 +40,5 @@ gem 'spring',        group: :development
   gem 'devise'
   gem 'bootstrap-sass'
   gem 'paperclip'
-  gem 'will_paginate', '~> 3.0'
+  # gem 'will_paginate', '~> 3.0'
+  gem 'kaminari'
