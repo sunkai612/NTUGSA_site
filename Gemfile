@@ -4,7 +4,12 @@ gem 'pg'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
 # Use sqlite3 as the database for Active Record
+<<<<<<< HEAD
 # gem 'sqlite3'
+=======
+#gem 'sqlite3'
+gem 'pg'
+>>>>>>> 7a3312eea7c8bafed5935df52ff01b8c686afc4e
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -41,6 +46,5 @@ gem 'spring',        group: :development
   gem 'bootstrap-sass'
   gem 'paperclip'
   gem 'kaminari'
-  # gem 'will_paginate', '~> 3.0'
   gem 'rails_12factor', group: :production
 
