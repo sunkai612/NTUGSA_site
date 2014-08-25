@@ -21,7 +21,7 @@
   </ol>
   <div class="carousel-inner">
     <% i = 0 %>
-    <% @rotator.order("imageOrder ASC").each do |r| %>
+    <% @rotator.each do |r| %>
     <% if i == 0 %>
       <div class="item active">
     <% else %>
