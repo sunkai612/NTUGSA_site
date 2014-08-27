@@ -4,7 +4,7 @@
 		<h1 style="text-align: center;"><%= @event.title %></h1>
 		<img src="../../images/carousel_pic_1.png" style="width:100%;">
 		<h4>
-			<%= @event.content %>
+			<%= simple_format(@event.content) %>
 		</h4>
 	</div>
 	<div class="col-md-2"></div>
