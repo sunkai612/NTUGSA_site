@@ -46,7 +46,28 @@
       <p>
       <%= simple_format(organization.content) %>
       </p>
+      <!-- <hr>
+      <%# showMembers(organization).each do | member |%>
+        <div class="row">
+          <div class="col-md-2">
+            <h3 style="text-align: center;" id="member_num_<%#= member.id %>">
+            <%#= member.name %>
+            </h3>
+          </div>
+          <div class="col-md-6">
+            <p>
+            <%#= simple_format(member.intro) %>
+            </p>
+          </div>
+          
+        </div>
+      <%#end%> -->
       <hr>
+    <% end %>
+
+
+    <!-- temporary adjustment, put members after organization -->
+    <% @organization.each do | organization | %>
       <% showMembers(organization).each do | member |%>
         <div class="row">
           <div class="col-md-2">
@@ -59,19 +80,16 @@
             <%= simple_format(member.intro) %>
             </p>
           </div>
-          
         </div>
       <%end%>
-      <hr>
     <% end %>
+    <hr>
+
 
     <h1 style="text-align: center;" id="statute">協會章程</h1>
     <% @statute.each do | statute | %>
       <div class="row">
-        <div class="col-md-2">
-          <%= statute.title %>
-        </div>
-        <div class="col-md-6">
+        <div class="col-md-8">
           <%= simple_format(statute.content) %>
         </div>
       </div>
