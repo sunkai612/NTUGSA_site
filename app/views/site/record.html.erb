@@ -19,7 +19,7 @@
 
 						  <img src="../images/join_small.png" alt="join us">
 						  <h3 style="text-align:center;"><%= record.title %></h3>
-						  <p><%= record.content %></p>
+						  <p><%= truncate(record.content, :length => 20) %></p>
 					</div>
 			  </a>
 			<% end %>
