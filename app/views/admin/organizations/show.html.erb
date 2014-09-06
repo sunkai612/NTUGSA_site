@@ -5,6 +5,7 @@
     <thead>
       <tr>
         <th>member</th>
+        <th>avatar</th>
         <th>intro</th>
         <th colspan="2"></th>
       </tr>
@@ -13,6 +14,7 @@
       <% @member.each do |m| %> 
         <tr>
           <td> <%= simple_format(m.name) %> </td>
+          <td> <%= image_tag m.avatar.url(:thumb) %> </td>
           <td> <%= simple_format(m.intro) %> </td>
           <td>
                <%= link_to("Edit", 

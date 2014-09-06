@@ -77,6 +77,9 @@
           </div>
           <div class="col-md-6">
             <p>
+              <%= image_tag member.avatar.url(:thumb) %>
+            </p>
+            <p>
             <%= simple_format(member.intro) %>
             </p>
           </div>
