@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 create_rotators = for i in 1..5 do
-  Rotator.create! ([title: "封面#{i}", imageOrder: "#{i}"])
+  Rotator.create! ([title: "封面#{i}", image_order: "#{i}"])
 end
 puts "rotator's data created"
 

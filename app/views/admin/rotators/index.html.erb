@@ -11,11 +11,11 @@
     </thead>
     
     <tbody>
-            <% @rotator.each do |r| %> 
+            <% @rotator.order("image_order ASC").each do |r| %> 
     <tr>
       <td> # </td>  
       <td>  <%= link_to(truncate(r.title, :length => 15), admin_rotator_path(r)) %> </td>
-      <td>  <%= r.order %> </td>
+      <td>  <%= r.image_order %> </td>
       <td>  <%= image_tag r.avatar.url(:thumb) %>  </td>
       <td>
          <% if current_administrator %>  
