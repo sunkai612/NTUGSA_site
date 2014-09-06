@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140906140727) do
+ActiveRecord::Schema.define(version: 20140906145042) do
 
   create_table "administrators", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -102,10 +102,25 @@ ActiveRecord::Schema.define(version: 20140906140727) do
   create_table "records", force: true do |t|
     t.string   "title"
     t.string   "image"
-    t.datetime "eventDate"
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "description"
+    t.integer  "organization_id"
+    t.datetime "date"
+    t.string   "location"
+    t.string   "image_large_file_name"
+    t.string   "image_large_content_type"
+    t.integer  "image_large_file_size"
+    t.datetime "image_large_updated_at"
+    t.string   "image_small_file_name"
+    t.string   "image_small_content_type"
+    t.integer  "image_small_file_size"
+    t.datetime "image_small_updated_at"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
   end
 
   create_table "rotators", force: true do |t|

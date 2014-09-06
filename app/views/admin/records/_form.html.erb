@@ -17,8 +17,36 @@
     <%= f.text_field :title %>
   </div>
   <div class="form-controller">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="form-controller">
+    <%= f.label :organization %><br>
+    <%= f.text_field :organization_id %>
+  </div>
+  <div class="form-controller">
+    <%= f.label :date %><br>
+    <%= f.text_field :date %>
+  </div>
+  <div class="form-controller">
+    <%= f.label :lacation %><br>
+    <%= f.text_field :location %>
+  </div>
+  <div class="form-controller">
     <%= f.label :content %><br>
     <%= f.text_area :content %>
+  </div>
+  <div class="form-controller">
+    <%= f.label :image_large %><br>
+    <%= f.file_field :image_large %>
+  </div>
+  <div class="form-controller">
+    <%= f.label :image_small %><br>
+    <%= f.file_field :image_small %>
+  </div>
+  <div class="form-controller">
+    <%= f.label :file %><br>
+    <%= f.file_field :file %>
   </div>
   <hr>
   <div class="actions">
