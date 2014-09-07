@@ -18,6 +18,7 @@ class PostsController < ApplicationController
       render :new
       flash[:alert] = "發文失敗，請輸入提供的分類、作者須至少兩個字、標題須至少四個字、內容須至少二十字"
     end
+    #render plain: params[:post].inspect
   end
 
   def show
@@ -33,7 +34,10 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :type_name, :content, :author)
+    if params[:post][:is_top] == "1"
+      params[:post][:is_top?] = true
+    end
+    params.require(:post).permit(:title, :type_name, :content, :author, :is_top?)
   end
 
 end
