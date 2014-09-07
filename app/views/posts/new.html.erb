@@ -25,6 +25,8 @@
 						  	<label for="post_content">內容：</label>
 								<%= post.text_area :content, class: "form-control", placeholder: "請輸入內容", style: "height: 340px;" %>
 						  </div>
+						  <%= post.check_box :is_top? %>
+						  <label for="post_title">Do you want to pin this post on top?</label>
 						  <button type="submit" class="btn btn-default" name="commit" style="float:right;">送出</button>
 						</form>
 					<% end %>

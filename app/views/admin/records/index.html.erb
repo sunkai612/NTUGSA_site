@@ -5,7 +5,14 @@
       <tr>
         <td> # </td>
         <td> Title </td>
+        <td> Description </td>
+        <td> Organization </td>
+        <td> Date </td>
+        <td> Location </td>
         <td> Content </td>
+        <td> image_large </td>
+        <td> image_small </td>
+        <td> file </td>
       </tr>
     </thead>
     
@@ -14,7 +21,15 @@
     <tr>
       <td> # </td>  
       <td>  <%= link_to(truncate(r.title, :length => 15), admin_record_path(r)) %> </td>
+      <td>  <%= r.description %> </td>
+      <td>  <%= r.organization_id %> </td>
+      <td>  <%= r.date %> </td>
+      <td>  <%= r.location %> </td>
       <td>  <%= r.content %> </td>
+      <td>  <%= image_tag r.image_large.url(:thumb) %>  </td>
+      <td>  <%= image_tag r.image_small.url(:thumb) %>  </td>
+      <td>  <%= image_tag r.file.url(:thumb) %>  </td>
+      <td>  <%= link_to("pdf", r.file.url) %>  </td>
       <td>
          <% if current_administrator %>  
             <%= link_to("Edit", 

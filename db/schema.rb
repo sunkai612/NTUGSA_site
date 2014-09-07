@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140821095822) do
+ActiveRecord::Schema.define(version: 20140907021806) do
 
   create_table "administrators", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -74,6 +74,10 @@ ActiveRecord::Schema.define(version: 20140821095822) do
     t.integer  "order"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   create_table "organizations", force: true do |t|
@@ -93,22 +97,36 @@ ActiveRecord::Schema.define(version: 20140821095822) do
     t.string   "type_name"
     t.integer  "comments_count", default: 0
     t.string   "author"
+    t.boolean  "is_top?",        default: false
   end
 
   create_table "records", force: true do |t|
     t.string   "title"
     t.string   "image"
-    t.datetime "eventDate"
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "description"
+    t.integer  "organization_id"
+    t.datetime "date"
+    t.string   "location"
+    t.string   "image_large_file_name"
+    t.string   "image_large_content_type"
+    t.integer  "image_large_file_size"
+    t.datetime "image_large_updated_at"
+    t.string   "image_small_file_name"
+    t.string   "image_small_content_type"
+    t.integer  "image_small_file_size"
+    t.datetime "image_small_updated_at"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
   end
 
   create_table "rotators", force: true do |t|
-    t.string   "image"
     t.string   "title"
     t.datetime "eventDate"
-    t.integer  "order"
     t.string   "link"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -116,7 +134,7 @@ ActiveRecord::Schema.define(version: 20140821095822) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.integer  "imageOrder"
+    t.integer  "image_order"
   end
 
   create_table "statutes", force: true do |t|

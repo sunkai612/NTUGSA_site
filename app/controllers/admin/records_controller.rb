@@ -56,6 +56,6 @@ class Admin::RecordsController < ApplicationController
   private
   
   def record_params
-      params.require(:record).permit(:title, :content)
+      params.require(:record).permit(:title, :description, :organization_id, :date, :locatoin, :content, :image_large, :image_small, :file)
   end
 end

@@ -21,7 +21,7 @@
   </ol>
   <div class="carousel-inner">
     <% i = 0 %>
-    <% @rotator.each do |r| %>
+    <% @rotator.order("image_order ASC").each do |r| %>
     <% if i == 0 %>
       <div class="item active">
     <% else %>
@@ -31,9 +31,8 @@
       <%= image_tag r.avatar.url %>
       <div class="container">
         <div class="carousel-caption">
-          <h1> <%= r.title %> </h1>
-          <!-- <p>some text...</p>
-          <p><a class="btn btn-large btn-primary" href="#">Click to know more</a></p> -->
+          <p><%= r.title %></p>
+          <p><%= link_to("Know more", r.link, :class => "btn btn-large btn-primary") %></p>
         </div>
       </div>
     </div>
