@@ -22,7 +22,7 @@
 					<h5>主辦單位： <%= @event.organization %></h5>
 				</div>
 				<div class="col-md-6" style="text-align:center;">
-					<h5>活動時間： <%= @event.event_date.to_s(:long) %></h5>
+					<h5>活動時間： <%= @event.event_date %></h5>
 				</div>
 				<div class="col-md-3" style="text-align:center;">
 					<h5>活動地點： <%= @event.location %></h5>
@@ -37,8 +37,12 @@
 				<%= simple_format(@event.content) %>
 			</h4>
 			<div class="row">
-				<div class="col-md-4">
-					<%= @event_before.title %>
+				<div class="col-md-4" style="background-image:url('<%= @event_prev.image_small.url %>')">
+					<a href="http://pacific-gorge-2022.herokuapp.com/site/<%= @event_prev.id %>/event">
+						<div style="width:250px; height:160px; background-color:white; opacity:0.8;">
+							<h4 style="text-align:center; padding-top:70px"><%= @event_prev.title %></h4>
+						</div>
+					</a>
 				</div>
 				<div class="col-md-4">
 					<a href="<%= @event.link %>" target="_blank">
@@ -47,8 +51,12 @@
 						</p>
 					</a>
 				</div>
-				<div class="col-md-4">
-					<%= @event_after.title %>
+				<div class="col-md-4" style="background-image:url('<%= @event_next.image_small.url %>')">
+					<a href="http://pacific-gorge-2022.herokuapp.com/site/<%= @event_next.id %>/event">
+						<div style="width:250px; height:160px; background-color:white; opacity:0.6;">
+							<h4 style="text-align:center; padding-top:70px"><%= @event_next.title %></h4>
+						</div>
+					</a>
 				</div>
 			</div>
 		</div>

@@ -22,30 +22,30 @@ class SiteController < ApplicationController
 
   def showEvent
     @event = Event.find(params[:id])
-    @event_before = Event.find(before_one(params[:id]))
-    @event_after = Event.find(after_one(params[:id]))
+    @event_next = if Event.where("id > ?", params[:id].to_i).first
+                    Event.where("id > ?", params[:id].to_i).first
+                  else
+                    @event
+                  end
+    @event_prev = if Event.where("id < ?", params[:id].to_i).last
+                    Event.where("id < ?", params[:id].to_i).last
+                  else
+                    @event
+                  end
   end
 
   def showRecord
     @record = Record.find(params[:id])
   end
 
-  private
+  # private
 
-  def before_one(@current_id)
-    @id_checking = @current_id
-    until @id_checking - 1
-      @id_checking -= 1
-    end
-    return @id_checking
-  end
+  # # def next(id)
+  # #   events.where("id > ?", id).first
+  # # end
 
-  def after_one(@current_id)
-    @id_checking = @current_id
-    until @id_checking + 1
-      @id_checking += 1
-    end
-    return @id_checking
-  end
+  # # def prev(id)
+  # #   events.where("id < ?", id).last
+  # # end
 
 end
