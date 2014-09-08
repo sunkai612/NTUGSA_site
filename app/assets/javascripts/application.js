@@ -22,29 +22,3 @@
 //= require bootstrap/affix
 //= require_tree .
 
-$(document).ready(function () {
-    $("#about").mouseover(function () {
-      $('#about').text("About");
-    });
-    $("#about").mouseleave(function () {
-      $('#about').text("關於研協");
-    });
-    $("#event").mouseover(function () {
-      $('#event').text("Event");
-    });
-    $("#event").mouseleave(function () {
-      $('#event').text("活動公告");
-    });
-    $("#record").mouseover(function () {
-      $('#record').text("Record");
-    });
-    $("#record").mouseleave(function () {
-      $('#record').text("會議紀錄");
-    });
-    $("#board").mouseover(function () {
-      $('#board').text("Board");
-    });
-    $("#board").mouseleave(function () {
-      $('#board').text("論壇");
-    });
-  });
