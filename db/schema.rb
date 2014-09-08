@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140907021806) do
+ActiveRecord::Schema.define(version: 20140908101643) do
 
   create_table "administrators", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -52,11 +52,24 @@ ActiveRecord::Schema.define(version: 20140907021806) do
 
   create_table "events", force: true do |t|
     t.string   "title"
-    t.string   "image"
-    t.datetime "eventDate"
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "event_date"
+    t.string   "description"
+    t.string   "location"
+    t.string   "link"
+    t.string   "video"
+    t.boolean  "is_gsa"
+    t.string   "image_large_file_name"
+    t.string   "image_large_content_type"
+    t.integer  "image_large_file_size"
+    t.datetime "image_large_updated_at"
+    t.string   "image_small_file_name"
+    t.string   "image_small_content_type"
+    t.integer  "image_small_file_size"
+    t.datetime "image_small_updated_at"
+    t.string   "organization"
   end
 
   create_table "intros", force: true do |t|
