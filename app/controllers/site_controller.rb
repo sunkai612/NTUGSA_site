@@ -22,9 +22,30 @@ class SiteController < ApplicationController
 
   def showEvent
     @event = Event.find(params[:id])
+    @event_next = if Event.where("id > ?", params[:id].to_i).first
+                    Event.where("id > ?", params[:id].to_i).first
+                  else
+                    @event
+                  end
+    @event_prev = if Event.where("id < ?", params[:id].to_i).last
+                    Event.where("id < ?", params[:id].to_i).last
+                  else
+                    @event
+                  end
   end
 
   def showRecord
     @record = Record.find(params[:id])
-  end  
+  end
+
+  # private
+
+  # # def next(id)
+  # #   events.where("id > ?", id).first
+  # # end
+
+  # # def prev(id)
+  # #   events.where("id < ?", id).last
+  # # end
+
 end
