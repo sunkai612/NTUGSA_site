@@ -4,16 +4,18 @@
 		<h1 style="text-align: center;"><%= @event.title %></h1>
 		<h3 style="text-align: center;"><%= @event.description %></h1>
 		<img src="<%= @event.image_large.url %>" style="width:100%;">
-		<h4>
-			主辦單位： <%= @event.organization %>
-			活動時間： <%= @event.event_date %>
-			活動地點： <%= @event.location %>
-		</h4>
-		<iframe style="margin-left:auto; margin-right:auto;" width="560" height="315" src="//www.youtube.com/embed/<%= @event.video %>" frameborder="0" allowfullscreen></iframe>
+		<div class="row">
+			<div class="col-md-4" style="text-align:center;">主辦單位： <%= @event.organization %></div>
+			<div class="col-md-4" style="text-align:center;">活動時間： <%= @event.event_date.to_s(:short) %></div>
+			<div class="col-md-4" style="text-align:center;">活動地點： <%= @event.location %></div>
+		</div>
+		<% unless @event.video.nil? %>
+			<iframe style="margin-left:100%; margin-right:100%;" width="560" height="315" src="//www.youtube.com/embed/<%= @event.video %>" frameborder="0" allowfullscreen></iframe>
+		<% end %>
 		<h4>
 			<%= simple_format(@event.content) %>
 		</h4>
-		<a href="<%= @event.link %>">
+		<a href="<%= @event.link %>" style="margin-left:100%; margin-right:100%;">
 			<p>
 				<button type="button" class="btn btn-info btn-lg">報名活動</button>
 			</p>
