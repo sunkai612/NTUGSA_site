@@ -1,4 +1,3 @@
-<!-- <script src="http://masonry.desandro.com/masonry.pkgd.min.js"></script> -->
 <head>
 	<style>
 		.item {
@@ -8,23 +7,32 @@
 		}
 	</style>
 </head>
+<body>
+	<div class="container-fluid" id="top_pic" style="width:1440px; height:535px; background-image:url('../../images/top_pic.jpg');">
+    <div style="width:250px; height:250px; border-radius:50%; margin-top:285px; margin-left:150px; background_color:#d3d3d3;">
+      <h1 style="text-align:center; padding-top:50px;">活動公告</h1>
+    </div>
+  </div>
+	<!-- <h1 style="text-align: center;">活動公告</h1> -->
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-10">
+			<div class="container">
+				<% @event.each do | event | %>
+					<a href="<%= showEvent_path( event ) %>">
+					  <div class="item thumbnail">
 
-<h1 style="text-align: center;">活動公告</h1>
-<div class="row">
-	<div class="col-md-1"></div>
-	<div class="col-md-10">
-		<div class="container">
-			<% @event.each do | event | %>
-				<a href="<%= showEvent_path( event ) %>">
-				  <div class="item thumbnail">
-
-						  <img src="../images/event_small_<%= event.id %>.gif" alt="join us">
-						  <h3 style="text-align:center;"><%= event.title %></h3>
-						  <p style="text-align:center;"><%= truncate(event.content, :length => 20) %></p>
-					</div>
-			  </a>
-			<% end %>
+							  <img src="../images/event_small_<%= event.id %>.gif" alt="join us">
+							  <h3 style="text-align:center;"><%= event.title %></h3>
+							  <p style="text-align:center;"><%= truncate(event.content, :length => 20) %></p>
+						</div>
+				  </a>
+				<% end %>
+			</div>
 		</div>
+		<div class="col-md-1"></div>
+    <a href="#top_pic">
+      <div style="width:50px; height:50px; border-radius:50%; background-color:#4169e1; color:#ffffff; text-align:center; padding-top:15px">TOP</div>
+    </a>
 	</div>
-	<div class="col-md-1"></div>
-</div>
+</body>

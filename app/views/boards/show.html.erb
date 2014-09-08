@@ -1,50 +1,60 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-xs-2 col-sd-2 col-md-2 col-lg-2"></div>
-    <div class="col-xs-8 col-sd-8 col-md-8 col-lg-8">
-      <div class="row">
-        <div class="col-xs-12 col-sd-12 col-md-12 col-lg-12">
-          <%= link_to("發表文章", new_board_post_path(@board), :class => "btn btn-primary pull-right") %>
-          </br>
+<body>
+  <div class="container-fluid" id="top_pic" style="width:1440px; height:535px; background-image:url('../../images/top_pic.jpg');">
+    <div style="width:250px; height:250px; border-radius:50%; margin-top:285px; margin-left:150px; background_color:#d3d3d3;">
+      <h1 style="text-align:center; padding-top:50px;">研究生論壇</h1>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-2 col-sd-2 col-md-2 col-lg-2"></div>
+      <div class="col-xs-8 col-sd-8 col-md-8 col-lg-8">
+        <div class="row">
+          <div class="col-xs-12 col-sd-12 col-md-12 col-lg-12">
+            <%= link_to("發表文章", new_board_post_path(@board), :class => "btn btn-primary pull-right") %>
+            </br>
 
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <td class="col-xs-2 col-sd-2 col-md-2 col-lg-2" style="text-align:center;">作者</td>
-          	  <td class="col-xs-7 col-sd-7 col-md-7 col-lg-7" style="text-align:center;">標題</td>
-                <td class="col-xs-1 col-sd-1 col-md-1 col-lg-1" style="text-align:center;">回應</td>
-                <td class="col-xs-2 col-sd-2 col-md-2 col-lg-2" style="text-align:center;">發佈時間</td>
-              </tr>
-            </thead>
-            <% @posts.where(is_top?: true).each do | post | %>
-              <tr>
-                <td style="text-align:center;"> <%= post.author %></td>
-                <td><%= link_to( "["+post.type_name+"] "+post.title, board_post_path(@board, post)) %></td>
-                <td style="text-align:center;"> <%= post.comments_count %></td>
-                <td style="text-align:center;"> <%= post.created_at.in_time_zone("Taipei").to_s(:short) %> </td>
-                </br>
-              </tr>
-            <% end %>
-            <% @posts.where(is_top?: false).each do | post | %>
-              <tr>
-                <td style="text-align:center;"> <%= post.author %></td>
-                <td><%= link_to( "["+post.type_name+"] "+post.title, board_post_path(@board, post)) %></td>
-                <td style="text-align:center;"> <%= post.comments_count %></td>
-                <td style="text-align:center;"> <%= post.created_at.in_time_zone("Taipei").to_s(:short) %> </td>
-                </br>
-              </tr>
-            <% end %>
-          </table>
-          <div class="row">
-            <div class="col-xs-5 col-sd-5 col-md-5 col-lg-5"></div>
-            <div class="col-xs-3 col-sd-3 col-md-3 col-lg-3">
-              <%= paginate @posts %>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <td class="col-xs-2 col-sd-2 col-md-2 col-lg-2" style="text-align:center;">作者</td>
+            	  <td class="col-xs-7 col-sd-7 col-md-7 col-lg-7" style="text-align:center;">標題</td>
+                  <td class="col-xs-1 col-sd-1 col-md-1 col-lg-1" style="text-align:center;">回應</td>
+                  <td class="col-xs-2 col-sd-2 col-md-2 col-lg-2" style="text-align:center;">發佈時間</td>
+                </tr>
+              </thead>
+              <% @posts.where(is_top?: true).each do | post | %>
+                <tr>
+                  <td style="text-align:center;"> <%= post.author %></td>
+                  <td><%= link_to( "["+post.type_name+"] "+post.title, board_post_path(@board, post)) %></td>
+                  <td style="text-align:center;"> <%= post.comments_count %></td>
+                  <td style="text-align:center;"> <%= post.created_at.in_time_zone("Taipei").to_s(:short) %> </td>
+                  </br>
+                </tr>
+              <% end %>
+              <% @posts.where(is_top?: false).each do | post | %>
+                <tr>
+                  <td style="text-align:center;"> <%= post.author %></td>
+                  <td><%= link_to( "["+post.type_name+"] "+post.title, board_post_path(@board, post)) %></td>
+                  <td style="text-align:center;"> <%= post.comments_count %></td>
+                  <td style="text-align:center;"> <%= post.created_at.in_time_zone("Taipei").to_s(:short) %> </td>
+                  </br>
+                </tr>
+              <% end %>
+            </table>
+            <div class="row">
+              <div class="col-xs-5 col-sd-5 col-md-5 col-lg-5"></div>
+              <div class="col-xs-3 col-sd-3 col-md-3 col-lg-3">
+                <%= paginate @posts %>
+              </div>
+              <div class="col-xs-4 col-sd-4 col-md-4 col-lg-4"></div>
             </div>
-            <div class="col-xs-4 col-sd-4 col-md-4 col-lg-4"></div>
           </div>
         </div>
       </div>
+      <div class="col-xs-2 col-sd-2 col-md-2 col-lg-2"></div>
+      <a href="#top_pic">
+        <div style="width:50px; height:50px; border-radius:50%; background-color:#4169e1; color:#ffffff; text-align:center; padding-top:15px">TOP</div>
+      </a>
     </div>
-    <div class="col-xs-2 col-sd-2 col-md-2 col-lg-2"></div>
   </div>
-</div>
+</body>
