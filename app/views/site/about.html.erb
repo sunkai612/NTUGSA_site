@@ -1,7 +1,11 @@
 <body>
   <script>
   $(window).scroll(function(){
-    $('#side_bar').css({"position":"fixed","top":String(Math.max(0,680-$(this).scrollTop()))+"px","left":"135px"};
+      if ($(this).scrollTop() > 680) {
+          $('#side_bar').css({"position":"fixed","top":"100px","left":"135px"});
+      } else {
+          $('#side_bar').css({"position":"absolute","top":String(Math.max(0,680-$(this).scrollTop()))+"px","left":"135px"});
+      }
   });
   </script>
   <div class="container-fluid" id="top_pic" style="height:535px; background-image:url('../../images/top_pic.jpg');">
