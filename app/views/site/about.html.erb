@@ -1,11 +1,7 @@
 <body>
   <script>
   $(window).scroll(function(){
-      if ($(this).scrollTop() > 680) {
-          $('#side_bar').css({"position":"fixed","top":"100px","left":"135px"});
-      } else {
-          $('#task_flyout').css({"position":"absolute","top":"680px","left":"135px"});
-      }
+    $('#side_bar').css({"position":"fixed","top":Math.max(0,680-$(this).scrollTop()),"left":"135px"};
   });
   </script>
   <div class="container-fluid" id="top_pic" style="height:535px; background-image:url('../../images/top_pic.jpg');">
