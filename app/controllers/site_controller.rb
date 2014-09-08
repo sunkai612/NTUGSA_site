@@ -22,9 +22,30 @@ class SiteController < ApplicationController
 
   def showEvent
     @event = Event.find(params[:id])
+    @event_before = Event.find(before_one(params[:id]))
+    @event_after = Event.find(after_one(params[:id]))
   end
 
   def showRecord
     @record = Record.find(params[:id])
-  end  
+  end
+
+  private
+
+  def before_one(@current_id)
+    @id_checking = @current_id
+    until @id_checking - 1
+      @id_checking -= 1
+    end
+    return @id_checking
+  end
+
+  def after_one(@current_id)
+    @id_checking = @current_id
+    until @id_checking + 1
+      @id_checking += 1
+    end
+    return @id_checking
+  end
+
 end
