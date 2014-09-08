@@ -56,6 +56,6 @@ class Admin::EventsController < ApplicationController
   private
 
   def event_params
-      params.require(:event).permit(:title, :content)
+    params.require(:event).permit(:title, :description, :content, :is_gsa, :organization, :event_date, :location, :video, :link, :image_large, :image_small)
   end
 end
