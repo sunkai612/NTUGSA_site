@@ -5,7 +5,16 @@
       <tr>
         <td> # </td>
         <td> Title </td>
+        <td> Description </td>
+        <td> is_gsa? </td>
+        <td> Organization </td>
+        <td> Date </td>
+        <td> Location </td>
         <td> Content </td>
+        <td> video_link </td>
+        <td> signup_link </td>
+        <td> image_large </td>
+        <td> image_small </td>
       </tr>
     </thead>
     
@@ -14,7 +23,16 @@
     <tr>
       <td> # </td>  
       <td>  <%= link_to(truncate(e.title, :length => 15), admin_event_path(e)) %> </td>
+      <td>  <%= e.description %> </td>
+      <td>  <%= e.is_gsa %> </td>
+      <td>  <%= e.organization %> </td>
+      <td>  <%= e.event_date %> </td>
+      <td>  <%= e.location %> </td>
       <td>  <%= e.content %> </td>
+      <td>  <%= e.video %> </td>
+      <td>  <%= e.link %> </td>
+      <td>  <%= image_tag e.image_large.url(:thumb) %>  </td>
+      <td>  <%= image_tag e.image_small.url(:thumb) %>  </td>
       <td>
          <% if current_administrator %>  
             <%= link_to("Edit", 
