@@ -1,80 +1,82 @@
-<div class="row">
-  <div class="col-md-1"></div>
-  <div class="col-md-2">
-    <div class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" role="complementary">
-      <ul class="nav bs-docs-sidenav">
-        <% @intro.each do | intro | %>
-          <li>
-            <a href="#intro_num_<%= intro.id %>"><%= intro.title %></a>
-          </li>
-        <% end %>
-        <% @organization.each do | organization | %>
-          <li>
-            <a href="#organization_num_<%= organization.id %>"><%= organization.title %></a>
-            <!-- <ul class="nav">
-              <% showMembers(organization).each do | member | %>
-                <li>
-                  <a href="#member_num_<%= member.id %>"><%= member.name %></a>
-                </li>
-              <% end %>
-            </ul> -->
-          </li>
-        <% end %>
-        <li>
-          <a href="#statute">協會章程</a>
-        </li>
-      </ul>
+<body>
+  <div class="container-fluid" id="top_pic" style="width:1440px; height:535px; background-image:url('../../images/top_pic.jpg');">
+    <div style="width:250px; height:250px; border-radius:50%; margin-top:285px; margin-left:150px; background_color:#d3d3d3;">
+      <h1 style="text-align:center; padding-top:50px;">關於研協</h1>
     </div>
   </div>
-  <div class="col-md-8">
-    <% @intro.each do | intro | %>
-      <h1 style="text-align: center;" id="intro_num_<%= intro.id %>" >
-        <%= intro.title %>
-      </h1>
-      </br>
-      <p>
-        <%= simple_format(intro.content) %>
-      </p>
-      <hr>
-    <% end %>
-
-    <% @organization.each do | organization | %>
-      <h1 style="text-align: center;" id="organization_num_<%= organization.id %>">
-        <%= organization.title %>
-      </h1>
-      </br>
-      <p>
-      <%= simple_format(organization.content) %>
-      </p>
-      <hr>
-      <% showMembers(organization).each do | member |%>
-        <div class="row">
-          <div class="col-md-2">
-            <p>
-              <%= image_tag member.avatar.url(:thumb) %>
-            </p>
-            <h3 style="text-align: center;" id="member_num_<%= member.id %>">
-            <%= member.name %>
-            </h3>
-          </div>
-          <div class="col-md-6">
-            <p>
-            <%= simple_format(member.intro) %>
-            </p>
-          </div>
-        </div>
-      <%end%>
-      <hr>
-    <% end %>
-
-    <h1 style="text-align: center;" id="statute">協會章程</h1>
-    <% @statute.each do | statute | %>
-      <div class="row">
-        <div class="col-md-8">
-          <%= simple_format(statute.content) %>
-        </div>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-2">
+      <div class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" role="complementary">
+        <ul class="nav bs-docs-sidenav">
+          <% @intro.each do | intro | %>
+            <li>
+              <a href="#intro_num_<%= intro.id %>"><%= intro.title %></a>
+            </li>
+          <% end %>
+          <% @organization.each do | organization | %>
+            <li>
+              <a href="#organization_num_<%= organization.id %>"><%= organization.title %></a>
+            </li>
+          <% end %>
+          <li>
+            <a href="#statute">協會章程</a>
+          </li>
+        </ul>
       </div>
-    <% end %>
+    </div>
+    <div class="col-md-8">
+      <% @intro.each do | intro | %>
+        <h1 style="text-align: center;" id="intro_num_<%= intro.id %>" >
+          <%= intro.title %>
+        </h1>
+        </br>
+        <p>
+          <%= simple_format(intro.content) %>
+        </p>
+        <hr>
+      <% end %>
+
+      <% @organization.each do | organization | %>
+        <h1 style="text-align: center;" id="organization_num_<%= organization.id %>">
+          <%= organization.title %>
+        </h1>
+        </br>
+        <p>
+        <%= simple_format(organization.content) %>
+        </p>
+        <hr>
+        <% showMembers(organization).each do | member |%>
+          <div class="row">
+            <div class="col-md-2">
+              <p>
+                <%= image_tag member.avatar.url(:thumb) %>
+              </p>
+              <h3 style="text-align: center;" id="member_num_<%= member.id %>">
+              <%= member.name %>
+              </h3>
+            </div>
+            <div class="col-md-6">
+              <p>
+              <%= simple_format(member.intro) %>
+              </p>
+            </div>
+          </div>
+        <%end%>
+        <hr>
+      <% end %>
+      <h1 style="text-align: center;" id="statute">協會章程</h1>
+      <% @statute.each do | statute | %>
+        <div class="row">
+          <div class="col-md-8">
+            <%= simple_format(statute.content) %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-1"></div>
+    <a href="#top_pic">
+      <div style="width:50px; height:50px; border-radius:50%; background-color:#4169e1; color:#ffffff; text-align:center; padding-top:15px">TOP</div>
+    </a>
   </div>
-  <div class="col-md-1"></div>
-</div>
+</body>
