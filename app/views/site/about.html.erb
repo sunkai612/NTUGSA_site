@@ -2,7 +2,7 @@
   <script>
   $(window).scroll(function(){
       if ($(this).scrollTop() > 680) {
-          $('#side_bar').css({"position":"fixed","top":"100px","left":"135px"});
+          $('#side_bar').css({"position":"fixed","top":"70px","left":"135px"});
       } else {
           $('#side_bar').css({"position":"fixed","top":String(Math.max(70,680-$(this).scrollTop()))+"px","left":"135px"});
       }
