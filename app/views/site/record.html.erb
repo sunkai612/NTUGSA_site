@@ -20,13 +20,12 @@
 			<div class="container">
 				<% @record.each do | record | %>
 					<a href="<%= showRecord_path( record ) %>">
-					  <div class="item thumbnail">
-
-							  <img src="../images/join_small.png" alt="join us">
-							  <h3 style="text-align:center;"><%= record.title %></h3>
-							  <p><%= truncate(record.content, :length => 20) %></p>
+						<div class="item thumbnail">
+							<img src="../images/join_small.png" alt="join us">
+							<h3 style="text-align:center;"><%= record.title %></h3>
+							<p><%= truncate(record.content, :length => 20) %></p>
 						</div>
-				  </a>
+					</a>
 				<% end %>
 			</div>
 		</div>
