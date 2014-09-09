@@ -36,7 +36,7 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">
+      <a class="navbar-brand" href="/" style="padding-top:0px; padding-left:0px;">
         <img src="../../images/navbar_logo.jpg">
       </a>
     </div>
@@ -44,10 +44,18 @@ $(document).ready(function () {
     <!-- Collect the nav links and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li ><a id="about", href="/site/about" style="width:90px">關於研協</a></li>
-        <li><a id="event", href="/site/event" style="width:90px">活動公告</a></li>
-        <li><a id="record", href="/site/record" style="width:90px">會議紀錄</a></li>
-        <li><a id="board", href="/boards/1" style="width:90px">論壇</a></li>
+        <li>
+          <a id="about" href="/site/about" style="width:100px; text-align:center; font-size:16px; color:black;">關於研協</a>
+        </li>
+        <li>
+          <a id="event" href="/site/event" style="width:100px; text-align:center; font-size:16px; color:black;">活動公告</a>
+        </li>
+        <li>
+          <a id="record" href="/site/record" style="width:100px; text-align:center; font-size:16px; color:black;">會議紀錄</a>
+        </li>
+        <li>
+          <a id="board" href="/boards/1" style="width:100px; text-align:center; font-size:16px; color:black;">學生論壇</a>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if current_administrator %>
