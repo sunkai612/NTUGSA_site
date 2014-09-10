@@ -8,7 +8,7 @@ class BoardsController < ApplicationController
 
   def show
   	@board = Board.find(params[:id])
-    @posts = @board.posts.order("created_at DESC").page(params[:page]).per(3)
+    @posts = @board.posts.order("created_at DESC").page(params[:page]).per(20)
   	# @posts = @board.posts.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
   	# @post = Post.find(params[:id])
   end

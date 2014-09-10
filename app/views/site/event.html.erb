@@ -21,8 +21,8 @@
 				<% @event.each do | event | %>
 					<a href="<%= showEvent_path( event ) %>">
 					  <div class="item thumbnail">
-
 							  <img src="<%= event.image_small.url %>" alt="join us">
+							  <h4 style="text-align:center;">[ <%= event.organization %> ]</h4>
 							  <h3 style="text-align:center;"><%= event.title %></h3>
 							  <p style="text-align:center;"><%= truncate(event.description, :length => 15) %></p>
 						</div>
