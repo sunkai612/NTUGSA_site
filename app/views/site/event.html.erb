@@ -9,7 +9,7 @@
     <h1 style="text-align: center;">活動公告</h1>
     <% @event.each do |e| %>
       <%= link_to showEvent_path(e) do %>
-        <div class="item thumbnail">
+        <div class="page_item thumbnail">
           <%= image_tag e.image_small.url, alt: "join us" %>
             <h4 style="text-align:center;">[ <%= e.organization %> ]</h4>
             <h3 style="text-align:center;"><%= e.title %></h3>

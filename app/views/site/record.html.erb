@@ -9,7 +9,7 @@
     <h1 style="text-align: center;">會議記錄</h1>
     <% @record.each do |r| %>
       <%= link_to showRecord_path(r) do %>
-        <div class="item thumbnail">
+        <div class="page_item thumbnail">
           <%= image_tag r.image_small.url, alt: "join us" %>
             <h4 style="text-align:center;">[ <%= r.organization.title %> ]</h4>
             <h3 style="text-align:center;"><%= r.title %></h3>
