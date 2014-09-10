@@ -20,6 +20,8 @@ div.top_pic
 {
   height: 535px; 
   background-image:url('/images/top_pic.jpg');
+  position: relative;
+  top: -30px;
 }
 
 div.top_pic div
@@ -31,16 +33,15 @@ div.top_pic div
   margin-left:150px;
   margin-top:285px;
   background-color:#d3d3d3;
-
 }
 
 div.top_pic div h1
 {
-  text-align:center; 
-  padding-top:100px;
+  text-align: center; 
+  padding-top: 90px;
 }
 
-.item {
+.page_item {
   width: 225px;
   margin: 10px;
   float: left;
@@ -64,7 +65,7 @@ div.top_btn p
   color: #ffffff;
 }
 
-div.prev
+div.prev_next_btn
 {
   width: 320px; 
   height: 170px; 
@@ -75,25 +76,21 @@ div.prev
   left:-15px;
 }
 
-div.prev h4
+div.prev_next_btn h4
 {
   text-align: center; 
   padding-top: 70px; 
   color:black;
 }
-div.next
+
+.no_margin
 {
-   width: 320px; 
-   height: 170px; 
-   background-color: white; 
-   opacity: 0.8; 
-   position: relative; 
-   top: -5px; 
-   left: -15px;
+  margin: 0px auto;
+  padding: 0px;
 }
-div.next h4
+
+.top_offset
 {
-  text-align: center; 
-  padding-top: 70px; 
-  color:black;
+  position: relative;
+  top: -30px; 
 }

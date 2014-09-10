@@ -1,36 +1,42 @@
-<table>
+<h1 class="text-center">Rotator</h1>
+<div class="col-md-12">
+  <div class="group">
     <%= link_to("New rotator", new_admin_rotator_path , :class => "btn btn-primary pull-right" ) %>
-
+  </div>
+  <table class="table">
     <thead> 
       <tr>
-        <td> # </td>
-        <td> Title </td>
-        <td> Order </td>
-        <td> Avatar </td>
+        <th> # </th>
+        <th> Title </th>
+        <th> Order </th>
+        <th> Image </th>
+        <th> Link </th>
+        <th colspan="2"></th>
       </tr>
     </thead>
-    
     <tbody>
-            <% @rotator.order("image_order ASC").each do |r| %> 
-    <tr>
-      <td> # </td>  
-      <td>  <%= link_to(truncate(r.title, :length => 15), admin_rotator_path(r)) %> </td>
-      <td>  <%= r.image_order %> </td>
-      <td>  <%= image_tag r.avatar.url(:thumb) %>  </td>
-      <td>
-         <% if current_administrator %>  
-            <%= link_to("Edit", 
+      <% @rotator.order("image_order ASC").each do |r| %> 
+        <tr>
+          <td> # </td>  
+          <td>  <%= link_to(truncate(r.title, :length => 15), admin_rotator_path(r)) %> </td>
+          <td>  <%= r.image_order %> </td>
+          <td>  <%= image_tag r.avatar.url(:thumb) %>  </td>
+          <td>  <%= r.link %> </td>
+          <td>
+            <% if current_administrator %>  
+              <%= link_to("Edit", 
                         edit_admin_rotator_path(r), 
                         :class => "btn btn-sm btn-default")%>
 
-            <%= link_to("Delete", 
+              <%= link_to("Delete", 
                         admin_rotator_path(r), 
                         :class => "btn btn-sm btn-default", 
                         :method=>:delete,
                         data: { confirm: "Are you sure?" } )%>
-        <% end %>
-      </td> 
-    </tr>
-            <% end %> 
+            <% end %>
+          </td> 
+        </tr>
+      <% end %> 
     </tbody>
   </table>
+</div>

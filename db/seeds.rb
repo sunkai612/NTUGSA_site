@@ -17,8 +17,8 @@ puts "intro's data created"
 create_organizations = for i in 1..5 do
   Organization.create!([title: "部門#{i}", content: "這裡是內容"])
   for j in 1..5 do
-    Member.create!([organization_id: "#{i}", name: "部員#{j}", intro: "這裡是內容", order: "#{j}"])
-    Record.create! ([title: "記錄#{j}", organization_id: i, content: "這裡是內容", date: "201412301900"])
+    Member.create!([organization_id: "#{i}", name: "部員#{j}", intro: "這裡是內容", member_order: "#{j}"])
+    Record.create! ([title: "記錄#{j}", organization_id: i, content: "這裡是內容", date: "201409101800"])
   end
 end
 puts "organization's data created"
@@ -29,7 +29,7 @@ create_statute = Statute.create!([title: "章程", content: "這裡是內容"])
 puts "statute's data created"
 
 create_events = for i in 1..10 do
-  Event.create! ([title: "活動#{i}", content: "這裡是內容"])
+  Event.create! ([title: "活動#{i}", content: "這裡是內容", organization: "社團#{i}", event_date: "201409101800"])
 end
 puts "events' data created"
 

@@ -19,7 +19,7 @@ class SiteController < ApplicationController
   end
 
   def record
-    @record = Record.all
+    @record = Record.joins(:organization).all
   end
 
   def showEvent

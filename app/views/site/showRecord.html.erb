@@ -15,8 +15,8 @@
     <h3 style="text-align: center;"><%= @record.description %></h3>
     <div style="margin-left:44%;">
       <div class="fb-like" data-href="/site/<%= @record.id %>/event" data-width="100px" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
-      </div>
-    <%= image_tag @record.image_large.url, style: "width:100" %>
+    </div>
+    <%= image_tag @record.image_large.url, style: "width: 100%" %>
     <hr>
     <div class="row">
       <div class="col-md-3" style="text-align:center;">
@@ -35,7 +35,7 @@
     <div class="row">
       <div class="col-md-4" style="background-image:url('<%= @record_prev.image_small.url %>')">
         <a href="/site/<%= @record_prev.id %>/record">
-          <div class="prev">
+          <div class="prev_next_btn">
             <h4><%= @record_prev.title %></h4>
           </div>
         </a>
@@ -47,7 +47,7 @@
       </div>
       <div class="col-md-4" style="background-image:url('<%= @record_next.image_small.url %>')">
         <a href="/site/<%= @record_next.id %>/record">
-          <div class="next">
+          <div class="prev_next_btn">
             <h4><%= @record_next.title %></h4>
           </div>
         </a>

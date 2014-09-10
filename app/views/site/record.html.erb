@@ -1,23 +1,23 @@
-<div class="top_pic">
+<div class="top_pic", id="top">
   <div>
     <h1>會議記錄</h1>
   </div>
 </div>
 <div class="container-fluid">
   <div class="col-md-1"></div>
-  <div class="col-md-10">
+  <div class="col-md-12 no_margin">
     <h1 style="text-align: center;">會議記錄</h1>
-    <% @record.each do | record | %>
-      <%= link_to showRecord_path(record) do %>
-        <div class="item thumbnail">
-          <%= image_tag record.image_small.url, alt: "join us" %>
-            <h4 style="text-align:center;">[ <%= record.organization_id %> ]</h4>
-            <h3 style="text-align:center;"><%= record.title %></h3>
-            <p><%= truncate(record.content, :length => 20) %></p>
+    <% @record.each do |r| %>
+      <%= link_to showRecord_path(r) do %>
+        <div class="page_item thumbnail">
+          <%= image_tag r.image_small.url, alt: "join us" %>
+            <h4 style="text-align:center;">[ <%= r.organization.title %> ]</h4>
+            <h3 style="text-align:center;"><%= r.title %></h3>
+            <p><%= truncate(r.content, :length => 20) %></p>
           <% end %>
         </div>
       <% end %>
-    <a href="#top_pic">
+    <a href="#top">
       <div class="top_btn">
         <p>TOP</p>
       </div>

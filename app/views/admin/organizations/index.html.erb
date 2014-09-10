@@ -1,34 +1,38 @@
-<table>
+<h1 class="text-center">Organization</h1>
+<div class="col-md-12">
+  <div class="group">
     <%= link_to("New organization", new_admin_organization_path , :class => "btn btn-primary pull-right" ) %>
-
+  </div>
+  <table class="table">
     <thead> 
       <tr>
-        <td> # </td>
-        <td> Title </td>
-        <td> Order </td>
+        <th> # </th>
+        <th> Title </th>
+        <th> Content </th>
+        <th colspan="2"></th>
       </tr>
     </thead>
-    
     <tbody>
-            <% @organization.each do |o| %> 
-    <tr>
-      <td> # </td>  
-      <td>  <%= link_to(truncate(o.title, :length => 15), admin_organization_path(o)) %> </td>
-      <td>  <%= o.content %> </td>
-      <td>
-         <% if current_administrator %>  
-            <%= link_to("Edit", 
+      <% @organization.each do |o| %> 
+        <tr>
+          <td> # </td>  
+          <td>  <%= link_to(truncate(o.title, :length => 15), admin_organization_path(o)) %> </td>
+          <td>  <%= o.content %> </td>
+          <td>
+            <% if current_administrator %>  
+              <%= link_to("Edit", 
                         edit_admin_organization_path(o), 
                         :class => "btn btn-sm btn-default")%>
 
-            <%= link_to("Delete", 
+              <%= link_to("Delete", 
                         admin_organization_path(o), 
                         :class => "btn btn-sm btn-default", 
                         :method=>:delete,
                         data: { confirm: "Are you sure?" } )%>
-        <% end %>
-      </td> 
-    </tr>
-            <% end %> 
+            <% end %>
+          </td> 
+        </tr>
+      <% end %> 
     </tbody>
   </table>
+</div>
