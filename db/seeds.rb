@@ -29,7 +29,7 @@ create_statute = Statute.create!([title: "章程", content: "這裡是內容"])
 puts "statute's data created"
 
 create_events = for i in 1..10 do
-  Event.create! ([title: "活動#{i}", content: "這裡是內容", event_date: "201409101800"])
+  Event.create! ([title: "活動#{i}", content: "這裡是內容", organization: "社團#{i}", event_date: "201409101800"])
 end
 puts "events' data created"
 
