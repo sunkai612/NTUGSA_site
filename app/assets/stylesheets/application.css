@@ -15,7 +15,51 @@
  */
 
 @import "bootstrap";
-li#about:hover a
+
+div.top_pic
 {
-  content: 'About';
+  height: 535px; 
+  background-image:url('/images/top_pic.jpg');
+}
+
+div.top_pic div
+{
+  display: inline-block;
+  width:250px; 
+  height:250px; 
+  border-radius:50%; 
+  margin-left:150px;
+  margin-top:285px;
+  background-color:#d3d3d3;
+
+}
+
+div.top_pic div h1
+{
+  text-align:center; 
+  padding-top:100px;
+}
+
+.item {
+  width: 225px;
+  margin: 10px;
+  float: left;
+}
+
+div.top_btn
+{
+  width: 50px; 
+  height: 50px; 
+  border-radius: 50%; 
+  background-color: #4169e1; 
+  position: fixed; 
+  right: 50px; 
+  bottom: 50px;
+}
+
+div.top_btn p
+{
+  text-align: center; 
+  padding-top: 15px; 
+  color: #ffffff;
 }

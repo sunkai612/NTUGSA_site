@@ -1,39 +1,27 @@
-<head>
-	<style>
-		.item {
-			width: 260px;
-			margin: 10px;
-			float: left;
-		}
-	</style>
-</head>
-<body>
-	<div class="container-fluid" id="top_pic" style="height:535px; background-image:url('../../images/top_pic.jpg');">
-    <div style="width:250px; height:250px; border-radius:50%; margin-top:285px; margin-left:150px; background-color:#d3d3d3;">
-      <h1 style="text-align:center; padding-top:110px;">會議記錄</h1>
-    </div>
+<div class="top_pic">
+  <div>
+    <h1>會議記錄</h1>
   </div>
-	<h1 style="text-align: center;">會議記錄</h1>
-	<div class="row">
-		<div class="col-md-1"></div>
-		<div class="col-md-10">
-			<div class="container">
-				<% @record.each do | record | %>
-					<a href="<%= showRecord_path( record ) %>">
-						<div class="item thumbnail">
-							<img src="../images/join_small.png" alt="join us">
-							<h3 style="text-align:center;"><%= record.title %></h3>
-							<p><%= truncate(record.content, :length => 20) %></p>
-						</div>
-					</a>
-				<% end %>
-			</div>
-		</div>
-		<div class="col-md-1"></div>
+</div>
+<div class="container-fluid">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+    <h1 style="text-align: center;">會議記錄</h1>
+    <% @record.each do | record | %>
+      <%= link_to showRecord_path(record) do %>
+        <div class="item thumbnail">
+          <%= image_tag record.image_small.url, alt: "join us" %>
+            <h4 style="text-align:center;">[ <%= record.organization_id %> ]</h4>
+            <h3 style="text-align:center;"><%= record.title %></h3>
+            <p><%= truncate(record.content, :length => 20) %></p>
+          <% end %>
+        </div>
+      <% end %>
     <a href="#top_pic">
-      <div style="width:50px; height:50px; border-radius:50%; background-color:#4169e1; position: fixed; right:50px; bottom:50px">
-        <p style="text-align:center; padding-top:15px; color:#ffffff;">TOP</p>
+      <div class="top_btn">
+        <p>TOP</p>
       </div>
     </a>
-	</div>
-</body>
+  </div>
+  <div class="col-md-1"></div>
+</div>
