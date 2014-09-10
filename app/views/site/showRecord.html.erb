@@ -1,11 +1,58 @@
-<div class="row">
-	<div class="col-md-2"></div>
-	<div class="col-md-8">
-		<h1 style="text-align: center;"><%= @record.title %></h1>
-		<!-- <img src="../../images/carousel_pic_1.png" style="width:100%;"> -->
-		<h4>
-			<%= simple_format(@record.content) %>
-		</h4>
-	</div>
-	<div class="col-md-2"></div>
-</div>
+  <div id="fb-root"></div>
+  <script>
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.0";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <h1 style="text-align: center;"><%= @record.title %></h1>
+      <h3 style="text-align: center;"><%= @record.description %></h3>
+      <div style="margin-left:44%;">
+        <div class="fb-like" data-href="/site/<%= @record.id %>/event" data-width="100px" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+      </div>
+      <%= image_tag @record.image_large.url, style: "width:100" %>
+      <hr>
+      <div class="row">
+        <div class="col-md-3" style="text-align:center;">
+          <h5>單位： <%= @record.organization_id %></h5>
+        </div>
+        <div class="col-md-6" style="text-align:center;">
+          <h5>時間： <%= @record.date.to_s %></h5>
+        </div>
+        <div class="col-md-3" style="text-align:center;">
+          <h5>地點： <%= @record.location %></h5>
+        </div>
+      </div>
+      <hr>
+      <h4><%= simple_format(@record.content) %></h4>
+      <hr>
+      <div class="row">
+        <div class="col-md-4" style="background-image:url('<%= @record_prev.image_small.url %>')">
+          <a href="/site/<%= @record_prev.id %>/record">
+            <div class="prev">
+              <h4><%= @record_prev.title %></h4>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <br>
+          <br>
+          <br>
+        </div>
+        <div class="col-md-4" style="background-image:url('<%= @record_next.image_small.url %>')">
+          <a href="/site/<%= @record_next.id %>/record">
+            <div class="next">
+              <h4><%= @record_next.title %></h4>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+  </div>

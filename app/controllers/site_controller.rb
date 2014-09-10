@@ -38,6 +38,16 @@ class SiteController < ApplicationController
 
   def showRecord
     @record = Record.find(params[:id])
+    @record_next = if Record.where("id > ?", params[:id].to_i).first
+                    Record.where("id > ?", params[:id].to_i).first
+                  else
+                    @record
+                  end
+    @record_prev = if Record.where("id < ?", params[:id].to_i).last
+                    Record.where("id < ?", params[:id].to_i).last
+                  else
+                    @record
+                  end
   end
 
   # private
