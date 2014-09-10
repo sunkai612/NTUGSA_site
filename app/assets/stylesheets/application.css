@@ -20,6 +20,8 @@ div.top_pic
 {
   height: 535px; 
   background-image:url('/images/top_pic.jpg');
+  position: relative;
+  top: -30px;
 }
 
 div.top_pic div
@@ -31,7 +33,6 @@ div.top_pic div
   margin-left:150px;
   margin-top:285px;
   background-color:#d3d3d3;
-
 }
 
 div.top_pic div h1
@@ -82,8 +83,14 @@ div.prev_next_btn h4
   color:black;
 }
 
-div.no_margin
+.no_margin
 {
   margin: 0px auto;
   padding: 0px;
+}
+
+.top_offset
+{
+  position: relative;
+  top: -30px; 
 }
