@@ -47,4 +47,5 @@ gem 'spring',        group: :development
   gem 'kaminari'
   gem 'rails_12factor', group: :production
   gem 'hirb'
+  gem 'simple_form'
 
