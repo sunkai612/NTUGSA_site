@@ -1,3 +1,4 @@
+<h1 class="text-center">Rotator</h1>
 <div class="col-md-12">
   <div class="group">
     <%= link_to("New rotator", new_admin_rotator_path , :class => "btn btn-primary pull-right" ) %>
@@ -8,7 +9,8 @@
         <th> # </th>
         <th> Title </th>
         <th> Order </th>
-        <th> Avatar </th>
+        <th> Image </th>
+        <th> Link </th>
         <th colspan="2"></th>
       </tr>
     </thead>
@@ -19,6 +21,7 @@
           <td>  <%= link_to(truncate(r.title, :length => 15), admin_rotator_path(r)) %> </td>
           <td>  <%= r.image_order %> </td>
           <td>  <%= image_tag r.avatar.url(:thumb) %>  </td>
+          <td>  <%= r.link %> </td>
           <td>
             <% if current_administrator %>  
               <%= link_to("Edit", 

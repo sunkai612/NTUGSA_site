@@ -1,36 +1,46 @@
-  <%= link_to("New member", new_admin_organization_member_path(@organization) , :class => "btn btn-warning pull-right")%>
-  <h2> <%= @organization.title %> </h2>
-  
-  <table>
-    <thead>
+<h1 class="text-center">Member</h1>
+<div class="col-md-12">
+  <div class="group">
+    <%= link_to("New member", new_admin_organization_member_path(@organization) , 
+        :class => "btn btn-primary pull-right")%>
+  </div>
+  <table class="table">
+    <thead> 
       <tr>
-        <th>member</th>
-        <th>avatar</th>
-        <th>intro</th>
+        <th> # </th>
+        <th> Organization </th>
+        <th> Name </th>
+        <th> Intro </th>
+        <th> Order </th>
+        <th> Avatar </th>
         <th colspan="2"></th>
       </tr>
     </thead>
     <tbody>
       <% @member.each do |m| %> 
         <tr>
-          <td> <%= simple_format(m.name) %> </td>
-          <td> <%= image_tag m.avatar.url(:thumb) %> </td>
-          <td> <%= simple_format(m.intro) %> </td>
+          <td> # </td>  
+          <td>  <%= m.organization.title %> </td>
+          <td>  <%= m.name %> </td>
+          <td>  <%= m.intro %> </td>
+          <td>  <%= m.member_order %> </td>
+          <td>  <%= image_tag m.avatar.url(:thumb) %>  </td>
           <td>
-               <%= link_to("Edit", 
-                           edit_admin_organization_member_path(m.organization, m), 
-                           :class => "btn btn-default btn-xs")%>
+            <% if current_administrator %>  
+              <%= link_to("Edit", 
+                        edit_admin_organization_member_path(m.organization, m), 
+                        :class => "btn btn-sm btn-default")%>
 
-               <%= link_to("Delete", 
-                           admin_organization_member_path(m.organization, m), 
-                           :class => "btn btn-default btn-xs ",
-                           :method => :delete,
-                           data: { confirm: "Are you sure?" } )%>
-             
-           </td>
+              <%= link_to("Delete", 
+                        admin_organization_member_path(m.organization, m), 
+                        :class => "btn btn-sm btn-default", 
+                        :method=>:delete,
+                        data: { confirm: "Are you sure?" } )%>
+            <% end %>
+          </td> 
         </tr>
       <% end %> 
     </tbody>
   </table>
-
-<%= link_to 'Back', admin_organizations_path %>
+  <%= link_to 'Back', admin_organizations_path %>
+</div>

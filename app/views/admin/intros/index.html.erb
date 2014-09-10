@@ -1,25 +1,29 @@
-  <table>
-    
+<h1 class="text-center">Intro</h1>
+<div class="col-md-12">
+  <table class="table">
     <thead> 
       <tr>
-        <td> # </td>
-        <td> Title </td>
-        <td> Content </td>
+        <th> # </th>
+        <th> Title </th>
+        <th> Content </th>
+        <th colspan="2"></th>
       </tr>
     </thead>
-    
     <tbody>
-            <% @intro.each do |i| %> 
-    <tr>
-      <td> # </td>  
-      <td>  <%= link_to(truncate(i.title, :length => 15), admin_intro_path(i)) %> </td>
-      <td>  <%= i.content %> </td>
-      <td>
-         <% if current_administrator %>  
-            <%= link_to("Edit", edit_admin_intro_path(i), :class => "btn btn-sm btn-default")%>
-        <% end %>
-      </td> 
-    </tr>
-            <% end %> 
+      <% @intro.each do |i| %> 
+        <tr>
+          <td> # </td>  
+          <td>  <%= link_to(truncate(i.title, :length => 15), admin_intro_path(i)) %> </td>
+          <td>  <%= i.content %> </td>
+          <td>
+            <% if current_administrator %>  
+              <%= link_to("Edit", 
+                        edit_admin_intro_path(i), 
+                        :class => "btn btn-sm btn-default")%>
+            <% end %>
+          </td> 
+        </tr>
+      <% end %> 
     </tbody>
   </table>
+</div>

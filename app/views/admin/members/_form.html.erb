@@ -1,31 +1,42 @@
-<%= form_for([:admin, @organization, @member]) do |f| %>
-  <% if @organization.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@organization.errors.count, "error") %> prohibited this group from being saved:</h2>
-
-      <ul>
-      <% @organization.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
-  <div class="form-controller">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="form-controller">
-    <%= f.label :intro %><br>
-    <%= f.text_area :intro %>
-  </div>
-  <div class="form-controller">
-    <%= f.file_field :avatar %>
-  </div>
-
+<div class="container-fluid">
   <hr>
-  <div class="form-actions">
-    <%= f.submit "Submit", :disable_with => 'Submiting...', :class => "btn btn-primary"%> 
+  <div class="col-md-2 col-md-offset-5">
+    <%= form_for [:admin, @organization, @member] do |f| %>
+      <% if @member.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@member.errors.count, "error") %> prohibited this rotator from being saved:</h2>
+          <ul>
+            <% @member.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="form-controller">
+        <%= f.label :name %><br>
+        <%= f.text_field :name %>
+      </div>
+      <div class="form-controller">
+        <%= f.label :intro %><br>
+        <%= f.text_field :intro %>
+      </div>
+      <div class="form-controller">
+        <%= f.label :organization %><br>
+        <%= f.text_field :organization_id %>
+      </div>
+      <div class="form-controller">
+        <%= f.label :order %><br>
+        <%= f.file_field :member_order %>
+      </div>
+      <div class="form-controller">
+        <%= f.label :avatar %><br>
+        <%= f.file_field :avatar %>
+      </div>
+      <hr>
+      <div class="actions">
+        <%= f.submit "Submit", :disable_with => 'Submitting...', :class => "btn btn-primary"%> 
+        <%= link_to 'Back', admin_organization_path(@organization) %>
+      </div>
+    <% end %>
   </div>
-<% end %>
 </div>
