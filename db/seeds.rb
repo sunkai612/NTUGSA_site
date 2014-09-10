@@ -18,7 +18,7 @@ create_organizations = for i in 1..5 do
   Organization.create!([title: "部門#{i}", content: "這裡是內容"])
   for j in 1..5 do
     Member.create!([organization_id: "#{i}", name: "部員#{j}", intro: "這裡是內容", order: "#{j}"])
-    Record.create! ([title: "記錄#{j}", organization_id: i, content: "這裡是內容"])
+    Record.create! ([title: "記錄#{j}", organization_id: i, content: "這裡是內容", date: "201412301900"])
   end
 end
 puts "organization's data created"
