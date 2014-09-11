@@ -1,27 +1,30 @@
-<hr>
-<%= form_for [:admin, @statute] do |f| %>
-  <% if @statute.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@statute.errors.count, "error") %> prohibited this statute from being saved:</h2>
-
-      <ul>
-      <% @statute.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="form-controller">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="form-controller">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </div>
+<div class="container-fluid">
   <hr>
-  <div class="actions">
-    <%= f.submit "Submit", :disable_with => 'Submitting...', :class => "btn btn-primary"%> 
+  <div class="col-md-2 col-md-offset-5">
+    <%= form_for [:admin, @statute] do |f| %>
+      <% if @statute.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@statute.errors.count, "error") %> prohibited this rotator from being saved:</h2>
+          <ul>
+            <% @statute.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="form-group">
+        <%= f.label :title %><br>
+        <%= f.text_field :title , class: "form-control" %>
+      </div>
+      <div class="form-controller">
+        <%= f.label :content %><br>
+        <%= f.text_area :content, class: "form-control", style: "height: 200px" %>
+      </div>
+      <hr>
+      <div class="actions">
+        <%= f.submit "Submit", :disable_with => 'Submitting...', :class => "btn btn-primary"%> 
+        <%= link_to 'Back', admin_statutes_path %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>

@@ -1,49 +1,52 @@
-<table>
-    <%= link_to("New record", new_admin_record_path , :class => "btn btn-primary pull-right" ) %>
-
+<h1 class="text-center">Record</h1>
+<div class="col-md-12">
+  <div class="group">
+    <%= link_to("New record", new_admin_record_path , :class => "btn btn-primary pull-right" ) %>    
+  </div>
+  <table class="table">
     <thead> 
       <tr>
-        <td> # </td>
-        <td> Title </td>
-        <td> Description </td>
-        <td> Organization </td>
-        <td> Date </td>
-        <td> Location </td>
-        <td> Content </td>
-        <td> image_large </td>
-        <td> image_small </td>
-        <td> file </td>
+        <th> # </th>
+        <th> Title </th>
+        <th> Description </th>
+        <th> Organization </th>
+        <th> Date </th>
+        <th> Location </th>
+        <th> Content </th>
+        <th> image_large </th>
+        <th> image_small </th>
+        <th> file </th>
+        <th colspan="2"></th>
       </tr>
     </thead>
-    
     <tbody>
-            <% @record.each do |r| %> 
-    <tr>
-      <td> # </td>  
-      <td>  <%= link_to(truncate(r.title, :length => 15), admin_record_path(r)) %> </td>
-      <td>  <%= r.description %> </td>
-      <td>  <%= r.organization_id %> </td>
-      <td>  <%= r.date %> </td>
-      <td>  <%= r.location %> </td>
-      <td>  <%= r.content %> </td>
-      <td>  <%= image_tag r.image_large.url(:thumb) %>  </td>
-      <td>  <%= image_tag r.image_small.url(:thumb) %>  </td>
-      <td>  <%= image_tag r.file.url(:thumb) %>  </td>
-      <td>  <%= link_to("pdf", r.file.url) %>  </td>
-      <td>
-         <% if current_administrator %>  
-            <%= link_to("Edit", 
+      <% @record.order("date DESC").each do |r| %> 
+        <tr>
+          <td> # </td>  
+          <td>  <%= link_to(truncate(r.title, :length => 8), admin_event_path(r)) %> </td>
+          <td>  <%= truncate(r.description, :length => 8) %> </td>
+          <td>  <%= truncate(r.organization.title, :length => 8) %> </td>
+          <td>  <%= r.date.to_s(:short) %> </td>
+          <td>  <%= truncate(r.location, :length => 8) %> </td>
+          <td>  <%= truncate(r.content, :length => 8) %> </td>
+          <td>  <%= image_tag r.image_large.url(:thumb) %>  </td>
+          <td>  <%= image_tag r.image_small.url(:thumb) %>  </td>
+          <td>  <%= image_tag r.file.url(:thumb) %>  </td>
+          <td>
+            <% if current_administrator %>  
+              <%= link_to("Edit", 
                         edit_admin_record_path(r), 
                         :class => "btn btn-sm btn-default")%>
 
-            <%= link_to("Delete", 
+              <%= link_to("Delete", 
                         admin_record_path(r), 
                         :class => "btn btn-sm btn-default", 
                         :method=>:delete,
                         data: { confirm: "Are you sure?" } )%>
-        <% end %>
-      </td> 
-    </tr>
-            <% end %> 
+            <% end %>
+          </td> 
+        </tr>
+      <% end %> 
     </tbody>
   </table>
+</div>

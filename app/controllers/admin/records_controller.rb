@@ -1,7 +1,7 @@
 class Admin::RecordsController < ApplicationController
   before_action :authenticate_administrator!
   def index
-    @record = Record.all
+    @record = Record.joins(:organization).all
   end
 
   def show

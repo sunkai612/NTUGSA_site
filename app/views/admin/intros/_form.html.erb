@@ -14,11 +14,11 @@
       <% end %>
       <div class="form-controller">
         <%= f.label :title %><br>
-        <%= f.text_field :title %>
+        <%= f.text_field :title, class: "form-control" %>
       </div>
       <div class="form-controller">
         <%= f.label :content %><br>
-        <%= f.text_field :content %>
+        <%= f.text_area :content, class: "form-control", style: "height: 200px;" %>
       </div>
       <hr>
       <div class="actions">
