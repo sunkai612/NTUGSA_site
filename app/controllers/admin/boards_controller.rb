@@ -10,7 +10,7 @@ class Admin::BoardsController < ApplicationController
 
   def show
     @board = Board.find(params[:id])
-    @post = @board.posts.all
+    @post = @board.posts.all.order("created_at DESC").page(params[:page]).per(20)
   end
 
   def edit
