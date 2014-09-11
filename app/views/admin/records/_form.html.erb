@@ -1,55 +1,66 @@
-<hr>
-<%= form_for [:admin, @record] do |f| %>
-  <% if @record.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@record.errors.count, "error") %> prohibited this record from being saved:</h2>
-
-      <ul>
-      <% @record.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="form-controller">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="form-controller">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="form-controller">
-    <%= f.label :organization %><br>
-    <%= f.text_field :organization_id %>
-  </div>
-  <div class="form-controller">
-    <%= f.label :date %><br>
-    <%= f.text_field :date %>
-  </div>
-  <div class="form-controller">
-    <%= f.label :lacation %><br>
-    <%= f.text_field :location %>
-  </div>
-  <div class="form-controller">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </div>
-  <div class="form-controller">
-    <%= f.label :image_large %><br>
-    <%= f.file_field :image_large %>
-  </div>
-  <div class="form-controller">
-    <%= f.label :image_small %><br>
-    <%= f.file_field :image_small %>
-  </div>
-  <div class="form-controller">
-    <%= f.label :file %><br>
-    <%= f.file_field :file %>
-  </div>
+<div class="container-fluid">
   <hr>
-  <div class="actions">
-    <%= f.submit "Submit", :disable_with => 'Submitting...', :class => "btn btn-primary"%> 
+  <div class="row">
+    <div class="col-xs-2 col-sd-2 col-md-2 col-lg-2"></div>
+    <div class="col-xs-8 col-sd-8 col-md-8 col-lg-8">
+      <div class="row">
+        <div class="col-xs-12 col-sd-12 col-md-12 col-lg-12">
+          <%= form_for [:admin, @record] do |f| %>
+            <% if @record.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@record.errors.count, "error") %> prohibited this record from being saved:</h2>
+                <ul>
+                  <% @record.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <div class="form-controller">
+              <%= f.label :title %><br>
+              <%= f.text_field :title, class: "form-control" %>
+            </div>
+            <div class="form-controller">
+              <%= f.label :description %><br>
+              <%= f.text_field :description, class: "form-control" %>
+            </div>
+            <div class="form-controller">
+              <%= f.label :organization %><br>
+              <%= f.text_field :organization_id, class: "form-control" %>
+            </div>
+            <div class="form-controller">
+              <%= f.label :date %><br>
+              <%= f.text_field :date, class: "form-control" %>
+            </div>
+            <div class="form-controller">
+              <%= f.label :lacation %><br>
+              <%= f.text_field :location, class: "form-control" %>
+            </div>
+            <div class="form-controller">
+              <%= f.label :content %><br>
+              <%= f.text_area :content, class: "form-control", style: "height: 200px;" %>
+            </div>
+            <div class="form-controller">
+              <%= f.label :image_large %><br>
+              <%= f.file_field :image_large %>
+            </div>
+            <div class="form-controller">
+              <%= f.label :image_small %><br>
+              <%= f.file_field :image_small %>
+            </div>
+            <div class="form-controller">
+              <%= f.label :file %><br>
+              <%= f.file_field :file %>
+            </div>
+            <hr>
+            <div class="actions">
+              <%= f.submit "Submit", :disable_with => 'Submitting...', :class => "btn btn-primary"%> 
+              <%= link_to 'Back', admin_records_path %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-2 col-sd-2 col-md-2 col-lg-2"></div>
   </div>
-<% end %>
+</div>

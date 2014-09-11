@@ -1,26 +1,29 @@
-  <table>
-    <%= link_to("New statute", new_admin_statute_path , :class => "btn btn-primary pull-right" ) %>
-
+<h1 class="text-center">Statute</h1>
+<div class="col-md-12">
+  <table class="table">
     <thead> 
       <tr>
-        <td> # </td>
-        <td> Title </td>
-        <td> Content </td>
+        <th> # </th>
+        <th> Title </th>
+        <th> Content </th>
+        <th colspan="2"></th>
       </tr>
     </thead>
-    
     <tbody>
-            <% @statute.each do |s| %> 
-    <tr>
-      <td> # </td>  
-      <td>  <%= link_to(truncate(s.title, :length => 15), admin_statute_path(s)) %> </td>
-      <td>  <%= s.content %> </td>
-      <td>
-         <% if current_administrator %>  
-            <%= link_to("Edit", edit_admin_statute_path(s), :class => "btn btn-sm btn-default")%>
-        <% end %>
-      </td> 
-    </tr>
-            <% end %> 
+      <% @statute.each do |s| %> 
+        <tr>
+          <td> # </td>  
+          <td>  <%= link_to(truncate(s.title, :length => 15), admin_statute_path(s)) %> </td>
+          <td>  <%= s.content %> </td>
+          <td>
+            <% if current_administrator %>  
+              <%= link_to("Edit", 
+                        edit_admin_statute_path(s), 
+                        :class => "btn btn-sm btn-default")%>
+            <% end %>
+          </td> 
+        </tr>
+      <% end %> 
     </tbody>
   </table>
+</div>

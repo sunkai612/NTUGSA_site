@@ -1,6 +1,40 @@
-<% @boards.each do | board | %>
-		<%= board.name %></br>
-		<%= board.description %></br>
-		<%= board.posts.size %></br>
-		<%= link_to("Edit Board", edit_admin_board_path(board)) %></br>
-<% end %>
+<h1 class="text-center">Board</h1>
+<div class="col-md-12">
+  <div class="group">
+    <%= link_to("New board", new_admin_board_path , :class => "btn btn-primary pull-right" ) %>
+  </div>
+  <table class="table">
+    <thead> 
+      <tr>
+        <th> # </th>
+        <th> Title </th>
+        <th> Description </th>
+        <th> Post count </th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @boards.each do |b| %> 
+        <tr>
+          <td> # </td>  
+          <td>  <%= link_to(truncate(b.name, :length => 15), admin_board_path(b)) %> </td>
+          <td>  <%= b.description %> </td>
+          <td>  <%= b.posts_count %> </td>
+          <td>
+            <% if current_administrator %>  
+              <%= link_to("Edit", 
+                        edit_admin_board_path(b), 
+                        :class => "btn btn-sm btn-default")%>
+
+              <%= link_to("Delete", 
+                        admin_board_path(b), 
+                        :class => "btn btn-sm btn-default", 
+                        :method=>:delete,
+                        data: { confirm: "Are you sure?" } )%>
+            <% end %>
+          </td> 
+        </tr>
+      <% end %> 
+    </tbody>
+  </table>
+</div>

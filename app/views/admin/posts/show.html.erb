@@ -1,2 +1,36 @@
-<h1>Admin::Posts#show</h1>
-<p>Find me in app/views/admin/posts/show.html.erb</p>
+<h1 class="text-center">Comment</h1>
+<div class="col-md-12">
+  <table class="table">
+    <thead> 
+      <tr>
+        <th> # </th>
+        <th> Board </th>
+        <th> Post </th>
+        <th> Commenter </th>
+        <th> Content </th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @comment.each do |c| %> 
+        <tr>
+          <td> # </td>  
+          <td>  <%= c.post.board.name %> </td>
+          <td>  <%= c.post.title %> </td>
+          <td>  <%= c.commenter %> </td>
+          <td>  <%= c.content %> </td>
+          <td>
+            <% if current_administrator %>  
+              <%= link_to("Delete", 
+                        admin_board_post_comment_path(@board, @post, c), 
+                        :class => "btn btn-sm btn-default", 
+                        :method=>:delete,
+                        data: { confirm: "Are you sure?" } )%>
+            <% end %>
+          </td> 
+        </tr>
+      <% end %> 
+    </tbody>
+  </table>
+  <%= link_to("Back", admin_board_path(@board)) %>
+</div>
