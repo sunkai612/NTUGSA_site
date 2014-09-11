@@ -1,66 +1,74 @@
 <div class="container-fluid">
   <hr>
-  <div class="col-md-2 col-md-offset-5">
-    <%= form_for [:admin, @event] do |f| %>
-      <% if @event.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@event.errors.count, "error") %> prohibited this rotator from being saved:</h2>
-          <ul>
-            <% @event.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
+  <div class="row">
+    <div class="col-xs-2 col-sd-2 col-md-2 col-lg-2"></div>
+    <div class="col-xs-8 col-sd-8 col-md-8 col-lg-8">
+      <div class="row">
+        <div class="col-xs-12 col-sd-12 col-md-12 col-lg-12">
+          <%= form_for [:admin, @event] do |f| %>
+            <% if @event.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+                <ul>
+                  <% @event.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
             <% end %>
-          </ul>
+            <div class="form-controller">
+              <%= f.label :title %><br>
+              <%= f.text_field :title, class: "form-control" %>
+            </div>
+            <div class="form-controller">
+              <%= f.label :description %><br>
+              <%= f.text_field :description, class: "form-control" %>
+            </div>
+            <div class="form-controller">
+              <%= f.check_box :is_gsa %>
+              <%= f.label :isGSA? %><br>
+            </div>
+            <div class="form-controller">
+              <%= f.label :organization %><br>
+              <%= f.text_field :organization, class: "form-control" %>
+            </div>
+            <div class="form-controller">
+              <%= f.label :date %><br>
+              <%= f.text_field :event_date, class: "form-control" %>
+            </div>
+            <div class="form-controller">
+              <%= f.label :lacation %><br>
+              <%= f.text_field :location, class: "form-control" %>
+            </div>
+            <div class="form-controller">
+              <%= f.label :content %><br>
+              <%= f.text_area :content, class: "form-control", style: "height:200px;" %>
+            </div>
+            <div class="form-controller">
+              <%= f.label :signUpLink %><br>
+              <%= f.text_field :link, class: "form-control" %>
+            </div>
+            <div class="form-controller">
+              <%= f.label :videoLink %><br>
+              <%= f.text_field :video, class: "form-control" %>
+            </div>
+            <div class="form-controller">
+              <%= f.label :image_large %><br>
+              <%= f.file_field :image_large %>
+            </div>
+            <div class="form-controller">
+              <%= f.label :image_small %><br>
+              <%= f.file_field :image_small %>
+            </div>
+            <hr>
+            <div class="actions">
+              <%= f.submit "Submit", :disable_with => 'Submitting...', :class => "btn btn-primary"%> 
+              <%= link_to 'Back', admin_events_path %>
+            </div>
+          <% end %>
         </div>
-      <% end %>
-      <div class="form-controller">
-        <%= f.label :title %><br>
-        <%= f.text_field :title, class: "form-control" %>
       </div>
-      <div class="form-controller">
-        <%= f.label :description %><br>
-        <%= f.text_field :description, class: "form-control" %>
-      </div>
-      <div class="form-controller">
-        <%= f.check_box :is_gsa %>
-        <%= f.label :isGSA? %><br>
-      </div>
-      <div class="form-controller">
-        <%= f.label :organization %><br>
-        <%= f.text_field :organization, class: "form-control" %>
-      </div>
-      <div class="form-controller">
-        <%= f.label :date %><br>
-        <%= f.text_field :event_date, class: "form-control" %>
-      </div>
-      <div class="form-controller">
-        <%= f.label :lacation %><br>
-        <%= f.text_field :location, class: "form-control" %>
-      </div>
-      <div class="form-controller">
-        <%= f.label :content %><br>
-        <%= f.text_area :content, class: "form-control" %>
-      </div>
-      <div class="form-controller">
-        <%= f.label :signUpLink %><br>
-        <%= f.text_field :link, class: "form-control" %>
-      </div>
-      <div class="form-controller">
-        <%= f.label :videoLink %><br>
-        <%= f.text_field :video, class: "form-control" %>
-      </div>
-      <div class="form-controller">
-        <%= f.label :image_large %><br>
-        <%= f.file_field :image_large %>
-      </div>
-      <div class="form-controller">
-        <%= f.label :image_small %><br>
-        <%= f.file_field :image_small %>
-      </div>
-      <hr>
-      <div class="actions">
-        <%= f.submit "Submit", :disable_with => 'Submitting...', :class => "btn btn-primary"%> 
-        <%= link_to 'Back', admin_events_path %>
-      </div>
-    <% end %>
+    </div>
+    <div class="col-xs-2 col-sd-2 col-md-2 col-lg-2"></div>
   </div>
 </div>
