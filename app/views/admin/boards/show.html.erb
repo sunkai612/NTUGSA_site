@@ -1,2 +1,42 @@
-<h1>Admin::Boards#show</h1>
-<p>Find me in app/views/admin/boards/show.html.erb</p>
+<h1 class="text-center">Post</h1>
+<div class="col-md-12">
+  <table class="table">
+    <thead> 
+      <tr>
+        <th> # </th>
+        <th> Board </th>
+        <th> Title </th>
+        <th> Type </th>
+        <th> Author </th>
+        <th> Comment count </th>
+        <th> is_top </th>
+        <th> Content </th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @post.each do |p| %> 
+        <tr>
+          <td> # </td>  
+          <td>  <%= p.board.name %> </td>
+          <td>  <%= link_to(truncate(p.title, :length => 15), admin_board_post_path(@board, p)) %> </td>
+          <td>  <%= p.type_name %> </td>
+          <td>  <%= p.author %> </td>
+          <td>  <%= p.comments_count %> </td>
+          <td>  <%= p.is_top? %> </td>
+          <td>  <%= p.content %> </td>
+          <td>
+            <% if current_administrator %>  
+              <%= link_to("Delete", 
+                        admin_board_post_path(@board, p), 
+                        :class => "btn btn-sm btn-default", 
+                        :method=>:delete,
+                        data: { confirm: "Are you sure?" } )%>
+            <% end %>
+          </td> 
+        </tr>
+      <% end %> 
+    </tbody>
+  </table>
+  <%= link_to("Back", admin_boards_path) %>
+</div>

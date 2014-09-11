@@ -1,0 +1,30 @@
+<div class="container-fluid">
+  <hr>
+  <div class="col-md-2 col-md-offset-5">
+    <%= form_for [:admin, @board] do |f| %>
+      <% if @board.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@board.errors.count, "error") %> prohibited this rotator from being saved:</h2>
+          <ul>
+            <% @board.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="form-controller">
+        <%= f.label :title %><br>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <div class="form-controller">
+        <%= f.label :description %><br>
+        <%= f.text_area :description, class: "form-control", style: "height: 200px;" %>
+      </div>
+      <hr>
+      <div class="actions">
+        <%= f.submit "Submit", :disable_with => 'Submitting...', :class => "btn btn-primary"%> 
+        <%= link_to 'Back', admin_boards_path %>
+      </div>
+    <% end %>
+  </div>
+</div>

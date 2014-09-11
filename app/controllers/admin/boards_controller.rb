@@ -1,17 +1,29 @@
 class Admin::BoardsController < ApplicationController
   before_action :authenticate_administrator!
   def index
-  	@boards = Board.all
+    @boards = Board.all
   end
 
   def new
+    @board = Board.new
   end
 
   def show
+    @board = Board.find(params[:id])
+    @post = @board.posts.all
   end
 
   def edit
   	@board = Board.find(params[:id])
+  end
+
+  def create 
+    @board = Board.new(board_params)
+    if @board.save!
+      redirect_to admin_boards_path
+    else
+      render "new" 
+    end
   end
 
   def update
@@ -23,7 +35,13 @@ class Admin::BoardsController < ApplicationController
    		render "edit"
 	end
   end
-
+  
+  def destroy
+    @board = Board.find(params[:id])
+    @board.destroy
+    redirect_to admin_boards_path
+  end
+    
   private
 
   def board_params
