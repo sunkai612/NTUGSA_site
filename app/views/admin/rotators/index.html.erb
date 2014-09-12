@@ -1,7 +1,7 @@
 <h1 class="text-center">首頁輪播圖</h1>
 <div class="col-md-12">
   <div class="group">
-    <%= link_to("新增輪播", new_admin_rotator_path , :class => "btn btn-primary pull-right" ) %>
+    <%= link_to("新增輪播圖", new_admin_rotator_path , :class => "btn btn-primary pull-right" ) %>
   </div>
   <table class="table">
     <thead> 
@@ -21,7 +21,7 @@
           <td>  <%= truncate(r.title, :length => 13) %> </td>
           <td>  <%= r.image_order %> </td>
           <td>  <%= image_tag r.avatar.url(:thumb) %>  </td>
-          <td>  <%= link_to(truncate(r.link, :length => 43), r.link) %> </td>
+          <td>  <%= link_to(truncate(r.link, :length => 43), r.link, target: "_blank") %> </td>
           <td>
             <% if current_administrator %>  
               <%= link_to("編輯", 

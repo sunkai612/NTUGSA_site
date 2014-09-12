@@ -16,7 +16,7 @@ class PostsController < ApplicationController
       flash[:notice] = "發文成功"
     else
       render :new
-      flash[:alert] = "發文失敗，請輸入提供的分類、作者須至少兩個字、標題須至少四個字、內容須至少二十字"
+      flash[:alert] = "發文失敗，請輸入提供的分類、作者須2~9字、標題須4~20字、內容須至少20字"
     end
     #render plain: params[:post].inspect
   end
