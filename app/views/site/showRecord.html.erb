@@ -31,6 +31,9 @@
     </div>
     <hr>
     <h4><%= simple_format(@record.content) %></h4>
+    <% if @record.file_file_name %>
+      <%= link_to("PDF連結", @record.file.url) %>
+    <% end %>
     <hr>
     <div class="row">
       <div class="col-md-4" style="background-image:url('<%= @record_prev.image_small.url %>')">
