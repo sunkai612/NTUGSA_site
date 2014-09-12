@@ -25,7 +25,7 @@ class Admin::RotatorsController < ApplicationController
         format.html { redirect_to admin_rotators_url, notice: '成功新增輪播' }
         #format.json { render :show, status: :created, location: @group }
       else
-        flash[:alert] = "您必須上傳檔案"
+        flash[:alert] = "您必須輸入標題、連結及上傳圖片"
         format.html { render :new }
         #format.json { render json: @group.errors, status: :unprocessable_entity }
       end
@@ -39,6 +39,7 @@ class Admin::RotatorsController < ApplicationController
         format.html { redirect_to admin_rotators_url, notice: '成功更新輪播' }
         #format.json { render :show, status: :ok, location: @group }
       else
+        flash[:alert] = "您必須輸入標題、連結及上傳圖片"
         format.html { render :edit }
         #format.json { render json: @group.errors, status: :unprocessable_entity }
       end

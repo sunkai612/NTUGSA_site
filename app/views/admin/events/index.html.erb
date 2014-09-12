@@ -1,23 +1,22 @@
-<h1 class="text-center">Event</h1>
+<h1 class="text-center">活動管理</h1>
 <div class="col-md-12">
   <div class="group">
-    <%= link_to("New event", new_admin_event_path , :class => "btn btn-primary pull-right" ) %>
+    <%= link_to("新增活動", new_admin_event_path , :class => "btn btn-primary pull-right" ) %>
   </div>
   <table class="table">
     <thead> 
       <tr>
         <th> # </th>
-        <th> Title </th>
-        <th> Description </th>
-        <th> is_gsa? </th>
-        <th> Organization </th>
-        <th> Date </th>
-        <th> Location </th>
-        <th> Content </th>
-        <th> video_link </th>
-        <th> signup_link </th>
-        <th> image_large </th>
-        <th> image_small </th>
+        <th> 標題 </th>
+        <th> 副標 </th>
+        <th> 主辦單位 </th>
+        <th> 時間 </th>
+        <th> 地點 </th>
+        <th> 內容 </th>
+        <th> 影音 </th>
+        <th> 報名 </th>
+        <th> 大圖 </th>
+        <th> 小圖 </th>
         <th colspan="2"></th>
       </tr>
     </thead>
@@ -25,28 +24,27 @@
       <% @event.order("event_date DESC").each do |e| %> 
         <tr>
           <td> # </td>  
-          <td>  <%= link_to(truncate(e.title, :length => 8), admin_event_path(e)) %> </td>
+          <td>  <%= truncate(e.title, :length => 8) %> </td>
           <td>  <%= truncate(e.description, :length => 8) %> </td>
-          <td>  <%= e.is_gsa %> </td>
           <td>  <%= truncate(e.organization, :length => 8) %> </td>
           <td>  <%= e.event_date.to_s(:short) %> </td>
           <td>  <%= truncate(e.location, :length => 8) %> </td>
           <td>  <%= truncate(e.content, :length => 8) %> </td>
-          <td>  <%= truncate(e.video, :length => 8) %> </td>
-          <td>  <%= truncate(e.link, :length => 8) %> </td>
+          <td>  <%= link_to(truncate(e.video, :length => 8), e.video) %> </td>
+          <td>  <%= link_to(truncate(e.link, :length => 8), e.link) %> </td>
           <td>  <%= image_tag e.image_large.url(:thumb) %>  </td>
           <td>  <%= image_tag e.image_small.url(:thumb) %>  </td>
           <td>
             <% if current_administrator %>  
-              <%= link_to("Edit", 
+              <%= link_to("編輯", 
                         edit_admin_event_path(e), 
                         :class => "btn btn-sm btn-default")%>
 
-              <%= link_to("Delete", 
+              <%= link_to("刪除", 
                         admin_event_path(e), 
                         :class => "btn btn-sm btn-default", 
                         :method=>:delete,
-                        data: { confirm: "Are you sure?" } )%>
+                        data: { confirm: "確定刪除?" } )%>
             <% end %>
           </td> 
         </tr>
