@@ -6,16 +6,6 @@
       <div class="row">
         <div class="col-xs-12 col-sd-12 col-md-12 col-lg-12">
           <%= form_for [:admin, @rotator] do |f| %>
-            <% if @rotator.errors.any? %>
-              <div id="error_explanation">
-                <h2><%= pluralize(@rotator.errors.count, "error") %> prohibited this rotator from being saved:</h2>
-                <ul>
-                  <% @rotator.errors.full_messages.each do |message| %>
-                    <li><%= message %></li>
-                  <% end %>
-                </ul>
-              </div>
-            <% end %>
             <div class="form-group">
               <%= f.label "標題" %><br>
               <%= f.text_field :title , class: "form-control" %>
