@@ -29,21 +29,23 @@
           <% @rotator.order("image_order ASC").each do |r| %>
             <% if i == 0 %>
               <div class="item active">
+                <%= link_to r.link do %>
                 <%= image_tag r.avatar.url %>
+                <% end %>
                 <div class="container">
                   <div class="carousel-caption">
-                  <!-- <p><%= r.title %></p> -->
-                    <p><%= link_to("Know more", r.link, :class => "btn btn-large btn-primary") %></p>
+                    <p><%= r.title %></p>
                   </div>
                 </div>
               </div>
             <% else %>
               <div class="item">
+                <%= link_to r.link do %>
                 <%= image_tag r.avatar.url %>
+                <% end %>
                 <div class="container">
                   <div class="carousel-caption">
-                  <!-- <p><%= r.title %></p> -->
-                    <p><%= link_to("Know more", r.link, :class => "btn btn-large btn-primary") %></p>
+                    <p><%= r.title %></p>
                   </div>
                 </div>
               </div>
