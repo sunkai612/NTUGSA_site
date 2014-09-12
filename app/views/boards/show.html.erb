@@ -23,9 +23,9 @@
               </tr>
             </thead>
             <% @posts.where(is_top?: true).each do | post | %>
-              <tr>
+              <tr style="background-color:#A9D0F5;">
                 <td style="text-align:center;"> <%= post.author %></td>
-                <td><%= link_to( "["+post.type_name+"] "+post.title, board_post_path(@board, post)) %></td>
+                <td><%= link_to( "["+post.type_name+"] "+truncate(post.title, :length => 23), board_post_path(@board, post)) %></td>
                 <td style="text-align:center;"> <%= post.comments_count %></td>
                 <td style="text-align:center;"> <%= post.created_at.in_time_zone("Taipei").to_s(:short) %> </td>
               </tr>
@@ -33,7 +33,7 @@
             <% @posts.where(is_top?: false).each do | post | %>
               <tr>
                 <td style="text-align:center;"> <%= post.author %></td>
-                <td><%= link_to( "["+post.type_name+"] "+post.title, board_post_path(@board, post)) %></td>
+                <td><%= link_to( "["+post.type_name+"] "+truncate(post.title, :length => 32), board_post_path(@board, post)) %></td>
                 <td style="text-align:center;"> <%= post.comments_count %></td>
                 <td style="text-align:center;"> <%= post.created_at.in_time_zone("Taipei").to_s(:short) %> </td>
               </tr>
