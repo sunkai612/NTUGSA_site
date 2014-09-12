@@ -20,13 +20,13 @@
     <hr>
     <div class="row">
       <div class="col-md-3" style="text-align:center;">
-        <h5>主辦單位： <%= @event.organization %></h5>
+        <h5>主辦單位： </br><%= @event.organization %></h5>
       </div>
       <div class="col-md-6" style="text-align:center;">
-        <h5>活動時間： <%= @event.event_date.to_s(:long) %></h5>
+        <h5>活動時間： </br><%= @event.event_date.to_s(:long) %></h5>
       </div>
       <div class="col-md-3" style="text-align:center;">
-        <h5>活動地點： <%= @event.location %></h5>
+        <h5>活動地點： </br><%= @event.location %></h5>
       </div>
     </div>
     <hr>
@@ -40,7 +40,7 @@
       <div class="col-md-4" style="background-image:url('<%= @event_prev.image_small.url %>')">
         <a href="/site/<%= @event_prev.id %>/event">
           <div class="prev_next_btn">
-            <h4><%= @event_prev.title %></h4>
+            <h4><%= truncate(@event_prev.title, :length => 13) %></h4>
           </div>
         </a>
     </div>
@@ -49,7 +49,7 @@
           <br>
           <br>
           <%= link_to @event.link, target: "_blank" do %>
-            <p style="margin-left:33%;">
+            <p style="margin-left:31%;">
               <button type="button" class="btn btn-info btn-lg">報名活動</button>
             </p>
           <% end %>
@@ -57,7 +57,7 @@
         <div class="col-md-4" style="background-image:url('<%= @event_next.image_small.url %>')">
           <a href="/site/<%= @event_next.id %>/event">
             <div class="prev_next_btn">
-              <h4><%= @event_next.title %></h4>
+              <h4><%= truncate(@event_next.title, :length => 13) %></h4>
             </div>
           </a>
         </div>
