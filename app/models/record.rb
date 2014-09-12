@@ -2,7 +2,7 @@ class Record < ActiveRecord::Base
   belongs_to :organization
 
   validates :title, :presence => true, length: { in: 1..10 }
-  validates :descrpition, :presence => true, length: { maximim: 20 }
+  validates :descrpition, :presence => true, length: { maximum: 20 }
   validates :organization_id, :presence => true, length: { in: 1..14 }
   validates :date, :presence => true, numericality: { only_integer: true }, length: { in: 8..12 }
   validates :location, :presence => true, length: { in: 1..14 }
