@@ -1,18 +1,19 @@
-<h1 class="text-center">Member</h1>
+<h1 class="text-center">成員管理</h1>
 <div class="col-md-12">
   <div class="group">
-    <%= link_to("New member", new_admin_organization_member_path(@organization) , 
+    <%= link_to '返回', admin_organizations_path, :class => "btn btn-warning"%>
+    <%= link_to("新增部員", new_admin_organization_member_path(@organization) , 
         :class => "btn btn-primary pull-right")%>
   </div>
   <table class="table">
     <thead> 
       <tr>
         <th> # </th>
-        <th> Organization </th>
-        <th> Name </th>
-        <th> Intro </th>
-        <th> Order </th>
-        <th> Avatar </th>
+        <th> 部門 </th>
+        <th> 姓名 </th>
+        <th> 簡介 </th>
+        <th> 順序 </th>
+        <th> 大頭貼 </th>
         <th colspan="2"></th>
       </tr>
     </thead>
@@ -20,27 +21,26 @@
       <% @member.each do |m| %> 
         <tr>
           <td> # </td>  
-          <td>  <%= m.organization.title %> </td>
+          <td>  <%= truncate(m.organization.title, :length => 13) %> </td>
           <td>  <%= m.name %> </td>
-          <td>  <%= m.intro %> </td>
+          <td>  <%= truncate(m.intro, :length => 43) %> </td>
           <td>  <%= m.member_order %> </td>
-          <td>  <%= image_tag m.avatar.url(:thumb) %>  </td>
+          <td>  <% if m.avatar_file_name %><%= image_tag m.avatar.url(:thumb) %><% end %>  </td>
           <td>
             <% if current_administrator %>  
-              <%= link_to("Edit", 
+              <%= link_to("編輯", 
                         edit_admin_organization_member_path(m.organization, m), 
                         :class => "btn btn-sm btn-default")%>
 
-              <%= link_to("Delete", 
+              <%= link_to("刪除", 
                         admin_organization_member_path(m.organization, m), 
                         :class => "btn btn-sm btn-default", 
                         :method=>:delete,
-                        data: { confirm: "Are you sure?" } )%>
+                        data: { confirm: "確定刪除?" } )%>
             <% end %>
           </td> 
         </tr>
       <% end %> 
     </tbody>
   </table>
-  <%= link_to 'Back', admin_organizations_path %>
 </div>

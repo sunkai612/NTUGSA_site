@@ -6,40 +6,30 @@
       <div class="row">
         <div class="col-xs-12 col-sd-12 col-md-12 col-lg-12">
           <%= form_for [:admin, @organization, @member] do |f| %>
-            <% if @member.errors.any? %>
-              <div id="error_explanation">
-                <h2><%= pluralize(@member.errors.count, "error") %> prohibited this member from being saved:</h2>
-                <ul>
-                  <% @member.errors.full_messages.each do |message| %>
-                    <li><%= message %></li>
-                  <% end %>
-                </ul>
-              </div>
-            <% end %>
             <div class="form-controller">
-              <%= f.label :name %><br>
+              <%= f.label "姓名" %><br>
               <%= f.text_field :name, class: "form-control" %>
             </div>
             <div class="form-controller">
-              <%= f.label :intro %><br>
+              <%= f.label "簡介" %><br>
               <%= f.text_area :intro, class: "form-control" %>
             </div>
             <div class="form-controller">
-              <%= f.label :organization %><br>
+              <%= f.label "部門" %><br>
               <%= f.text_field :organization_id, class: "form-control" %>
             </div>
             <div class="form-controller">
-              <%= f.label :order %><br>
-              <%= f.file_field :member_order %>
+              <%= f.label "順序" %><br>
+              <%= f.text_field :member_order, class: "form-control" %>
             </div>
             <div class="form-controller">
-              <%= f.label :avatar %><br>
+              <%= f.label "大頭貼" %><br>
               <%= f.file_field :avatar %>
             </div>
             <hr>
             <div class="actions">
-              <%= f.submit "Submit", :disable_with => 'Submitting...', :class => "btn btn-primary"%> 
-              <%= link_to 'Back', admin_organization_path(@organization) %>
+              <%= f.submit "確認", :disable_with => '處理中...', :class => "btn btn-primary pull-right"%> 
+              <%= link_to '返回', admin_organization_path(@organization), :class => "btn btn-warning" %>
             </div>
           <% end %>
         </div>
