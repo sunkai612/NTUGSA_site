@@ -30,8 +30,8 @@
           <td>  <%= e.event_date.to_s(:short) %> </td>
           <td>  <%= truncate(e.location, :length => 8) %> </td>
           <td>  <%= truncate(e.content, :length => 8) %> </td>
-          <td>  <%= link_to(truncate(e.video, :length => 8), e.video) %> </td>
-          <td>  <%= link_to(truncate(e.link, :length => 8), e.link) %> </td>
+          <td>  <%= link_to("連結", 'https://www.youtube.com/watch?v='+e.video.to_s, :target => "_blank") %> </td>
+          <td>  <%= link_to("連結", e.link.to_s, :target => "_blank") %> </td>
           <td>  <%= image_tag e.image_large.url(:thumb) %>  </td>
           <td>  <%= image_tag e.image_small.url(:thumb) %>  </td>
           <td>

@@ -40,7 +40,8 @@
             </div>
             <div class="form-controller">
               <%= f.label "影音連結" %><br>
-              <%= f.text_field :video, class: "form-control" %>
+              https://www.youtube.com/watch?v=
+              <%= f.text_field :video, placeholder: "XXxtYt8dpKI，若YouTube聯結為https://www.youtube.com/watch?v=XXxtYt8dpKI", :style => 'width:60%' %>
             </div>
             <div class="form-controller">
               <%= f.label "大圖*(1380x460)" %><br>
