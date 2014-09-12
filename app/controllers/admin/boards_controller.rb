@@ -20,8 +20,10 @@ class Admin::BoardsController < ApplicationController
   def create 
     @board = Board.new(board_params)
     if @board.save!
+      flash[:notice] = "成功新增論壇"
       redirect_to admin_boards_path
     else
+      flash[:alert] = "您必須輸入標題與副標"
       render "new" 
     end
   end
@@ -30,15 +32,18 @@ class Admin::BoardsController < ApplicationController
   	@board = Board.find(params[:id])
 
   	if @board.update(board_params)
-   		redirect_to admin_boards_path
+        flash[:notice] = "成功更新論壇"
+   	  redirect_to admin_boards_path
 	else
-   		render "edit"
+        flash[:alert] = "您必須輸入標題與副標"
+   	  render "edit"
 	end
   end
   
   def destroy
     @board = Board.find(params[:id])
     @board.destroy
+    flash[:notice] = "成功刪除論壇"
     redirect_to admin_boards_path
   end
     
