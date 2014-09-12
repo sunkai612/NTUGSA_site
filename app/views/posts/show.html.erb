@@ -10,6 +10,7 @@
 					</h1>
 					<hr>
 					<h4 style="text-align:right;">
+					  <% if @post.is_top? %><span>置頂</span><% end %>
 						作者：<%= @post.author %>；發文時間：<%= @post.created_at.in_time_zone("Taipei").to_s(:short) %>
 					</h4>
 					<hr>
@@ -42,11 +43,11 @@
 						<form role="form">
 						  <div class="form-group">
 								<label for="comment_commenter">評論者：</label>
-								<%= comment.text_field :commenter, class: "form-control", placeholder: "請輸入評論者名稱" %>
+								<%= comment.text_field :commenter, class: "form-control", placeholder: "請輸入評論者名稱(2~15字)" %>
 							</div>
 						  <div class="form-group">
 						  	<label for="comment_content">內容：</label>
-								<%= comment.text_area :content, class: "form-control", placeholder: "請輸入評論", style: "height: 68px;" %>
+								<%= comment.text_area :content, class: "form-control", placeholder: "請輸入評論(50字以內)", style: "height: 68px;" %>
 						  </div>
 						  <button type="submit" class="btn btn-default" name="commit" style="float:right;">送出</button>
 						</form>

@@ -2,6 +2,13 @@
   <title>台大研究生協會-首頁</title>
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 </head>
+<script type="text/javascript">
+  $(function(){
+    $('.carousel').carousel({
+      interval: 5000
+    });
+  });
+</script>
 <div class="container-fluid no_margin">
   <div class="col-md-1"></div>
     <div class="col-md-12 no_margin top_offset">
@@ -22,21 +29,23 @@
           <% @rotator.order("image_order ASC").each do |r| %>
             <% if i == 0 %>
               <div class="item active">
+                <%= link_to r.link do %>
                 <%= image_tag r.avatar.url %>
+                <% end %>
                 <div class="container">
                   <div class="carousel-caption">
-                  <!-- <p><%= r.title %></p> -->
-                    <p><%= link_to("Know more", r.link, :class => "btn btn-large btn-primary") %></p>
+                    <!--<p><%= r.title %></p>-->
                   </div>
                 </div>
               </div>
             <% else %>
               <div class="item">
+                <%= link_to r.link do %>
                 <%= image_tag r.avatar.url %>
+                <% end %>
                 <div class="container">
                   <div class="carousel-caption">
-                  <!-- <p><%= r.title %></p> -->
-                    <p><%= link_to("Know more", r.link, :class => "btn btn-large btn-primary") %></p>
+                    <!--<p><%= r.title %></p>-->
                   </div>
                 </div>
               </div>
@@ -69,7 +78,7 @@
             <div class="panel-heading">
               <a data-toggle="collapse" data-parent="#accordion" href="#event_<%= event.id %>">
                 <h4 class="panel-title" style="text-align:center;">
-                  <%= event.title %>
+                  <%= truncate(event.title, :length => 23) %>
                 </h4>
               </a>
             </div>
@@ -92,8 +101,8 @@
           <a href="<%= showRecord_path( record ) %>">
             <div class="item thumbnail">
               <img src="../images/join_small.png" alt="join us">
-              <h3 style="text-align:center;"><%= record.title %></h3>
-              <p><%= truncate(record.content, :length => 200) %></p>
+              <h3 style="text-align:center;"><%= truncate(record.title, :length => 13) %></h3>
+              <p><%= truncate(record.content, :length => 48) %></p>
             </div>
           </a>
         <% end %>
@@ -120,7 +129,7 @@
           </br>
           <% @post_newest.each do | post | %>
             <li>
-              <%= link_to(post.title, board_post_path(1, post)) %>
+              <%= link_to(truncate(post.title, :length => 18), board_post_path(1, post)) %>
             </li>
           <% end %>
         </ul>
@@ -130,7 +139,7 @@
           </br>
           <% @post_mostCommented.each do | post | %>
             <li>
-              <%= link_to(post.title, board_post_path(1, post)) %>
+              <%= link_to(truncate(post.title, :length => 18), board_post_path(1, post)) %>
             </li>
           <% end %>
         </ul>

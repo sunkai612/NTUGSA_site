@@ -11,9 +11,9 @@
       <%= link_to showRecord_path(r) do %>
         <div class="page_item thumbnail">
           <%= image_tag r.image_small.url, alt: "join us" %>
-            <h4 style="text-align:center;">[ <%= r.organization.title %> ]</h4>
-            <h3 style="text-align:center;"><%= r.title %></h3>
-            <p><%= truncate(r.content, :length => 20) %></p>
+            <h4 style="text-align:center;">[ <%= truncate(r.organization.title, :length => 11) %> ]</h4>
+            <h3 style="text-align:center;"><%= truncate(r.title, :length => 18) %></h3>
+            <p><%= truncate(r.description, :length => 32) %></p>
           <% end %>
         </div>
       <% end %>

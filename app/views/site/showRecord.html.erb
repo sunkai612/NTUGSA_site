@@ -20,23 +20,26 @@
     <hr>
     <div class="row">
       <div class="col-md-3" style="text-align:center;">
-        <h5>單位： <%= @record.organization_id %></h5>
+        <h5>單位： </br><%= @record.organization.title %></h5>
       </div>
       <div class="col-md-6" style="text-align:center;">
-        <h5>時間： <%= @record.date.to_s(:long) %></h5>
+        <h5>時間： </br><%= @record.date.to_s(:long) %></h5>
       </div>
       <div class="col-md-3" style="text-align:center;">
-        <h5>地點： <%= @record.location %></h5>
+        <h5>地點： </br><%= @record.location %></h5>
       </div>
     </div>
     <hr>
     <h4><%= simple_format(@record.content) %></h4>
+    <% if @record.file_file_name %>
+      <%= link_to("PDF連結", @record.file.url) %>
+    <% end %>
     <hr>
     <div class="row">
       <div class="col-md-4" style="background-image:url('<%= @record_prev.image_small.url %>')">
         <a href="/site/<%= @record_prev.id %>/record">
           <div class="prev_next_btn">
-            <h4><%= @record_prev.title %></h4>
+            <h4><%= truncate(@record_prev.title, :length => 13) %></h4>
           </div>
         </a>
       </div>
@@ -48,7 +51,7 @@
       <div class="col-md-4" style="background-image:url('<%= @record_next.image_small.url %>')">
         <a href="/site/<%= @record_next.id %>/record">
           <div class="prev_next_btn">
-            <h4><%= @record_next.title %></h4>
+            <h4><%= truncate(@record_next.title, :length => 13) %></h4>
           </div>
         </a>
       </div>

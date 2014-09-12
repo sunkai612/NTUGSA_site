@@ -11,9 +11,9 @@
       <%= link_to showEvent_path(e) do %>
         <div class="page_item thumbnail">
           <%= image_tag e.image_small.url, alt: "join us" %>
-            <h4 style="text-align:center;">[ <%= e.organization %> ]</h4>
-            <h3 style="text-align:center;"><%= e.title %></h3>
-            <p><%= truncate(e.content, :length => 20) %></p>
+            <h4 style="text-align:center;">[ <%= truncate(e.organization, :length => 11) %> ]</h4>
+            <h3 style="text-align:center;"><%= truncate(e.title, :length => 18) %></h3>
+            <p><%= truncate(e.description, :length => 32) %></p>
           <% end %>
         </div>
       <% end %>

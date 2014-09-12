@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
   	else
   		# render "posts/show"
       redirect_to board_post_path(@board, @post)
-      flash[:alert] = "新增評論失敗，評論者與內容必須輸入文字"
+      flash[:alert] = "新增評論失敗，評論者需2~15字，內容需少於50字"
   	end
   end
 

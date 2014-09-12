@@ -11,23 +11,23 @@
             <form role="form">
               <div class="form-group">
                 <label for="post_author">作者名稱：</label>
-                <%= post.text_field :author, class: "form-control", placeholder: "請輸入作者名稱" %>	
+                <%= post.text_field :author, class: "form-control", placeholder: "請輸入作者名稱(2~15字)" %>	
               </div>
               <div class="form-group">
                 <label for="post_type_name">文章分類：（發問、校園、心情、情報、權益、老闆、黑特、其他）</label>
-                <%= post.text_field :type_name, class: "form-control", placeholder: "請輸入文章類別" %>	
+                <%= post.text_field :type_name, class: "form-control", placeholder: "請輸入文章類別(2字)" %>	
               </div>
               <div class="form-group">
                 <label for="post_title">文章標題：</label>
-                <%= post.text_field :title, class: "form-control", placeholder: "請輸入文章標題" %>
+                <%= post.text_field :title, class: "form-control", placeholder: "請輸入文章標題(4~20字)" %>
               </div>
               <div class="form-group">
                 <label for="post_content">內容：</label>
-                <%= post.text_area :content, class: "form-control", placeholder: "請輸入內容", style: "height: 340px;" %>
+                <%= post.text_area :content, class: "form-control", placeholder: "請輸入內容(20字以上)", style: "height: 340px;" %>
               </div>
               <% if current_administrator %>
                 <%= post.check_box :is_top? %>
-                <label for="post_title">Do you want to pin this post on top?</label>
+                <label for="post_title">是否要將此篇文章置頂?</label>
               <% end %>
               <button type="submit" class="btn btn-default" name="commit" style="float:right;">送出</button>
             </form>
