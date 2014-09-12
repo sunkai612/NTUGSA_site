@@ -7,15 +7,15 @@
         <div class="col-xs-12 col-sd-12 col-md-12 col-lg-12">
           <%= form_for [:admin, @organization, @member] do |f| %>
             <div class="form-controller">
-              <%= f.label "姓名" %><br>
+              <%= f.label "姓名*" %><br>
               <%= f.text_field :name, class: "form-control" %>
             </div>
             <div class="form-controller">
-              <%= f.label "簡介" %><br>
+              <%= f.label "簡介*" %><br>
               <%= f.text_area :intro, class: "form-control" %>
             </div>
             <div class="form-controller">
-              <%= f.label "部門" %><br>
+              <%= f.label "部門*" %><br>
               <%= f.text_field :organization_id, class: "form-control" %>
             </div>
             <div class="form-controller">

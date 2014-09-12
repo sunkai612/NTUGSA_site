@@ -1,8 +1,6 @@
 class Board < ActiveRecord::Base
-
-	validates :name, :presence => true, length: { in: 1..10 }
-
-	has_many :posts, :dependent => :destroy
-	has_many :comments, through: :posts, :dependent => :destroy
-
+  has_many :posts, :dependent => :destroy
+  has_many :comments, through: :posts, :dependent => :destroy
+  validates :name, :presence => true
+  validates :description, :presence => true
 end

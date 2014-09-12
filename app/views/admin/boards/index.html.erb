@@ -1,4 +1,4 @@
-<h1 class="text-center">Board</h1>
+<h1 class="text-center">論壇管理</h1>
 <div class="col-md-12">
   <!-- <div class="group"> -->
     <%#= link_to("New board", new_admin_board_path , :class => "btn btn-primary pull-right" ) %>
@@ -7,9 +7,9 @@
     <thead> 
       <tr>
         <th> # </th>
-        <th> Title </th>
-        <th> Description </th>
-        <th> Post count </th>
+        <th> 標題 </th>
+        <th> 副標 </th>
+        <th> 文章數 </th>
         <th colspan="2"></th>
       </tr>
     </thead>
@@ -17,20 +17,20 @@
       <% @boards.each do |b| %> 
         <tr>
           <td> # </td>  
-          <td>  <%= link_to(truncate(b.name, :length => 15), admin_board_path(b)) %> </td>
-          <td>  <%= b.description %> </td>
+          <td>  <%= link_to(truncate(b.name, :length => 13), admin_board_path(b)) %> </td>
+          <td>  <%= truncate(b.description, :length => 53) %> </td>
           <td>  <%= b.posts_count %> </td>
           <td>
             <% if current_administrator %>  
-              <%= link_to("Edit", 
+              <%= link_to("編輯", 
                         edit_admin_board_path(b), 
                         :class => "btn btn-sm btn-default")%>
 
-              <%= link_to("Delete", 
+              <!--<%= link_to("刪除", 
                         admin_board_path(b), 
                         :class => "btn btn-sm btn-default", 
                         :method=>:delete,
-                        data: { confirm: "Are you sure?" } )%>
+                        data: { confirm: "確定刪除?" } )%>-->
             <% end %>
           </td> 
         </tr>

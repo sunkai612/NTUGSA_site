@@ -22,9 +22,10 @@ class Admin::EventsController < ApplicationController
     respond_to do |format|
       if @event.save
         #current_administrator.join!(@rotator)
-        format.html { redirect_to admin_events_url, notice: 'Event was successfully created.' }
+        format.html { redirect_to admin_events_url, notice: '成功新增活動' }
         #format.json { render :show, status: :created, location: @group }
       else
+        flash[:alert] = "您必須輸入標題、副標、主辦單位、時間、地點、內容及上傳圖片"
         format.html { render :new }
         #format.json { render json: @group.errors, status: :unprocessable_entity }
       end
@@ -35,9 +36,10 @@ class Admin::EventsController < ApplicationController
     @event = Event.find(params[:id])
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to admin_events_url, notice: 'Event was successfully updated.' }
+        format.html { redirect_to admin_events_url, notice: '成功更新活動' }
         #format.json { render :show, status: :ok, location: @group }
       else
+        flash[:alert] = "您必須輸入標題、副標、主辦單位、時間、地點、內容及上傳圖片"
         format.html { render :edit }
         #format.json { render json: @group.errors, status: :unprocessable_entity }
       end
@@ -48,7 +50,7 @@ class Admin::EventsController < ApplicationController
     @event = Event.find(params[:id])
     @event.destroy
     respond_to do |format|
-      format.html { redirect_to admin_events_url, notice: 'Event was successfully destroyed.' }
+      format.html { redirect_to admin_events_url, notice: '成功刪除活動' }
       #format.json { head :no_content }
     end
   end

@@ -17,4 +17,12 @@ class Record < ActiveRecord::Base
   validates_attachment_content_type :image_small, :content_type => /\Aimage\/.*\Z/
   has_attached_file :file, :styles => { :medium => "300x300>", :thumb => ["100x100>", :jpg] }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :file, :content_type => "application/pdf"
+  validates :image_small, :attachment_presence => true
+  validates :image_large, :attachment_presence => true
+  validates :title, :presence => true
+  validates :description, :presence => true
+  validates :organization_id, :presence => true
+  validates :date, :presence => true
+  validates :location, :presence => true
+  validates :content, :presence => true
 end

@@ -1,21 +1,21 @@
-<h1 class="text-center">Record</h1>
+<h1 class="text-center">記錄管理</h1>
 <div class="col-md-12">
   <div class="group">
-    <%= link_to("New record", new_admin_record_path , :class => "btn btn-primary pull-right" ) %>    
+    <%= link_to("新增記錄", new_admin_record_path , :class => "btn btn-primary pull-right" ) %>    
   </div>
   <table class="table">
     <thead> 
       <tr>
         <th> # </th>
-        <th> Title </th>
-        <th> Description </th>
-        <th> Organization </th>
-        <th> Date </th>
-        <th> Location </th>
-        <th> Content </th>
-        <th> image_large </th>
-        <th> image_small </th>
-        <th> file </th>
+        <th> 標題 </th>
+        <th> 副標 </th>
+        <th> 部門 </th>
+        <th> 時間 </th>
+        <th> 地點 </th>
+        <th> 內容 </th>
+        <th> 大圖 </th>
+        <th> 小圖 </th>
+        <th> 檔案(PDF) </th>
         <th colspan="2"></th>
       </tr>
     </thead>
@@ -23,7 +23,7 @@
       <% @record.order("date DESC").each do |r| %> 
         <tr>
           <td> # </td>  
-          <td>  <%= link_to(truncate(r.title, :length => 8), admin_event_path(r)) %> </td>
+          <td>  <%= truncate(r.title, :length => 8) %> </td>
           <td>  <%= truncate(r.description, :length => 8) %> </td>
           <td>  <%= truncate(r.organization.title, :length => 8) %> </td>
           <td>  <%= r.date.to_s(:short) %> </td>
@@ -31,18 +31,24 @@
           <td>  <%= truncate(r.content, :length => 8) %> </td>
           <td>  <%= image_tag r.image_large.url(:thumb) %>  </td>
           <td>  <%= image_tag r.image_small.url(:thumb) %>  </td>
-          <td>  <%= image_tag r.file.url(:thumb) %>  </td>
+          <td>  
+            <% if r.file_file_name %>
+              <%= link_to r.file.url do%>
+                <%= image_tag "/images/icon-pdf.png" %>
+              <% end %>
+            <% end %>  
+          </td>
           <td>
             <% if current_administrator %>  
-              <%= link_to("Edit", 
+              <%= link_to("編輯", 
                         edit_admin_record_path(r), 
                         :class => "btn btn-sm btn-default")%>
 
-              <%= link_to("Delete", 
+              <%= link_to("刪除", 
                         admin_record_path(r), 
                         :class => "btn btn-sm btn-default", 
                         :method=>:delete,
-                        data: { confirm: "Are you sure?" } )%>
+                        data: { confirm: "確定刪除?" } )%>
             <% end %>
           </td> 
         </tr>
