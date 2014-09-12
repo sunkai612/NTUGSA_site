@@ -7,29 +7,42 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 create_rotators = for i in 1..5 do
-  Rotator.create! ([title: "封面#{i}", image_order: "#{i}"])
+  Rotator.create! ([title: "封面封面封面封面封面封面封面封面封面", image_order: "#{i}", link: "https://www.google.com/testqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq"])
 end
 puts "rotator's data created"
 
-create_intros = Intro.create!([title: "簡介", content: "這裡是內容"])
+create_intros = Intro.create!([title: "簡介簡介簡介簡介簡介簡介簡介", content: "這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容"])
 puts "intro's data created"
 
 create_organizations = for i in 1..5 do
-  Organization.create!([title: "部門#{i}", content: "這裡是內容"])
+  Organization.create!([title: "部門部門部門部門部門部門部門部門", content: "這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容"])
   for j in 1..5 do
-    Member.create!([organization_id: "#{i}", name: "部員#{j}", intro: "這裡是內容", member_order: "#{j}"])
-    Record.create! ([title: "記錄#{j}", organization_id: i, content: "這裡是內容", date: "201409101800"])
+    Member.create!([organization_id: "#{i}", 
+                                  name: "部員部員", 
+                                  intro: "這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容", member_order: "#{j}"])
+    Record.create! ([title: "活動活動活動活動活動這裡是內容這裡是內容這裡是內容", 
+                              description: "這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容", 
+                              content: "這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容", 
+                              organization_id: i, 
+                              date: "201409101800", 
+                              location: "這裡是內容這裡是內容這裡是內容"])
   end
 end
 puts "organization's data created"
 puts "members' data created"
 puts "records' data created"
 
-create_statute = Statute.create!([title: "章程", content: "這裡是內容"])
+create_statute = Statute.create!([title: "章程章程章程章程章程章程章程章程章程", content: "這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容"])
 puts "statute's data created"
 
 create_events = for i in 1..10 do
-  Event.create! ([title: "活動#{i}", content: "這裡是內容", organization: "社團#{i}", event_date: "201409101800"])
+  Event.create! ([title: "活動活動活動活動活動這裡是內容這裡是內容這裡是內容", 
+                              description: "這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容", 
+                              content: "這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容", 
+                              organization: "社團社團社團", 
+                              is_gsa: "true",
+                              event_date: "201409101800", 
+                              location: "這裡是內容這裡是內容這裡是內容"])
 end
 puts "events' data created"
 
@@ -37,14 +50,14 @@ create_administrator = Administrator.create!([email: 'root@gmail.com', password:
 puts "administrator's data created"
 
 
-create_board = Board.create!([name: "討論區", description: "這是一個討論區"])
+create_board = Board.create!([name: "討論區討論區討論區討論區討論區", description: "這是一個討論區這是一個討論區這是一個討論區這是一個討論區這是一個討論區這是一個討論區這是一個討論區"])
 puts "first board created"
 
 
 create_post = for i in 1..10 do
-	Post.create!([title: "第#{i}篇文章", type_name: "測試", content: "testing!testing!testing!", board_id: "1", author: "testboy"])
+	Post.create!([title: "第篇文章第篇文章第篇文章第篇文章第篇文章第篇文章第篇文章第篇文章第篇文章第篇文章第篇文章", type_name: "測試", content: "這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容這裡是內容", board_id: "1", author: "testboyaaa"])
 	for j in 1..10 do
-		Comment.create!([commenter: "這是第#{j}個評論", content: "這是第#{j}個評論", board_id: "1", post_id: "#{i}"])
+		Comment.create!([commenter: "這是第個評論這是第個評論", content: "章第篇文章第篇文章第篇文章第篇文章章第篇文章第篇文章第篇文章第篇文章章第篇文章第篇文章第篇文章第篇文章章第篇文章第篇文章第篇文章第篇文章章第篇文章第篇文章第篇文章第篇文章章第篇文章第篇文章第篇文章第篇文章章第篇文章第篇文章第篇文章第篇文章章第篇文章第篇文章第篇文章第篇文章章第篇文章第篇文章第篇文章第篇文章", board_id: "1", post_id: "#{i}"])
 	end
 end
 puts "10 posts created"
