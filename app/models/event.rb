@@ -1,9 +1,9 @@
 class Event < ActiveRecord::Base
 
   validates :title, :presence => true, length: { in: 1..10 }
-  validates :descrpition, :presence => true, length: { maximim: 20 }
+  validates :description, :presence => true, length: { maximum: 20 }
   validates :organization, :presence => true, length: { in: 1..14 }
-  validates :event_date, :presence => true, numericality: { only_integer: true }, length: { in: 8..12 }
+  validates :event_date, :presence => true, numericality: { only_integer: true }
   validates :location, :presence => true, length: { in: 1..14 }
   validates :content, :presence => true, length: { minimum: 20 }
   # validates :sign_up, :presence => true

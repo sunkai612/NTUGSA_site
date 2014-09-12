@@ -50,7 +50,7 @@ create_administrator = Administrator.create!([email: 'root@gmail.com', password:
 puts "administrator's data created"
 
 
-create_board = Board.create!([name: "討論區討論區討論區討論區啊", description: "這是一個討論區這是一個討論區這是一個討論區這是一個討論區這是一個討論區這是一個討論區這是一個討論區"])
+create_board = Board.create!([name: "討論區討論區討論區啊", description: "這是一個討論區這是一個討論區這是一個討論區這是一個討論區這是一個討論區這是一個討論區這是一個討論區"])
 puts "first board created"
 
 
