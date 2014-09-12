@@ -8,11 +8,11 @@
           <%= form_for [:admin, @record] do |f| %>
             <div class="form-controller">
               <%= f.label "標題*" %><br>
-              <%= f.text_field :title, class: "form-control" %>
+              <%= f.text_field :title, placeholder: "1~10字", class: "form-control" %>
             </div>
             <div class="form-controller">
               <%= f.label "副標*" %><br>
-              <%= f.text_field :description, class: "form-control" %>
+              <%= f.text_field :description, placeholder: "1~17字", class: "form-control" %>
             </div>
             <div class="form-controller">
               <%= f.label "部門*" %><br>
@@ -24,18 +24,18 @@
             </div>
             <div class="form-controller">
               <%= f.label "地點*" %><br>
-              <%= f.text_field :location, class: "form-control" %>
+              <%= f.text_field :location, placeholder: "1~14字", class: "form-control" %>
             </div>
             <div class="form-controller">
               <%= f.label "內容*" %><br>
-              <%= f.text_area :content, class: "form-control", style: "height: 200px;" %>
+              <%= f.text_area :content, placeholder: "至少20字", class: "form-control", style: "height: 200px;" %>
             </div>
             <div class="form-controller">
-              <%= f.label "大圖*" %><br>
+              <%= f.label "大圖*(1380*460)" %><br>
               <%= f.file_field :image_large %>
             </div>
             <div class="form-controller">
-              <%= f.label "小圖*" %><br>
+              <%= f.label "小圖*(250*160)" %><br>
               <%= f.file_field :image_small %>
             </div>
             <div class="form-controller">
