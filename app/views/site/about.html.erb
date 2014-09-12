@@ -19,12 +19,12 @@
       <ul class="nav bs-docs-sidenav">
         <% @intro.each do |i| %>
           <li>
-            <a href="#intro_num_<%= i.id %>"><%= i.title %></a>
+            <a href="#intro_num_<%= i.id %>"><%= truncate(i.title, :length => 13) %></a>
           </li>
         <% end %>
         <% @organization.each do |o| %>
           <li>
-            <a href="#organization_num_<%= o.id %>"><%= o.title %></a>
+            <a href="#organization_num_<%= o.id %>"><%= truncate(o.title, :length => 13) %></a>
           </li>
         <% end %>
         <li>
@@ -35,25 +35,37 @@
   </div>
   <div class="col-md-8">
     <% @intro.each do |i| %>
-      <h1 style="text-align: center;" id="intro_num_<%= i.id %>" ><%= i.title %></h1>
-      </br>
-      <p>
-        <%= simple_format(i.content) %>
-      </p>
+      <div id="intro_num_<%= i.id %>">
+        </br>
+        </br>
+        <p>
+          <h1 style="text-align: center;"><%= i.title %></h1>
+        </p>
+        </br>
+        <p>
+          <%= simple_format(i.content) %>
+        </p>
+      </div>
       <hr>
     <% end %>
     <% @organization.each do |o| %>
-      <h1 style="text-align: center;" id="organization_num_<%= o.id %>"><%= o.title %></h1>
-      </br>
-      <p>
-        <%= simple_format(o.content) %>
-      </p>
+      <div id="organization_num_<%= o.id %>">
+        </br>
+        </br>
+        <h1 style="text-align: center;"><%= o.title %></h1>
+        </br>
+        <p>
+          <%= simple_format(o.content) %>
+        </p>
+      </div>
       <hr>
       <% showMembers(o).each do |m|%>
         <div class="row">
           <div class="col-md-2">
             <p>
-              <%= image_tag m.avatar.url(:thumb) %>
+              <% if m.avatar_file_name %>
+                <%= image_tag m.avatar.url(:thumb) %>
+              <% end %>
             </p>
             <h3 style="text-align: center;" id="member_num_<%= m.id %>"><%= m.name %></h3>
           </div>
@@ -63,17 +75,19 @@
             </p>
           </div>
         </div>
-      <%end%>
+      <% end%>
       <hr>
     <% end %>
-    <h1 style="text-align: center;" id="statute">協會章程</h1>
-    <% @statute.each do |s| %>
-      <div class="row">
-        <div class="col-md-8">
+    <div id="statute">
+      </br>
+      </br>
+      <h1 style="text-align: center;">協會章程</h1>
+      <% @statute.each do |s| %>
+        <div class="row">
           <%= simple_format(s.content) %>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
   <div class="col-md-1"></div>
   <a href="#top">
