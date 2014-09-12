@@ -35,9 +35,10 @@ class Admin::IntrosController < ApplicationController
     @intro = Intro.find(params[:id])
     respond_to do |format|
       if @intro.update(intro_params)
-        format.html { redirect_to admin_intros_url, notice: 'Intro was successfully updated.' }
+        format.html { redirect_to admin_intros_url, notice: '成功更新研協介紹' }
         #format.json { render :show, status: :ok, location: @group }
       else
+        flash[:alert] = "您必須輸入標題與內容"
         format.html { render :edit }
         #format.json { render json: @group.errors, status: :unprocessable_entity }
       end

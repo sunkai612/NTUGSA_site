@@ -1,16 +1,16 @@
-<h1 class="text-center">Rotator</h1>
+<h1 class="text-center">首頁輪播圖</h1>
 <div class="col-md-12">
   <div class="group">
-    <%= link_to("New rotator", new_admin_rotator_path , :class => "btn btn-primary pull-right" ) %>
+    <%= link_to("新增輪播", new_admin_rotator_path , :class => "btn btn-primary pull-right" ) %>
   </div>
   <table class="table">
     <thead> 
       <tr>
         <th> # </th>
-        <th> Title </th>
-        <th> Order </th>
-        <th> Image </th>
-        <th> Link </th>
+        <th> 標題 </th>
+        <th> 順序 </th>
+        <th> 圖片 </th>
+        <th> 連結 </th>
         <th colspan="2"></th>
       </tr>
     </thead>
@@ -18,21 +18,21 @@
       <% @rotator.order("image_order ASC").each do |r| %> 
         <tr>
           <td> # </td>  
-          <td>  <%= link_to(truncate(r.title, :length => 15), admin_rotator_path(r)) %> </td>
+          <td>  <%= truncate(r.title, :length => 13) %> </td>
           <td>  <%= r.image_order %> </td>
           <td>  <%= image_tag r.avatar.url(:thumb) %>  </td>
-          <td>  <%= r.link %> </td>
+          <td>  <%= link_to(truncate(r.link, :length => 43), r.link) %> </td>
           <td>
             <% if current_administrator %>  
-              <%= link_to("Edit", 
+              <%= link_to("編輯", 
                         edit_admin_rotator_path(r), 
                         :class => "btn btn-sm btn-default")%>
 
-              <%= link_to("Delete", 
+              <%= link_to("刪除", 
                         admin_rotator_path(r), 
                         :class => "btn btn-sm btn-default", 
                         :method=>:delete,
-                        data: { confirm: "Are you sure?" } )%>
+                        data: { confirm: "確定刪除?" } )%>
             <% end %>
           </td> 
         </tr>

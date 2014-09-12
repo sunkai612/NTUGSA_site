@@ -6,28 +6,18 @@
       <div class="row">
         <div class="col-xs-12 col-sd-12 col-md-12 col-lg-12">
           <%= form_for [:admin, @intro] do |f| %>
-            <% if @intro.errors.any? %>
-              <div id="error_explanation">
-                <h2><%= pluralize(@intro.errors.count, "error") %> prohibited this intro from being saved:</h2>
-                <ul>
-                  <% @intro.errors.full_messages.each do |message| %>
-                    <li><%= message %></li>
-                  <% end %>
-                </ul>
-              </div>
-            <% end %>
             <div class="form-controller">
-              <%= f.label :title %><br>
+              <%= f.label "標題" %><br>
               <%= f.text_field :title, class: "form-control" %>
             </div>
             <div class="form-controller">
-              <%= f.label :content %><br>
+              <%= f.label "內容" %><br>
               <%= f.text_area :content, class: "form-control", style: "height: 200px;" %>
             </div>
             <hr>
             <div class="actions">
-              <%= f.submit "Submit", :disable_with => 'Submitting...', :class => "btn btn-primary"%> 
-              <%= link_to 'Back', admin_intros_path %>
+              <%= f.submit "確認", :disable_with => '處理中...', :class => "btn btn-primary pull-right"%> 
+              <%= link_to '返回', admin_intros_path, :class => "btn btn-warning"%>
             </div>
           <% end %>
         </div>

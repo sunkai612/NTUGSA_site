@@ -10,9 +10,10 @@ class Admin::MembersController < ApplicationController
     @member = @organization.members.new(member_params)
     respond_to do |format|
       if @member.save
-        format.html { redirect_to admin_organization_path(@organization), notice: 'Member was successfully created.' }
+        format.html { redirect_to admin_organization_path(@organization), notice: '成功新增成員' }
         #format.json { render :show, status: :created, location: @group }
       else
+        flash[:alert] = "您必須輸入姓名、簡介、部門"
         format.html { render :new }
         #format.json { render json: @group.errors, status: :unprocessable_entity }
       end
@@ -27,9 +28,10 @@ class Admin::MembersController < ApplicationController
     @member = @organization.members.find(params[:id])
     respond_to do |format|
       if @member.update(member_params)
-        format.html { redirect_to admin_organization_path(@organization), notice: 'Member was successfully updated.' }
+        format.html { redirect_to admin_organization_path(@organization), notice: '成功更新成員' }
         #format.json { render :show, status: :created, location: @group }
       else
+        flash[:alert] = "您必須輸入姓名、簡介、部門"
         format.html { render :new }
         #format.json { render json: @group.errors, status: :unprocessable_entity }
       end
@@ -40,7 +42,7 @@ class Admin::MembersController < ApplicationController
     @member = @organization.members.find(params[:id])
     @member.destroy
     respond_to do |format|
-      format.html { redirect_to admin_organization_path(@organization), notice: 'Member was successfully destroyed.' }
+      format.html { redirect_to admin_organization_path(@organization), notice: '成功刪除成員' }
       #format.json { head :no_content }
     end
   end
@@ -52,6 +54,6 @@ class Admin::MembersController < ApplicationController
   end
 
   def member_params
-    params.require(:member).permit(:name, :intro, :avatar)
+    params.require(:member).permit(:name, :intro, :organization_id, :member_order, :avatar)
   end
 end

@@ -1,11 +1,11 @@
-<h1 class="text-center">Intro</h1>
+<h1 class="text-center">研協介紹</h1>
 <div class="col-md-12">
   <table class="table">
     <thead> 
       <tr>
         <th> # </th>
-        <th> Title </th>
-        <th> Content </th>
+        <th> 標題 </th>
+        <th> 內容 </th>
         <th colspan="2"></th>
       </tr>
     </thead>
@@ -13,8 +13,8 @@
       <% @intro.each do |i| %> 
         <tr>
           <td> # </td>  
-          <td>  <%= link_to(truncate(i.title, :length => 15), admin_intro_path(i)) %> </td>
-          <td>  <%= i.content %> </td>
+          <td>  <%= truncate(i.title, :length => 13) %> </td>
+          <td>  <%= truncate(i.content, :length => 53) %> </td>
           <td>
             <% if current_administrator %>  
               <%= link_to("Edit", 
