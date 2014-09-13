@@ -9,7 +9,7 @@ class SiteController < ApplicationController
 
   def about 
     @intro = Intro.all
-    @organization = Organization.all
+    @organization = Organization.all.order("id DESC")
     #@member = @organization.members
     @statute = Statute.all
   end
