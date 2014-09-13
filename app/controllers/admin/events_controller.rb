@@ -1,7 +1,7 @@
 class Admin::EventsController < ApplicationController
   before_action :authenticate_administrator!
   def index
-    @event = Event.all
+    @event = Event.all.order("event_date DESC")
   end
 
   def show

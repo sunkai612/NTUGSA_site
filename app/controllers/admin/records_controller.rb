@@ -1,7 +1,7 @@
 class Admin::RecordsController < ApplicationController
   before_action :authenticate_administrator!
   def index
-    @record = Record.joins(:organization).all
+    @record = Record.joins(:organization).all.order("event_date DESC")
   end
 
   def show

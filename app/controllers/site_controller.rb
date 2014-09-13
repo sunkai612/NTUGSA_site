@@ -15,11 +15,11 @@ class SiteController < ApplicationController
   end
 
   def event
-    @event = Event.all
+    @event = Event.all.order("event_date DESC")
   end
 
   def record
-    @record = Record.joins(:organization).all
+    @record = Record.joins(:organization).all.order("event_date DESC")
   end
 
   def showEvent
