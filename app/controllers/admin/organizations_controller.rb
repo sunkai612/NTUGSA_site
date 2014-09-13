@@ -1,12 +1,12 @@
 class Admin::OrganizationsController < ApplicationController
   before_action :authenticate_administrator!
   def index
-    @organization = Organization.all.order("id DESC")
+    @organization = Organization.all.order("id ASC")
   end
 
   def show
     @organization = Organization.find(params[:id])
-    @member = @organization.members.order("id DESC")
+    @member = @organization.members.order("id ASC")
   end
 
   def new
