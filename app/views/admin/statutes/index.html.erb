@@ -1,11 +1,10 @@
-<h1 class="text-center">Statute</h1>
+<h1 class="text-center">研協章程</h1>
 <div class="col-md-12">
   <table class="table">
     <thead> 
       <tr>
         <th> # </th>
-        <th> Title </th>
-        <th> Content </th>
+        <th> 內容 </th>
         <th colspan="2"></th>
       </tr>
     </thead>
@@ -13,11 +12,10 @@
       <% @statute.each do |s| %> 
         <tr>
           <td> # </td>  
-          <td>  <%= link_to(truncate(s.title, :length => 15), admin_statute_path(s)) %> </td>
-          <td>  <%= s.content %> </td>
+          <td>  <%= truncate(s.content, :length => 53) %> </td>
           <td>
             <% if current_administrator %>  
-              <%= link_to("Edit", 
+              <%= link_to("編輯", 
                         edit_admin_statute_path(s), 
                         :class => "btn btn-sm btn-default")%>
             <% end %>

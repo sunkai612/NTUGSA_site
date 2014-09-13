@@ -35,9 +35,10 @@ class Admin::StatutesController < ApplicationController
     @statute = Statute.find(params[:id])
     respond_to do |format|
       if @statute.update(statute_params)
-        format.html { redirect_to admin_statutes_url, notice: 'Statute was successfully updated.' }
+        format.html { redirect_to admin_statutes_url, notice: '成功更新章程' }
         #format.json { render :show, status: :ok, location: @group }
       else
+        flash[:alert] = "您必須輸入內容"
         format.html { render :edit }
         #format.json { render json: @group.errors, status: :unprocessable_entity }
       end

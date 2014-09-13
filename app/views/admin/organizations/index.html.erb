@@ -1,14 +1,14 @@
-<h1 class="text-center">Organization</h1>
+<h1 class="text-center">組織管理</h1>
 <div class="col-md-12">
   <div class="group">
-    <%= link_to("New organization", new_admin_organization_path , :class => "btn btn-primary pull-right" ) %>
+    <%= link_to("新增部門", new_admin_organization_path , :class => "btn btn-primary pull-right" ) %>
   </div>
   <table class="table">
     <thead> 
       <tr>
         <th> # </th>
-        <th> Title </th>
-        <th> Content </th>
+        <th> 名稱 </th>
+        <th> 簡介 </th>
         <th colspan="2"></th>
       </tr>
     </thead>
@@ -16,19 +16,19 @@
       <% @organization.each do |o| %> 
         <tr>
           <td> # </td>  
-          <td>  <%= link_to(truncate(o.title, :length => 15), admin_organization_path(o)) %> </td>
-          <td>  <%= o.content %> </td>
+          <td>  <%= link_to(truncate(o.title, :length => 13), admin_organization_path(o)) %> </td>
+          <td>  <%= truncate(o.content, :length => 53) %> </td>
           <td>
             <% if current_administrator %>  
-              <%= link_to("Edit", 
+              <%= link_to("編輯", 
                         edit_admin_organization_path(o), 
                         :class => "btn btn-sm btn-default")%>
 
-              <%= link_to("Delete", 
+              <%= link_to("刪除", 
                         admin_organization_path(o), 
                         :class => "btn btn-sm btn-default", 
                         :method=>:delete,
-                        data: { confirm: "Are you sure?" } )%>
+                        data: { confirm: "確定刪除?" } )%>
             <% end %>
           </td> 
         </tr>

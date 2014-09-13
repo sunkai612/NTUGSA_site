@@ -22,9 +22,10 @@ class Admin::RotatorsController < ApplicationController
     respond_to do |format|
       if @rotator.save
         #current_administrator.join!(@rotator)
-        format.html { redirect_to admin_rotators_url, notice: 'Rotator was successfully created.' }
+        format.html { redirect_to admin_rotators_url, notice: '成功新增輪播' }
         #format.json { render :show, status: :created, location: @group }
       else
+        flash[:alert] = "您必須輸入標題、連結及上傳圖片"
         format.html { render :new }
         #format.json { render json: @group.errors, status: :unprocessable_entity }
       end
@@ -35,9 +36,10 @@ class Admin::RotatorsController < ApplicationController
     @rotator = Rotator.find(params[:id])
     respond_to do |format|
       if @rotator.update(rotator_params)
-        format.html { redirect_to admin_rotators_url, notice: 'Rotator was successfully updated.' }
+        format.html { redirect_to admin_rotators_url, notice: '成功更新輪播' }
         #format.json { render :show, status: :ok, location: @group }
       else
+        flash[:alert] = "您必須輸入標題、連結及上傳圖片"
         format.html { render :edit }
         #format.json { render json: @group.errors, status: :unprocessable_entity }
       end
@@ -48,7 +50,7 @@ class Admin::RotatorsController < ApplicationController
     @rotator = Rotator.find(params[:id])
     @rotator.destroy
     respond_to do |format|
-      format.html { redirect_to admin_rotators_url, notice: 'Rotator was successfully destroyed.' }
+      format.html { redirect_to admin_rotators_url, notice: '成功刪除輪播' }
       #format.json { head :no_content }
     end
   end

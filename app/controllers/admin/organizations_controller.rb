@@ -23,9 +23,10 @@ class Admin::OrganizationsController < ApplicationController
     respond_to do |format|
       if @organization.save
         #current_administrator.join!(@rotator)
-        format.html { redirect_to admin_organizations_url, notice: 'Organization was successfully created.' }
+        format.html { redirect_to admin_organizations_url, notice: '成功新增部門' }
         #format.json { render :show, status: :created, location: @group }
       else
+        flash[:alert] = "您必須輸入名稱與簡介"
         format.html { render :new }
         #format.json { render json: @group.errors, status: :unprocessable_entity }
       end
@@ -36,9 +37,10 @@ class Admin::OrganizationsController < ApplicationController
     @organization = Organization.find(params[:id])
     respond_to do |format|
       if @organization.update(organization_params)
-        format.html { redirect_to admin_organizations_url, notice: 'Organization was successfully updated.' }
+        format.html { redirect_to admin_organizations_url, notice: '成功更新部門' }
         #format.json { render :show, status: :ok, location: @group }
       else
+        flash[:alert] = "您必須輸入名稱與簡介"
         format.html { render :edit }
         #format.json { render json: @group.errors, status: :unprocessable_entity }
       end
@@ -49,7 +51,7 @@ class Admin::OrganizationsController < ApplicationController
     @organization = Organization.find(params[:id])
     @organization.destroy
     respond_to do |format|
-      format.html { redirect_to admin_organizations_url, notice: 'Organization was successfully destroyed.' }
+      format.html { redirect_to admin_organizations_url, notice: '成功刪除部門' }
       #format.json { head :no_content }
     end
   end

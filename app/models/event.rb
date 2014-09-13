@@ -1,9 +1,9 @@
 class Event < ActiveRecord::Base
 
   validates :title, :presence => true, length: { in: 1..10 }
-  validates :descrpition, :presence => true, length: { maximim: 20 }
-  validates :organization, :presence => true, length: { in: 1..14 }
-  validates :event_date, :presence => true, numericality: { only_integer: true }, length: { in: 8..12 }
+  validates :description, :presence => true, length: { maximum: 17 }
+  validates :organization, :presence => true, length: { in: 1..11 }
+  validates :event_date, :presence => true
   validates :location, :presence => true, length: { in: 1..14 }
   validates :content, :presence => true, length: { minimum: 20 }
   # validates :sign_up, :presence => true
@@ -15,4 +15,12 @@ class Event < ActiveRecord::Base
   validates_attachment_content_type :image_large, :content_type => /\Aimage\/.*\Z/
   has_attached_file :image_small, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :image_small, :content_type => /\Aimage\/.*\Z/
+  # validates :image_small, :attachment_presence => true
+  # validates :image_large, :attachment_presence => true
+  validates :title, :presence => true
+  validates :description, :presence => true
+  validates :organization, :presence => true
+  validates :event_date, :presence => true
+  validates :location, :presence => true
+  validates :content, :presence => true
 end

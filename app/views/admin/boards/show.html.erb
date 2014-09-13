@@ -1,37 +1,59 @@
-<h1 class="text-center">Post</h1>
+<h1 class="text-center">文章總覽</h1>
 <div class="col-md-12">
+  <%= link_to("返回", admin_boards_path, :class => "btn btn-warning") %>
   <table class="table">
     <thead> 
       <tr>
         <th> # </th>
-        <th> Board </th>
-        <th> Title </th>
-        <th> Type </th>
-        <th> Author </th>
-        <th> Comment count </th>
-        <th> is_top </th>
-        <th> Content </th>
+        <th> 論壇 </th>
+        <th> 標題 </th>
+        <th> 類別 </th>
+        <th> 作者 </th>
+        <th> 評論數 </th>
+        <th> 置頂 </th>
+        <th> 內容 </th>
         <th colspan="2"></th>
       </tr>
     </thead>
     <tbody>
-      <% @post.each do |p| %> 
+      <% @post.where(is_top?: true).each do |p| %> 
         <tr>
           <td> # </td>  
-          <td>  <%= p.board.name %> </td>
-          <td>  <%= link_to(truncate(p.title, :length => 15), admin_board_post_path(@board, p)) %> </td>
+          <td>  <%= truncate(p.board.name, :length => 8) %> </td>
+          <td>  <%= link_to(truncate(p.title, :length => 13), admin_board_post_path(@board, p)) %> </td>
           <td>  <%= p.type_name %> </td>
           <td>  <%= p.author %> </td>
           <td>  <%= p.comments_count %> </td>
           <td>  <%= p.is_top? %> </td>
-          <td>  <%= p.content %> </td>
+          <td>  <%= truncate(p.content, :length => 28) %> </td>
           <td>
             <% if current_administrator %>  
-              <%= link_to("Delete", 
+              <%= link_to("刪除", 
                         admin_board_post_path(@board, p), 
                         :class => "btn btn-sm btn-default", 
                         :method=>:delete,
-                        data: { confirm: "Are you sure?" } )%>
+                        data: { confirm: "確定刪除?" } )%>
+            <% end %>
+          </td> 
+        </tr>
+      <% end %> 
+      <% @post.where(is_top?: false).each do |p| %> 
+        <tr>
+          <td> # </td>  
+          <td>  <%= truncate(p.board.name, :length => 8) %> </td>
+          <td>  <%= link_to(truncate(p.title, :length => 13), admin_board_post_path(@board, p)) %> </td>
+          <td>  <%= p.type_name %> </td>
+          <td>  <%= p.author %> </td>
+          <td>  <%= p.comments_count %> </td>
+          <td>  <%= p.is_top? %> </td>
+          <td>  <%= truncate(p.content, :length => 28) %> </td>
+          <td>
+            <% if current_administrator %>  
+              <%= link_to("刪除", 
+                        admin_board_post_path(@board, p), 
+                        :class => "btn btn-sm btn-default", 
+                        :method=>:delete,
+                        data: { confirm: "確定刪除?" } )%>
             <% end %>
           </td> 
         </tr>
@@ -40,5 +62,4 @@
   </table>
   <%= paginate @post %>
   <br>
-  <%= link_to("Back", admin_boards_path) %>
 </div>
