@@ -100,7 +100,7 @@
         <% @new_record.each do | record | %>
           <a href="<%= showRecord_path( record ) %>">
             <div class="item thumbnail">
-              <img src="../images/join_small.png" alt="join us">
+              <img src="<%= record.image_small.url %>" alt="join us">
               <h3 style="text-align:center;"><%= truncate(record.title, :length => 13) %></h3>
               <p><%= truncate(record.content, :length => 48) %></p>
             </div>
