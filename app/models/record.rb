@@ -4,7 +4,7 @@ class Record < ActiveRecord::Base
   validates :title, :presence => true, length: { in: 1..10 }
   validates :description, :presence => true, length: { maximum: 17 }
   validates :organization_id, :presence => true, length: { in: 1..11 }
-  validates :date, :presence => true, numericality: { only_integer: true }
+  validates :date, :presence => true
   validates :location, :presence => true, length: { in: 1..14 }
   validates :content, :presence => true, length: { minimum: 20 }
   # validates :sign_up, :presence => true
@@ -19,10 +19,5 @@ class Record < ActiveRecord::Base
   validates_attachment_content_type :file, :content_type => "application/pdf"
   # validates :image_small, :attachment_presence => true
   # validates :image_large, :attachment_presence => true
-  validates :title, :presence => true
-  validates :description, :presence => true
-  validates :organization_id, :presence => true
-  validates :date, :presence => true
-  validates :location, :presence => true
-  validates :content, :presence => true
+
 end

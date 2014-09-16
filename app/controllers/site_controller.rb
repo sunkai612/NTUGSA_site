@@ -3,23 +3,23 @@ class SiteController < ApplicationController
     @rotator = Rotator.all#.order("imageOrder ASC")
     @post_newest = Post.order("id DESC").limit(10)
     @post_mostCommented = Post.where("created_at > ?", Time.now.months_ago(1)).order("comments_count DESC").limit(10)
-    @new_event = Event.order("id DESC").limit(3)
-    @new_record = Record.order("id DESC").limit(1)
+    @new_event = Event.order("event_date DESC").limit(3)
+    @new_record = Record.order("date DESC").limit(1)
   end
 
   def about 
     @intro = Intro.all
-    @organization = Organization.all
+    @organization = Organization.all.order("id ASC")
     #@member = @organization.members
     @statute = Statute.all
   end
 
   def event
-    @event = Event.all
+    @event = Event.all.order("event_date DESC")
   end
 
   def record
-    @record = Record.joins(:organization).all
+    @record = Record.joins(:organization).all.order("date DESC")
   end
 
   def showEvent
