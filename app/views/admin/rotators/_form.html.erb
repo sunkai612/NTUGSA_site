@@ -15,7 +15,8 @@ $(function() {
       formData:         <% unless @rotator.errors.any? %><%= @s3_direct_post.fields.to_json.html_safe %><% end %>,
       paramName:        'file', // S3 does not like nested name fields i.e. name="user[avatar_url]"
       dataType:         'XML',  // S3 returns XML if success_action_status is set to 201
-      replaceFileInput: false,
+      replaceFileInput: false
+      /*
       progressall: function (e, data) {
         var progress = parseInt(data.loaded / data.total * 100, 10);
         progressBar.css('width', progress + '%')
@@ -48,6 +49,7 @@ $(function() {
           css("background", "red").
           text("Failed");
       }
+      */
     });
   });
 });
@@ -75,9 +77,6 @@ $(function() {
             <div class="form-controller">
               <%= f.label "圖片*(1380x460)" %><br>
               <%= f.file_field :avatar %>
-              <div class="progress">
-                <div class="bar"></div>
-              </div>
             </div>
             <hr>
             <div class="actions">
