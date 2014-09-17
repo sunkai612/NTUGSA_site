@@ -9,10 +9,12 @@ class Admin::RotatorsController < ApplicationController
   end
 
   def new
+    @s3_direct_post = S3_BUCKET.presigned_post(key: "uploads/#{SecureRandom.uuid}/${filename}", success_action_status: 201, acl: :public_read)
     @rotator = Rotator.new
   end
 
   def edit
+    @s3_direct_post = S3_BUCKET.presigned_post(key: "uploads/#{SecureRandom.uuid}/${filename}", success_action_status: 201, acl: :public_read)
     @rotator = Rotator.find(params[:id])
   end
 

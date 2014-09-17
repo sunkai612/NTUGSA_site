@@ -1,3 +1,57 @@
+<script>
+$(function() {
+  $('.directUpload').find("input:file").each(function(i, elem) {
+    var fileInput    = $(elem);
+    var form         = $(fileInput.parents('form:first'));
+    var submitButton = form.find('input[type="submit"]');
+    var progressBar  = $("<div class='bar'></div>");
+    var barContainer = $("<div class='progress'></div>").append(progressBar);
+    fileInput.after(barContainer);
+    fileInput.fileupload({
+      fileInput:       fileInput,
+      url:             '<% unless @record.errors.any? %><%= @s3_direct_post.url %><% end %>',
+      type:            'POST',
+      autoUpload:       true,
+      formData:         <% unless @record.errors.any? %><%= @s3_direct_post.fields.to_json.html_safe %><% end %>,
+      paramName:        'file', // S3 does not like nested name fields i.e. name="user[avatar_url]"
+      dataType:         'XML',  // S3 returns XML if success_action_status is set to 201
+      replaceFileInput: false,
+      progressall: function (e, data) {
+        var progress = parseInt(data.loaded / data.total * 100, 10);
+        progressBar.css('width', progress + '%')
+      },
+      start: function (e) {
+        submitButton.prop('disabled', true);
+
+        progressBar.
+          css('background', 'green').
+          css('display', 'block').
+          css('width', '0%').
+          text("Loading...");
+      },
+      done: function(e, data) {
+        submitButton.prop('disabled', false);
+        progressBar.text("Uploading done");
+
+        // extract key and generate URL from response
+        var key   = $(data.jqXHR.responseXML).find("Key").text();
+        var url   = '//<% unless @record.errors.any? %><%= @s3_direct_post.url.host %><% end %>/' + key;
+
+        // create hidden field
+        var input = $("<input />", { type:'hidden', name: fileInput.attr('name'), value: url })
+        form.append(input);
+      },
+      fail: function(e, data) {
+        submitButton.prop('disabled', false);
+
+        progressBar.
+          css("background", "red").
+          text("Failed");
+      }
+    });
+  });
+});
+</script>
 <div class="container-fluid">
   <hr>
   <div class="row">
@@ -5,7 +59,7 @@
     <div class="col-xs-8 col-sd-8 col-md-8 col-lg-8">
       <div class="row">
         <div class="col-xs-12 col-sd-12 col-md-12 col-lg-12">
-          <%= form_for [:admin, @record] do |f| %>
+          <%= form_for [:admin, @record], html: { class: "directUpload" } do |f| %>
             <div class="form-controller">
               <%= f.label "標題*" %><br>
               <%= f.text_field :title, placeholder: "1~10字", class: "form-control" %>
@@ -33,14 +87,23 @@
             <div class="form-controller">
               <%= f.label "大圖*(1380*460)" %><br>
               <%= f.file_field :image_large %>
+              <div class="progress">
+                <div class="bar"></div>
+              </div>
             </div>
             <div class="form-controller">
               <%= f.label "小圖*(250*160)" %><br>
               <%= f.file_field :image_small %>
+              <div class="progress">
+                <div class="bar"></div>
+              </div>
             </div>
             <div class="form-controller">
               <%= f.label "檔案(PDF)" %><br>
               <%= f.file_field :file %>
+              <div class="progress">
+                <div class="bar"></div>
+              </div>
             </div>
             <hr>
             <div class="actions">

@@ -32,7 +32,9 @@
     <hr>
     <h4><%= simple_format(@record.content) %></h4>
     <% if @record.file_file_name %>
-      <%= link_to("PDF連結", @record.file.url) %>
+      <%= link_to @record.file.url do %>
+        <%= image_tag "/images/icon-pdf.png" %>
+      <% end %>
     <% end %>
     <hr>
     <div class="row">
