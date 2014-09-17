@@ -64,7 +64,7 @@
           <div class="col-md-2">
             <h3 style="text-align: center;" id="member_num_<%= m.id %>"><%= m.name %></h3>
             <% if m.avatar_file_name %>
-              <p style="margin-left: auto; margin-right: auto;">
+              <p style="width: 100px; height:auto; margin:0 auto;">
                 <%= image_tag m.avatar.url(:thumb) %>
               </p>
             <% end %>
