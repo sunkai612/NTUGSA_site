@@ -3,6 +3,7 @@ class Admin::MembersController < ApplicationController
   before_action :authenticate_administrator!  
 
   def new 
+    @s3_direct_post = S3_BUCKET.presigned_post(key: "uploads/#{SecureRandom.uuid}/${filename}", success_action_status: 201, acl: :public_read)
     @member = @organization.members.build
   end
 
@@ -21,6 +22,7 @@ class Admin::MembersController < ApplicationController
   end
 
   def edit 
+    @s3_direct_post = S3_BUCKET.presigned_post(key: "uploads/#{SecureRandom.uuid}/${filename}", success_action_status: 201, acl: :public_read)
     @member = @organization.members.find(params[:id])
   end
 
