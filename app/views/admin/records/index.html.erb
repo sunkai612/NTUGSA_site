@@ -33,7 +33,7 @@
           <td>  <%= image_tag r.image_small.url(:thumb) %>  </td>
           <td>  
             <% if r.file_file_name %>
-              <%= link_to r.file.url do%>
+              <%= link_to r.file.url, :target => "_blank" do%>
                 <%= image_tag "/images/icon-pdf.png" %>
               <% end %>
             <% end %>  

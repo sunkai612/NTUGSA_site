@@ -32,7 +32,7 @@
     <hr>
     <h4><%= simple_format(@record.content) %></h4>
     <% if @record.file_file_name %>
-      <%= link_to @record.file.url do %>
+      <%= link_to @record.file.url, :target => "_blank" do %>
         <%= image_tag "/images/icon-pdf.png" %>
       <% end %>
     <% end %>
