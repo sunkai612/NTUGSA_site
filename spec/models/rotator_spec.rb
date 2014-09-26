@@ -2,21 +2,19 @@ require 'rails_helper'
 
 RSpec.describe Rotator, :type => :model do
   it "is invalid without a title" do
-    expect(Rotator.new(title: nil)).to have(1).errors_on(:title)
+    rotator = build(:rotator, title: nil)
+    expect(rotator).to have(1).errors_on(:title)
   end
 
   it "is invalid without a link" do
-    expect(Rotator.new(link: nil)).to have(1).errors_on(:link)
+    rotator = build(:rotator, link: nil)
+    expect(rotator).to have(1).errors_on(:link)
   end
   
-  it "is invalid wothout an attachment" do
-  end
-
+  # it { should validate_attachment_presence(:avatar) }
+  
   it "is valid with a title and a link" do
-    rotator = Rotator.new(
-      title: 'rotator',
-      link: 'test'
-    )
+    rotator = build(:rotator)
     expect(rotator).to be_valid
   end
 end
