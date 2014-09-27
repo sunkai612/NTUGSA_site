@@ -55,6 +55,7 @@ gem 'spring',        group: :development
     gem "rspec-rails"
     gem "rspec-collection_matchers"
     gem "factory_girl_rails"
+    gem "selenium-webdriver"
   end
   group :test do
     gem "faker"
