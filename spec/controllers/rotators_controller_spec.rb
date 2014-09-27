@@ -3,10 +3,17 @@ require 'rails_helper'
 RSpec.describe Admin::RotatorsController, :type => :controller do
   before :each do
     @administrator = create(:administrator)
-    sign_in @administrator
+  end
+  it "requires login" do
+    get :index
+    expect(response).to redirect_to "/administrators/sign_in"
   end
 
   describe 'GET #index' do
+    before :each do
+      sign_in @administrator
+    end
+
     it "assigns all rotators as @rotator"  do
       rotator = create(:rotator)
       get :index
@@ -20,6 +27,10 @@ RSpec.describe Admin::RotatorsController, :type => :controller do
   end
 
   describe 'GET #show' do
+    before :each do
+      sign_in @administrator
+    end
+
     it "assigns the requested rotator as @rotator" do
       rotator = create(:rotator)
       get :show, id: rotator
@@ -34,6 +45,10 @@ RSpec.describe Admin::RotatorsController, :type => :controller do
   end
 
   describe 'GET #new' do
+    before :each do
+      sign_in @administrator
+    end
+
     it "assigns a new rotator as @rotator" do
       get :new
       expect(assigns(:rotator)).to be_a_new(Rotator)
@@ -46,6 +61,10 @@ RSpec.describe Admin::RotatorsController, :type => :controller do
   end
 
   describe 'GET #edit' do
+    before :each do
+      sign_in @administrator
+    end
+
     it "assigns the requested rotator as @rotator" do
       rotator = create(:rotator)
       get :edit, id: rotator
@@ -60,6 +79,9 @@ RSpec.describe Admin::RotatorsController, :type => :controller do
   end
 
   describe 'POST #create' do
+    before :each do
+      sign_in @administrator
+    end
     context 'with valid attributes' do
       it "saves the new rotator in the database" do
         expect{
@@ -89,6 +111,7 @@ RSpec.describe Admin::RotatorsController, :type => :controller do
 
   describe 'PUT #update' do
     before :each do
+      sign_in @administrator
       @rotator = create(:rotator, title: "title", link: "link")
     end
 
@@ -126,6 +149,7 @@ RSpec.describe Admin::RotatorsController, :type => :controller do
 
   describe 'DELETE #destroy' do
     before :each do
+      sign_in @administrator
       @rotator = create(:rotator)
     end
 
