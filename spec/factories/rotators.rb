@@ -4,7 +4,7 @@ FactoryGirl.define do
   factory :rotator do
     title "rotaotr"
     link "https://www.google.com"
-    # avatar { fixture_file_upload('spec/uploads/test.jpg', 'image/jpeg') }
+    avatar { Rack::Test::UploadedFile.new('spec/uploads/test.jpg', 'image/jpeg') }
     factory :invalid_rotator do
       link nil
     end

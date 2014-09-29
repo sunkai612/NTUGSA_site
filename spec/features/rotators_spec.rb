@@ -9,7 +9,7 @@ feature "Rotators", :type => :feature do
     click_button "Sign in"
   end
 
-  scenario "add a new rotator", js: true do
+  scenario "add a new rotator" do
     visit "/admin/rotators"
     rotator = create(:rotator)
     click_link "新增輪播圖"
@@ -23,7 +23,7 @@ feature "Rotators", :type => :feature do
     expect(page).to have_content "成功新增輪播"
   end
 
-  scenario "edit a rotator", js: true do
+  scenario "edit a rotator" do
     rotator = create(:rotator, title: "title", link: "link")
     visit "/admin/rotators"
     within "#rotator_#{rotator.id}" do

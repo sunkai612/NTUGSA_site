@@ -11,7 +11,7 @@ RSpec.describe Rotator, :type => :model do
     expect(rotator).to have(1).errors_on(:link)
   end
   
-  # it { should validate_attachment_presence(:avatar) }
+  it { should validate_attachment_presence(:avatar) }
   
   it "is valid with a title and a link" do
     rotator = build(:rotator)
