@@ -21,18 +21,23 @@
 					<% @comments.each do | comment | %>
 						<tr>
 							<td>
-								<h4 style="text-align:left">
+								<h5 style="text-align:left; float:left; width:70%;">
 									<%= comment.commenter %>
-								</h4>
-							</td>
-							<td>
-								<h6 style="text-align:right">
+								</h5>
+							<!-- </td>
+							<td> -->
+								<h5 style="text-align:right; float:right;; width:30%;">
 									<%= comment.created_at.in_time_zone("Taipei").to_s(:short) %>
-								</h6>
+								</h5>
 							</td>
-							</br>
-							<td> <%= simple_format(comment.content) %> </td>
-							</br>
+							<br>
+							<td>
+								<div style="background-color:#A4A4A4; color:#FFFFFF; margin-top:12px; font-size:18px; padding-left:5px; border-radius:3px">
+									<p>
+									<%= simple_format(comment.content) %>
+								  </p>
+								</div>
+							</td>
 						</tr>
 						<hr>
 					<% end %>
@@ -40,17 +45,25 @@
 					<!-- 新增評論 -->
 					</br>
 					<%= form_for @comment, url: board_post_comments_path(@board, @post) do | comment | %>
-						<form role="form">
-						  <div class="form-group">
-								<label for="comment_commenter">評論者：</label>
+						<!-- <form role="form"> -->
+						  <!-- <div class="form-group"> -->
+						  <div class="form-controller">
+                <%= comment.label "評論者（可填匿名）" %><br>
+								<!-- <label for="comment_commenter">評論者：</label> -->
 								<%= comment.text_field :commenter, class: "form-control", placeholder: "請輸入評論者名稱(2~15字)" %>
 							</div>
-						  <div class="form-group">
-						  	<label for="comment_content">內容：</label>
+						  <!-- <div class="form-group"> -->
+						  <div class="form-controller">
+						  	<%= comment.label "內容（最多 50 字）" %>
+						  	<!-- <label for="comment_content">內容：</label> -->
 								<%= comment.text_area :content, class: "form-control", placeholder: "請輸入評論(50字以內)", style: "height: 68px;" %>
 						  </div>
-						  <button type="submit" class="btn btn-default" name="commit" style="float:right;">送出</button>
-						</form>
+						  <!-- <button type="submit" class="btn btn-default" name="commit" style="float:right;">送出</button> -->
+						  <br>
+						  <div class="actions">
+                <%= comment.submit "送出", class: "btn btn-default", style: "float:right;"%>
+						  </div>
+						<!-- </form> -->
 					<% end %>
 				</div>
 			</div><!-- 三欄式主欄 -->
