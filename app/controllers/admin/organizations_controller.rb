@@ -6,7 +6,7 @@ class Admin::OrganizationsController < ApplicationController
 
   def show
     @organization = Organization.find(params[:id])
-    @member = @organization.members.order("id ASC")
+    @member = @organization.members
   end
 
   def new
