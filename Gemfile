@@ -51,3 +51,17 @@ gem 'spring',        group: :development
   gem 'simple_form'
   gem 'jquery-fileupload-rails'
   gem 'figaro'
+  group :development, :test do
+    gem "rspec-rails"
+    gem "rspec-collection_matchers"
+    gem "factory_girl_rails"
+    gem "selenium-webdriver"
+    gem "guard-rspec", require: false
+  end
+  group :test do
+    gem "faker"
+    gem "capybara"
+    gem "database_cleaner"
+    gem "launchy"
+    gem "simplecov", require: false
+  end
