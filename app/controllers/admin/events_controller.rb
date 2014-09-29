@@ -27,7 +27,7 @@ class Admin::EventsController < ApplicationController
         format.html { redirect_to admin_events_url, notice: '成功新增活動' }
         #format.json { render :show, status: :created, location: @group }
       else
-        flash[:alert] = "您必須輸入標題、副標、主辦單位、時間、地點、內容及上傳圖片"
+        flash[:alert] = "您必須輸入標題、主辦單位、時間、地點、內容及上傳圖片"
         format.html { render :new }
         #format.json { render json: @group.errors, status: :unprocessable_entity }
       end
@@ -41,7 +41,7 @@ class Admin::EventsController < ApplicationController
         format.html { redirect_to admin_events_url, notice: '成功更新活動' }
         #format.json { render :show, status: :ok, location: @group }
       else
-        flash[:alert] = "您必須輸入標題、副標、主辦單位、時間、地點、內容及上傳圖片"
+        flash[:alert] = "您必須輸入標題、主辦單位、時間、地點、內容及上傳圖片"
         format.html { render :edit }
         #format.json { render json: @group.errors, status: :unprocessable_entity }
       end
