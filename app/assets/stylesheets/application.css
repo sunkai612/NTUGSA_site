@@ -74,11 +74,11 @@ div.prev_next_btn
   position: relative; 
   top: -5px; 
   left:-15px;
+  text-align: center; 
 }
 
 div.prev_next_btn h4
 {
-  text-align: center; 
   padding-top: 70px; 
   color:black;
 }
@@ -93,4 +93,14 @@ div.prev_next_btn h4
 {
   position: relative;
   top: -30px; 
+}
+
+p.fontsize18
+{
+  font-size: 18px;
+}
+
+.text_center
+{
+  text-align: center;
 }
