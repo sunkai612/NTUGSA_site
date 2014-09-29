@@ -49,7 +49,7 @@
       <hr>
     <% end %>
     <% @organization.each do |o| %>
-      <div id="organization_num_<%= o.id %>">
+      <div class="row" id="organization_num_<%= o.id %>">
         </br>
         </br>
         <h1 style="text-align: center;"><%= o.title %></h1>
@@ -57,11 +57,10 @@
         <p>
           <%= simple_format(o.content, class: 'text_center') %>
         </p>
-      </div>
       <hr>
-      <% showMembers(o).each do |m|%>
-        <div class="row">
-          <div class="col-md-2">
+      <% showMembers(o).order("member_order ASC").each do |m|%>
+        <div class="col-md-4">
+          <div>
             <h3 style="text-align: center;" id="member_num_<%= m.id %>"><%= m.name %></h3>
             <% if m.avatar_file_name %>
               <p style="width: 100px; height:auto; margin:0 auto;">
@@ -69,15 +68,16 @@
               </p>
             <% end %>
           </div>
-          <div class="col-md-9" style="background-color:#a4a4a4; color:#ffffff; border-radius:6px">
+          <div style="background-color:#a4a4a4; color:#ffffff; border-radius:6px">
             <p>
               <%= simple_format(m.intro) %>
             </p>
           </div>
         </div>
-        <br>
       <% end%>
       <hr>
+      </div>
+
     <% end %>
     <div id="statute">
       </br>
