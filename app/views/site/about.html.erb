@@ -59,7 +59,7 @@
         </p>
       </div>
       <hr>
-      <% showMembers(o).each do |m|%>
+      <% showMembers(o).order("member_order ASC").each do |m|%>
         <div class="row">
           <div class="col-md-2">
             <h3 style="text-align: center;" id="member_num_<%= m.id %>"><%= m.name %></h3>
