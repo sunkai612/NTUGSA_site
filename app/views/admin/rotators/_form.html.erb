@@ -66,19 +66,19 @@ $(function() {
           <%= form_for [:admin, @rotator], html: { class: "directUpload" } do |f| %>
             <div class="form-group">
               <%= f.label "標題*" %><br>
-              <%= f.text_field :title , class: "form-control" %>
+              <%= f.text_field :title , class: "form-control", id: "title" %>
             </div>
             <div class="form-controller">
               <%= f.label "順序" %><br>
-              <%= f.text_field :image_order, class: "form-control" %>
+              <%= f.text_field :image_order, class: "form-control", id: "image_order" %>
             </div>
             <div class="form-controller">
               <%= f.label "連結*(需有http://或https://)" %><br>
-              <%= f.text_field :link, class: "form-control" %>
+              <%= f.text_field :link, class: "form-control", id: "link" %>
             </div>
             <div class="form-controller">
               <%= f.label "圖片*(1380x460)" %><br>
-              <%= f.file_field :avatar %>
+              <%= f.file_field :avatar, id: "avatar" %>
             </div>
             <hr>
             <div class="actions">
