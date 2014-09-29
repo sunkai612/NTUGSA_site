@@ -32,8 +32,20 @@
           <td>  <%= truncate(e.content, :length => 8) %> </td>
           <td>  <%= link_to("連結", 'https://www.youtube.com/watch?v='+e.video.to_s, :target => "_blank") %> </td>
           <td>  <%= link_to("連結", e.link.to_s, :target => "_blank") %> </td>
-          <td>  <%= image_tag e.image_large.url(:thumb) %>  </td>
-          <td>  <%= image_tag e.image_small.url(:thumb) %>  </td>
+          <td class="text-center">
+            <% if e.image_large_file_name %>
+              <%= image_tag e.image_large.url(:thumb) %>  
+              <br/>
+              <%= e.image_large_file_name %>
+            <% end %>
+          </td>
+          <td class="text-center">
+            <% if e.image_small_file_name%>
+              <%= image_tag e.image_small.url(:thumb) %>  
+              <br/>
+              <%= e.image_small_file_name %>
+            <% end %>
+          </td>
           <td>
             <% if current_administrator %>  
               <%= link_to("編輯", 
