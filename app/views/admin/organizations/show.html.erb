@@ -18,7 +18,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @member.each do |m| %> 
+      <% @member.order("member_order ASC").each do |m| %> 
         <tr>
           <td> # </td>  
           <td>  <%= truncate(m.organization.title, :length => 13) %> </td>
