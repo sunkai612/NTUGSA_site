@@ -94,3 +94,13 @@ div.prev_next_btn h4
   position: relative;
   top: -30px; 
 }
+
+p.fontsize18
+{
+  font-size: 18px;
+}
+
+.text_center
+{
+  text-align: center;
+}
