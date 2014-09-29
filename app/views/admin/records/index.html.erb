@@ -29,12 +29,26 @@
           <td>  <%= r.date.to_s(:short) %> </td>
           <td>  <%= truncate(r.location, :length => 8) %> </td>
           <td>  <%= truncate(r.content, :length => 8) %> </td>
-          <td>  <%= image_tag r.image_large.url(:thumb) %>  </td>
-          <td>  <%= image_tag r.image_small.url(:thumb) %>  </td>
-          <td>  
+          <td class="text-center">
+            <% if r.image_large_file_name %>
+              <%= image_tag r.image_large.url(:thumb) %>  
+              <br/>
+              <%= r.image_large_file_name %>
+            <% end %>
+          </td>
+          <td class="text-center">
+            <% if r.image_small_file_name%>
+              <%= image_tag e.image_small.url(:thumb) %>  
+              <br/>
+              <%= r.image_small_file_name %>
+            <% end %>
+          </td>
+          <td class="text-center">  
             <% if r.file_file_name %>
               <%= link_to(r.file.url, :target => "_blank") do%>
                 <%= image_tag "/images/icon-pdf.png" %>
+                <br/>
+                <%= r.file_file_name %>
               <% end %>
             <% end %>  
           </td>

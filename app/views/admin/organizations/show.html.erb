@@ -25,7 +25,12 @@
           <td>  <%= m.name %> </td>
           <td>  <%= truncate(m.intro, :length => 43) %> </td>
           <td>  <%= m.member_order %> </td>
-          <td>  <% if m.avatar_file_name %><%= image_tag m.avatar.url(:thumb) %><% end %>  </td>
+          <td class="text-center">  
+            <% if m.avatar_file_name %><%= image_tag m.avatar.url(:thumb) %>
+              <br/>
+              <%= m.avatar_file_name %>
+            <% end %>  
+          </td>
           <td>
             <% if current_administrator %>  
               <%= link_to("編輯", 
