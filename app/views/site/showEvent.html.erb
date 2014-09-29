@@ -14,11 +14,10 @@
     <h1 style="text-align: center;"><%= @event.title %></h1>
     <h3 style="text-align: center;"><%= @event.description %></h3>
     <br>
-    <br>
-    <br>
     <div style="margin-left:44%;">
       <div class="fb-like" data-href="http://www.ntugsa.com/site/<%= @event.id %>/event" data-width="100px" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
     </div>
+    <br>
     <%= image_tag @event.image_large.url, style: "width: 100%" %>
     <hr>
     <div class="row">
@@ -33,13 +32,13 @@
       </div>
     </div>
     <hr>
-    <br>
-    <br>
-    <br>
     <% unless (@event.video == "") || (@event.video == nil) %>
       <iframe style="margin-left:20%;" width="560" height="315" src="//www.youtube.com/embed/<%= @event.video %>" frameborder="0" allowfullscreen></iframe>
       <hr>
     <% end %>
+    <br>
+    <br>
+    <br>
     <h4><%= simple_format(@event.content) %></h4>
     <br>
     <br>

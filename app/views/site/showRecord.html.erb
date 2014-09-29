@@ -14,11 +14,10 @@
     <h1 style="text-align: center;"><%= @record.title %></h1>
     <h3 style="text-align: center;"><%= @record.description %></h3>
     <br>
-    <br>
-    <br>
     <div style="margin-left:44%;">
       <div class="fb-like" data-href="http://www.ntugsa.com/site/<%= @record.id %>/event" data-width="100px" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
     </div>
+    <br>
     <%= image_tag @record.image_large.url, style: "width: 100%" %>
     <hr>
     <div class="row">
