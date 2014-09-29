@@ -16,11 +16,11 @@
     </thead>
     <tbody>
       <% @rotator.order("image_order ASC").each do |r| %> 
-        <tr>
+        <tr id="<%= dom_id(r) %>" >
           <td> # </td>  
           <td>  <%= truncate(r.title, :length => 13) %> </td>
           <td>  <%= r.image_order %> </td>
-          <td>  <%= image_tag r.avatar.url(:thumb) %>  </td>
+          <td>  <% if r.avatar_file_name %><%= image_tag r.avatar.url(:thumb) %><% end %> </td>
           <td>  <%= link_to(truncate(r.link, :length => 43), r.link, target: "_blank") %> </td>
           <td>
             <% if current_administrator %>  
