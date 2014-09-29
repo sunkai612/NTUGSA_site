@@ -13,7 +13,7 @@
           <%= image_tag e.image_small.url, alt: "join us" %>
             <h4 style="text-align:center;">[ <%= truncate(e.organization, :length => 11) %> ]</h4>
             <h3 style="text-align:center;"><%= truncate(e.title, :length => 18) %></h3>
-            <p><%= truncate(e.description, :length => 32) %></p>
+            <p class="text-center"><%= truncate(e.description, :length => 32) %></p>
           <% end %>
         </div>
       <% end %>
