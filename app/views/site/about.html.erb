@@ -54,31 +54,27 @@
         </br>
         <h1 style="text-align: center;"><%= o.title %></h1>
         </br>
-        <p>
-          <%= simple_format(o.content, class: 'text_center') %>
-        </p>
-      <hr>
-      <% showMembers(o).order("member_order ASC").each do |m|%>
-        <div class="col-md-4">
-          <div>
-            <h3 style="text-align: center;" id="member_num_<%= m.id %>"><%= m.name %></h3>
-            <% if m.avatar_file_name %>
-              <p style="width: 100px; height:auto; margin:0 auto;">
-                <%= image_tag m.avatar.url(:thumb) %>
+        <p><%= simple_format(o.content, class: 'text_center') %></p>
+        <hr>
+        <% showMembers(o).order("member_order ASC").each do |m|%>
+          <div class="col-md-4">
+            <div>
+              <h3 style="text-align: center;" id="member_num_<%= m.id %>"><%= m.name %></h3>
+              <% if m.avatar_file_name %>
+                <p style="width: 100px; height:auto; margin:0 auto;">
+                  <%= image_tag m.avatar.url(:thumb) %>
+                </p>
+              <% end %>
+            </div>
+            <div style="background-color:#a4a4a4; color:#ffffff; border-radius:6px; padding: 10px; margin-top: 10px;">
+              <p>
+                <%= simple_format(m.intro) %>
               </p>
-            <% end %>
+            </div>
           </div>
-          <div style="background-color:#a4a4a4; color:#ffffff; border-radius:6px; padding: 10px; margin-top: 10px;">
-            <p>
-              <%= simple_format(m.intro) %>
-            </p>
-          </div>
-        </div>
-      <% end%>
+        <% end%>
       </div>
       <hr>
-      </div>
-
     <% end %>
     <div id="statute">
       </br>
@@ -92,9 +88,9 @@
     </div>
   </div>
   <div class="col-md-1"></div>
-  <a href="#top">
-    <div class="top_btn">
-      <p>TOP</p>
-    </div>
-  </a>
+    <a href="#top">
+      <div class="top_btn">
+        <p>TOP</p>
+      </div>
+    </a>
 </div>
