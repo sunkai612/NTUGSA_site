@@ -27,7 +27,7 @@ class Admin::RecordsController < ApplicationController
         format.html { redirect_to admin_records_url, notice: '成功新增記錄' }
         #format.json { render :show, status: :created, location: @group }
       else
-        flash[:alert] = "您必須輸入標題、部門、時間、地點、內容及上傳圖片"
+        flash[:alert] = "您必須輸入標題（1~10字）、部門、時間、地點（1~14字）、內容（最少20字）及上傳圖片，若輸入副標最多只能17字"
         format.html { render :new }
         #format.json { render json: @group.errors, status: :unprocessable_entity }
       end
@@ -41,7 +41,7 @@ class Admin::RecordsController < ApplicationController
         format.html { redirect_to admin_records_url, notice: '成功更新記錄' }
         #format.json { render :show, status: :ok, location: @group }
       else
-        flash[:alert] = "您必須輸入標題、部門、時間、地點、內容及上傳圖片"
+        flash[:alert] = "您必須輸入標題（1~10字）、部門、時間、地點（1~14字）、內容（最少20字）及上傳圖片，若輸入副標最多只能17字"
         format.html { render :edit }
         #format.json { render json: @group.errors, status: :unprocessable_entity }
       end

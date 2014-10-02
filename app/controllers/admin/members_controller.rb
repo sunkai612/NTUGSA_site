@@ -14,7 +14,7 @@ class Admin::MembersController < ApplicationController
         format.html { redirect_to admin_organization_path(@organization), notice: '成功新增成員' }
         #format.json { render :show, status: :created, location: @group }
       else
-        flash[:alert] = "您必須輸入姓名、簡介、部門"
+        flash[:alert] = "您必須輸入姓名（1~10字）與簡介（至少20字），並選擇部門"
         format.html { render :new }
         #format.json { render json: @group.errors, status: :unprocessable_entity }
       end
@@ -33,7 +33,7 @@ class Admin::MembersController < ApplicationController
         format.html { redirect_to admin_organization_path(@organization), notice: '成功更新成員' }
         #format.json { render :show, status: :created, location: @group }
       else
-        flash[:alert] = "您必須輸入姓名、簡介、部門"
+        flash[:alert] = "您必須輸入姓名（1~10字）與簡介（至少20字），並選擇部門"
         format.html { render :new }
         #format.json { render json: @group.errors, status: :unprocessable_entity }
       end
